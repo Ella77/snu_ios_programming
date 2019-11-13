@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -14,11 +15,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    // SwiftUI와 연결
-//    @IBSegueAction func addSwiftUIView(_ coder: NSCoder) -> UIViewController? {
-//           return UIHostingController(coder: coder, rootView: BubbleSwiftUIView())
-//       }
-
     
+    // SwiftUI와 Hosting 방식으로 연결
+    @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: BubbleSwiftUIView())
+    }
 }
 
