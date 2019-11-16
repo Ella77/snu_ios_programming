@@ -11,4 +11,5 @@ import CoreLocation
 
 struct TextData: Hashable, Codable {
     var text: String
+    var size: Int
 }
