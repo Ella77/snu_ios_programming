@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1E029EA0237F979000889072 /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E029E9F237F979000889072 /* TextData.swift */; };
 		1E029EA4237F9C6E00889072 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E029EA3237F9C6E00889072 /* textData.json */; };
+		3875CCE1237FC1AE00510DB7 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875CCE0237FC1AE00510DB7 /* Bubble.swift */; };
+		3875CCE3237FC24A00510DB7 /* BubbleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875CCE2237FC24A00510DB7 /* BubbleCollection.swift */; };
+		3875CCE5237FC76500510DB7 /* BubbleDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875CCE4237FC76500510DB7 /* BubbleDrawing.swift */; };
+		3875CCE7237FC77900510DB7 /* BubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875CCE6237FC77900510DB7 /* BubblesView.swift */; };
 		3882FC12237C29180029A4DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC11237C29180029A4DA /* AppDelegate.swift */; };
 		3882FC14237C29180029A4DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC13237C29180029A4DA /* SceneDelegate.swift */; };
 		3882FC16237C29180029A4DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC15237C29180029A4DA /* ContentView.swift */; };
@@ -20,6 +24,10 @@
 /* Begin PBXFileReference section */
 		1E029E9F237F979000889072 /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
 		1E029EA3237F9C6E00889072 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
+		3875CCE0237FC1AE00510DB7 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		3875CCE2237FC24A00510DB7 /* BubbleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCollection.swift; sourceTree = "<group>"; };
+		3875CCE4237FC76500510DB7 /* BubbleDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleDrawing.swift; sourceTree = "<group>"; };
+		3875CCE6237FC77900510DB7 /* BubblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesView.swift; sourceTree = "<group>"; };
 		3882FC0E237C29180029A4DA /* BubbleSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3882FC11237C29180029A4DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3882FC13237C29180029A4DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				1E029E9F237F979000889072 /* TextData.swift */,
+				3875CCE0237FC1AE00510DB7 /* Bubble.swift */,
+				3875CCE2237FC24A00510DB7 /* BubbleCollection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -80,6 +90,8 @@
 				3882FC11237C29180029A4DA /* AppDelegate.swift */,
 				3882FC13237C29180029A4DA /* SceneDelegate.swift */,
 				3882FC15237C29180029A4DA /* ContentView.swift */,
+				3875CCE4237FC76500510DB7 /* BubbleDrawing.swift */,
+				3875CCE6237FC77900510DB7 /* BubblesView.swift */,
 				3882FC17237C29190029A4DA /* Assets.xcassets */,
 				3882FC1C237C29190029A4DA /* LaunchScreen.storyboard */,
 				3882FC1F237C29190029A4DA /* Info.plist */,
@@ -170,6 +182,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E029EA0237F979000889072 /* TextData.swift in Sources */,
+				3875CCE7237FC77900510DB7 /* BubblesView.swift in Sources */,
+				3875CCE5237FC76500510DB7 /* BubbleDrawing.swift in Sources */,
+				3875CCE3237FC24A00510DB7 /* BubbleCollection.swift in Sources */,
+				3875CCE1237FC1AE00510DB7 /* Bubble.swift in Sources */,
 				3882FC12237C29180029A4DA /* AppDelegate.swift in Sources */,
 				3882FC14237C29180029A4DA /* SceneDelegate.swift in Sources */,
 				3882FC16237C29180029A4DA /* ContentView.swift in Sources */,
