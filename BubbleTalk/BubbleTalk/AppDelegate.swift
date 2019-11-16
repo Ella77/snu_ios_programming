@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  project
+//  BubbleTalk
 //
-//  Created by 한수현 on 30/10/2019.
-//  Copyright © 2019 Team5. All rights reserved.
+//  Created by JSKeum on 2019/11/13.
+//  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 
 import UIKit
