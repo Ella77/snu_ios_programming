@@ -9,13 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    var bubble: TextData
+    
     var body: some View {
-        Text("Hello World")
-    }
+    HStack {
+               Text(bubble.text)
+           }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(bubble: textData[0])
     }
+}
 }

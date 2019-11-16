@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E029E9E237F945D00889072 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E029E9D237F945D00889072 /* textData.json */; };
+		1E029EA0237F979000889072 /* TextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E029E9F237F979000889072 /* TextData.swift */; };
+		1E029EA4237F9C6E00889072 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E029EA3237F9C6E00889072 /* textData.json */; };
 		3882FC12237C29180029A4DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC11237C29180029A4DA /* AppDelegate.swift */; };
 		3882FC14237C29180029A4DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC13237C29180029A4DA /* SceneDelegate.swift */; };
 		3882FC16237C29180029A4DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3882FC15237C29180029A4DA /* ContentView.swift */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E029E9D237F945D00889072 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = textData.json; path = ../../../../../textData.json; sourceTree = "<group>"; };
+		1E029E9F237F979000889072 /* TextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextData.swift; sourceTree = "<group>"; };
+		1E029EA3237F9C6E00889072 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
 		3882FC0E237C29180029A4DA /* BubbleSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3882FC11237C29180029A4DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3882FC13237C29180029A4DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,9 +44,17 @@
 		1E029E9C237F943000889072 /* Json */ = {
 			isa = PBXGroup;
 			children = (
-				1E029E9D237F945D00889072 /* textData.json */,
+				1E029EA3237F9C6E00889072 /* textData.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		1E029EA1237F97DF00889072 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E029E9F237F979000889072 /* TextData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3882FC05237C29180029A4DA = {
@@ -66,13 +76,14 @@
 		3882FC10237C29180029A4DA /* BubbleSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				1E029E9C237F943000889072 /* Json */,
+				1E029EA1237F97DF00889072 /* Models */,
 				3882FC11237C29180029A4DA /* AppDelegate.swift */,
 				3882FC13237C29180029A4DA /* SceneDelegate.swift */,
 				3882FC15237C29180029A4DA /* ContentView.swift */,
 				3882FC17237C29190029A4DA /* Assets.xcassets */,
 				3882FC1C237C29190029A4DA /* LaunchScreen.storyboard */,
 				3882FC1F237C29190029A4DA /* Info.plist */,
+				1E029E9C237F943000889072 /* Json */,
 				3882FC19237C29190029A4DA /* Preview Content */,
 			);
 			path = BubbleSwiftUI;
@@ -144,7 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E029E9E237F945D00889072 /* textData.json in Resources */,
+				1E029EA4237F9C6E00889072 /* textData.json in Resources */,
 				3882FC1E237C29190029A4DA /* LaunchScreen.storyboard in Resources */,
 				3882FC1B237C29190029A4DA /* Preview Assets.xcassets in Resources */,
 				3882FC18237C29190029A4DA /* Assets.xcassets in Resources */,
@@ -158,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E029EA0237F979000889072 /* TextData.swift in Sources */,
 				3882FC12237C29180029A4DA /* AppDelegate.swift in Sources */,
 				3882FC14237C29180029A4DA /* SceneDelegate.swift in Sources */,
 				3882FC16237C29180029A4DA /* ContentView.swift in Sources */,
