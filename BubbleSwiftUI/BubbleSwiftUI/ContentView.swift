@@ -9,16 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    var bubble: TextData
     
     var body: some View {
     HStack {
-               Text("123")
+        Text(bubble.text)
            }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(bubble: TextData(text: "123", size: 1))
     }
 }
 }
