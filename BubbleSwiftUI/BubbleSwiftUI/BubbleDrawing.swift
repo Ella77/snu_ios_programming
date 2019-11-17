@@ -53,6 +53,8 @@ struct BubbleDrawing: View {
                     Image(bubProperty.rawValue)
                         //.resizable()
                         .shadow(radius: 8)
+                 .animation(.spring())
+
             )
         }
     }
