@@ -20,9 +20,9 @@ class ViewController: UIViewController {
     }
     
     // 테스트용으로 버튼 누르면 새 버블 뜨게 할까? 고민했던 함수
-//    @IBAction func newBubble(_ sender: UIButton) {
-//       // bubble.newbubbleButton()
-//    }
+    //    @IBAction func newBubble(_ sender: UIButton) {
+    //       // bubble.newbubbleButton()
+    //    }
     
     // SwiftUI와 Hosting 방식으로 연결
     @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {

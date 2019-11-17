@@ -45,6 +45,7 @@ struct BubbleView: View {
                     Spacer()
                 }
                 Spacer()
+                Spacer()
                 VStack {
                     Spacer()
                     ForEach(bubbleKeysSecondRow) { key in
