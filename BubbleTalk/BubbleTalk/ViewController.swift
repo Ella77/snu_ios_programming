@@ -8,8 +8,8 @@
 
 import UIKit
 import SwiftUI
-
 class ViewController: UIViewController {
+
     
     private var bubCollection = BubbleCollection()
     lazy private var bubbles = BubbleView(bubbleCollection: bubCollection)
