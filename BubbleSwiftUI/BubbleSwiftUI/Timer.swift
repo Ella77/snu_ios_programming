@@ -25,3 +25,5 @@ struct Timer {
         return current - startingTime >= timeInterval ? true : false
     }
 }
+
+

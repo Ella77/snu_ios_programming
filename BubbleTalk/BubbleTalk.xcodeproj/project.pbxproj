@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
 		38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875B823817F6C00D8D0AA /* Bubble.swift */; };
 		38D875BB23817F8000D8D0AA /* BubbleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BA23817F8000D8D0AA /* BubbleCollection.swift */; };
 		38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BC238180A700D8D0AA /* BubbleView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
 		38D875B823817F6C00D8D0AA /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		38D875BA23817F8000D8D0AA /* BubbleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCollection.swift; sourceTree = "<group>"; };
 		38D875BC238180A700D8D0AA /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 				38D875BE238180DA00D8D0AA /* OneBubble.swift */,
 			);
 			path = SwiftUIModules;
+			sourceTree = "<group>";
+		};
+		38CF348D238278B9001206ED /* JSONSample */ = {
+			isa = PBXGroup;
+			children = (
+				38B5A37B238279430030BD76 /* textData.json */,
+			);
+			path = JSONSample;
 			sourceTree = "<group>";
 		};
 		38D875B723817E2000D8D0AA /* Models */ = {
@@ -91,6 +101,7 @@
 				38FF0921237C236900E2CF31 /* Assets.xcassets */,
 				38FF0923237C236900E2CF31 /* LaunchScreen.storyboard */,
 				38FF0926237C236900E2CF31 /* Info.plist */,
+				38CF348D238278B9001206ED /* JSONSample */,
 			);
 			path = BubbleTalk;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B5A37C238279430030BD76 /* textData.json in Resources */,
 				38FF0925237C236900E2CF31 /* LaunchScreen.storyboard in Resources */,
 				38FF0922237C236900E2CF31 /* Assets.xcassets in Resources */,
 				38FF0920237C236700E2CF31 /* Main.storyboard in Resources */,

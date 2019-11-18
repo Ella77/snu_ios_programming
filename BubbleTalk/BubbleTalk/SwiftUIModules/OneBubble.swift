@@ -53,7 +53,7 @@ struct OneBubble: View {
                     Image(bubProperty.rawValue)
                         //.resizable()
                         .shadow(radius: 8)
-                        .animation(.spring())
+                        //.animation(.spring())
             )
         }
     }
