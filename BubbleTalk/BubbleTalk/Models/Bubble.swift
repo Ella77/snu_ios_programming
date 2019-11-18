@@ -13,9 +13,11 @@ struct Bubble: Hashable, Identifiable {
     var text: String
     var size: Int
     
-    init(text txt: String, size sz: Int, id bubId: Int) {
-        text = txt
-        size = sz
-        id = bubId
+    init(text : String, size: Int, id: Int) {
+        self.text = text
+        self.size = size
+        self.id = id
+       
+//        print(text,"initalize")
     }
 }

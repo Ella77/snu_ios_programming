@@ -9,7 +9,9 @@
 import Foundation
 class Model {
     private let maxNumofBubbles: Int = 1000
-    
+    init() {
+        print("model initialize")
+    }
     func makeNewBubble (txt: String) -> Bubble{
         let newBubble = Bubble(text: txt, size: txt.count, id: getId())
         return newBubble
