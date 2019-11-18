@@ -1,8 +1,8 @@
 //
-//  Bubble.swift
+//  Model.swift
 //  BubbleTalk
 //
-//  Created by Eunyi Lyou on 2019-11-18.
+//  Created by 한수현 on 18/11/2019.
 //  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 
