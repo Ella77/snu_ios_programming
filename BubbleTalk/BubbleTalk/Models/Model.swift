@@ -7,5 +7,18 @@
 //
 
 import Foundation
+class Model {
+    private let maxNumofBubbles: Int = 1000
+    
+    func makeNewBubble (txt: String) -> Bubble{
+        let newBubble = Bubble(text: txt, size: txt.count, id: getId())
+        return newBubble
+    }
+    
+    private func getId() -> Int{
+        return Int(arc4random_uniform(UInt32(maxNumofBubbles)))
+    }
+
+}
 
 
