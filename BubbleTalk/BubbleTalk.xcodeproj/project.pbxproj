@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A63BCAE2382AB57009372E9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63BCAD2382AB57009372E9 /* Model.swift */; };
 		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
 		38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875B823817F6C00D8D0AA /* Bubble.swift */; };
 		38D875BB23817F8000D8D0AA /* BubbleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BA23817F8000D8D0AA /* BubbleCollection.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A63BCAD2382AB57009372E9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
 		38D875B823817F6C00D8D0AA /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		38D875BA23817F8000D8D0AA /* BubbleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCollection.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				38D875B823817F6C00D8D0AA /* Bubble.swift */,
 				38D875BA23817F8000D8D0AA /* BubbleCollection.swift */,
+				0A63BCAD2382AB57009372E9 /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
 				38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */,
 				38FF091B237C236700E2CF31 /* SceneDelegate.swift in Sources */,
+				0A63BCAE2382AB57009372E9 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

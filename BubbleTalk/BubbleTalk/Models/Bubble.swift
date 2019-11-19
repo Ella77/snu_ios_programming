@@ -13,9 +13,36 @@ struct Bubble: Hashable, Identifiable {
     var text: String
     var size: Int
     
-    init(text txt: String, size sz: Int, id bubId: Int) {
-        text = txt
-        size = sz
-        id = bubId
+    /*
+     extension Bubble{
+     var toJSON: Any{
+        return [
+            "text": text,
+            "size": size
+        ]
+     }
+     
+     init?(fromJSON json: Any){
+        guard
+            let bubble = json as? [String: Any],
+            let id = bubble["id"] as? Int,
+            let text = bubble["text"] as? String,
+            let size = bubble["size"] as? Int
+            else{
+                print("Couldn't parse JSON")
+                return nil
+            }
+        self.id = id
+        self.text = text
+        self.size = size
+     }
+     */
+    
+    init(text: String, size: Int, id: Int) {
+        self.text = text
+        self.size = size
+        self.id = id
     }
+
+    
 }

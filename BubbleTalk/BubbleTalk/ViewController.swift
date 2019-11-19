@@ -9,11 +9,13 @@
 import UIKit
 import SwiftUI
 
+var Talk = Model()
+
 class ViewController: UIViewController {
-    
     private var bubCollection = BubbleCollection()
     lazy private var bubbles = BubbleView(bubbleCollection: bubCollection)
     lazy private var uiHost = UIHostingController(rootView: bubbles)
+
     
     // 샘플 데이터
     var bubbleSample = [ "크리스마스라니!", "나 오늘 저녁 뭐 먹지?", "난 고양이보다 강아지가 좋아", "헐 진짜?", "이제 너무 추운 것 같아", "가나다라바사", "인터페이스 프로그래밍 5조", "징글벨 징글벨 징글 올 더 웨이~" ]
@@ -34,6 +36,12 @@ class ViewController: UIViewController {
                 self.bubbles.bubbleViewUpdate(bubble: newBub)
                 self.viewWillAppear(true)
                 i += 1
+                
+                //make New Bubble (instead of bubbleCollection)
+                let bubb : Bubble = Talk.makeNewBubble(txt: text)
+                print(bubb.text,"\t",bubb.size)
+                
+                
             } else {
                 timer.invalidate()
             }
