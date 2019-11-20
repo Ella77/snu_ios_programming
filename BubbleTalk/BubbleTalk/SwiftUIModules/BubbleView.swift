@@ -13,7 +13,7 @@ struct BubbleView: View {
     private var bubbleView = [Bubble: OneBubble]()
     var bubbleKeys: [Bubble]
     
-    init(bubbleCollection: BubbleCollection) {
+    init(bubbleCollection: BubbleManager) {
         for bubble in bubbleCollection.bubbles {
             bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.size)
         }
@@ -44,7 +44,7 @@ struct BubbleView: View {
 
 struct BubblesViewDrawing_Previews: PreviewProvider {
     static var previews: some View {
-        BubbleView(bubbleCollection: BubbleCollection())
+        BubbleView(bubbleCollection: BubbleManager())
     }
 }
 
