@@ -6,10 +6,12 @@
 //  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 import UIKit
+
 import Foundation
 
 struct BubbleManager {
     var bubbles = [Bubble]()
+
     
     private let maxNumofBubbles: Int = 1000
     init() {
@@ -36,12 +38,18 @@ struct BubbleManager {
 //                        alpha: 1.0)
 //    }
     
+    
+    // you need to set talk chat zone's relative ratio for ViewHeight, ViewWidth 
+    
     // a random number in the range 0 - ViewHeight and 0 - ViewWidth respectively
+//    let screen = UIScreen.main.bounds
+//    let screenWidth = screen.size.width //needs to multiply some ratio
+//    let screenHeight = screen.size.height  //needs to multiply some ratio
 //    private func getX() -> CGFloat{
-//        return CGFloat((0...viewWidth))
+//        return CGFloat(arc4random_uniform(UInt32(0..screenWidth)))
 //    }
 //    private func getY() -> CGFloat{
-//        return CGFloat((0...viewHeight))
+//        return CGFloat(arc4random_uniform(UInt32(0..screenHeight)))
 //    }
 
 }
