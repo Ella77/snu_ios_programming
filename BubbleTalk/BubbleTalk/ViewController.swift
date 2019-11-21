@@ -13,7 +13,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     
-   
   
     private var talk = BubbleManager()
     lazy private var bubbles = BubbleView(bubbleCollection: talk)
@@ -30,8 +29,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         uiHost.rootView = bubbles
         //print(uiHost.rootView.bubbleKeys)
        
-           // focus on the text field if it's empty
-           textField.becomeFirstResponder()
+        self.textField.becomeFirstResponder()
+        //키보드가 왜 자꾸 먼저 올라와있는지 해결 필요
         
     }
     
@@ -57,21 +56,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         textField.delegate = self
+    
         
-        /*self.textField.layer.borderWidth = 0.5
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-
-        
-        func keyboardWillShow(_ sender:Notification){
-            self.view.frame.origin.y = -150
-        }
-            
-        func keyboardWillHide(_ sender:Notification){
-            self.view.frame.origin.y = 0
-        } */
+        self.textField.delegate = self
         
         textField.returnKeyType = .done
         
@@ -96,7 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                self.view.endEditing(true)
-           } //화면터치 시 키보드 내려옴
+           } //화면터치 시 키보드 내려옴 
 
 
     
