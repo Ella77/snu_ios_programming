@@ -13,7 +13,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     
-  
+  var keyboardShown:Bool = false // 키보드 상태 확인
+  var originY:CGFloat? // 오브젝트의 기본 위치
     private var talk = BubbleManager()
     lazy private var bubbles = BubbleView(bubbleCollection: talk)
     lazy private var uiHost = UIHostingController(rootView: bubbles)
@@ -28,14 +29,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         uiHost.rootView = bubbles
         //print(uiHost.rootView.bubbleKeys)
-       
-        self.textField.becomeFirstResponder()
-        //키보드가 왜 자꾸 먼저 올라와있는지 해결 필요
-        
+    //registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      //unregisterForKeyboardNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       
         var i = 0
         // 2초 마다 하나씩 뜨도록 타이머 설정
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
@@ -56,15 +57,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
         self.textField.delegate = self
         
         textField.returnKeyType = .done
         
-    
+        //textfield올리기
+    NotificationCenter.default.addObserver(self, selector:
+        #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
+        object: nil)
+    NotificationCenter.default.addObserver(self, selector:
+        #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
+        object: nil)
     }
-    
+  
+              
     //키보드 delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
@@ -84,7 +90,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                self.view.endEditing(true)
            } //화면터치 시 키보드 내려옴 
-
+    
+    @objc func keyboardWillShow(_ notification: Notification){
+        guard let userInfo = notification.userInfo as? [String:Any] else {return}
+        guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification){
+        self.view.transform = .identity
+    }
+      
 
     
     // SwiftUI와 Hosting 방식으로 연결
