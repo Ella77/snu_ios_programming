@@ -7,16 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63BCAD2382AB57009372E9 /* BubbleManager.swift */; };
+		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
+		38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875B823817F6C00D8D0AA /* Bubble.swift */; };
+		38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BC238180A700D8D0AA /* BubbleView.swift */; };
+		38D875BF238180DA00D8D0AA /* OneBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BE238180DA00D8D0AA /* OneBubble.swift */; };
 		38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF0918237C236700E2CF31 /* AppDelegate.swift */; };
 		38FF091B237C236700E2CF31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF091A237C236700E2CF31 /* SceneDelegate.swift */; };
 		38FF091D237C236700E2CF31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF091C237C236700E2CF31 /* ViewController.swift */; };
 		38FF0920237C236700E2CF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FF091E237C236700E2CF31 /* Main.storyboard */; };
 		38FF0922237C236900E2CF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38FF0921237C236900E2CF31 /* Assets.xcassets */; };
 		38FF0925237C236900E2CF31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FF0923237C236900E2CF31 /* LaunchScreen.storyboard */; };
-		38FF092D237C258800E2CF31 /* BubbleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FF092C237C258800E2CF31 /* BubbleSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A63BCAD2382AB57009372E9 /* BubbleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleManager.swift; sourceTree = "<group>"; };
+		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
+		38D875B823817F6C00D8D0AA /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		38D875BC238180A700D8D0AA /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		38D875BE238180DA00D8D0AA /* OneBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneBubble.swift; sourceTree = "<group>"; };
 		38FF0915237C236700E2CF31 /* BubbleTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38FF0918237C236700E2CF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38FF091A237C236700E2CF31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +34,6 @@
 		38FF0921237C236900E2CF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38FF0924237C236900E2CF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38FF0926237C236900E2CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38FF092C237C258800E2CF31 /* BubbleSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E029EA7237FAB5100889072 /* SwiftUIModules */ = {
+			isa = PBXGroup;
+			children = (
+				38D875BC238180A700D8D0AA /* BubbleView.swift */,
+				38D875BE238180DA00D8D0AA /* OneBubble.swift */,
+			);
+			path = SwiftUIModules;
+			sourceTree = "<group>";
+		};
+		38CF348D238278B9001206ED /* JSONSample */ = {
+			isa = PBXGroup;
+			children = (
+				38B5A37B238279430030BD76 /* textData.json */,
+			);
+			path = JSONSample;
+			sourceTree = "<group>";
+		};
+		38D875B723817E2000D8D0AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				38D875B823817F6C00D8D0AA /* Bubble.swift */,
+				0A63BCAD2382AB57009372E9 /* BubbleManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		38FF090C237C236700E2CF31 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +92,16 @@
 		38FF0917237C236700E2CF31 /* BubbleTalk */ = {
 			isa = PBXGroup;
 			children = (
+				38D875B723817E2000D8D0AA /* Models */,
+				1E029EA7237FAB5100889072 /* SwiftUIModules */,
 				38FF0918237C236700E2CF31 /* AppDelegate.swift */,
 				38FF091A237C236700E2CF31 /* SceneDelegate.swift */,
 				38FF091C237C236700E2CF31 /* ViewController.swift */,
 				38FF091E237C236700E2CF31 /* Main.storyboard */,
-				38FF092C237C258800E2CF31 /* BubbleSwiftUIView.swift */,
 				38FF0921237C236900E2CF31 /* Assets.xcassets */,
 				38FF0923237C236900E2CF31 /* LaunchScreen.storyboard */,
 				38FF0926237C236900E2CF31 /* Info.plist */,
+				38CF348D238278B9001206ED /* JSONSample */,
 			);
 			path = BubbleTalk;
 			sourceTree = "<group>";
@@ -128,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B5A37C238279430030BD76 /* textData.json in Resources */,
 				38FF0925237C236900E2CF31 /* LaunchScreen.storyboard in Resources */,
 				38FF0922237C236900E2CF31 /* Assets.xcassets in Resources */,
 				38FF0920237C236700E2CF31 /* Main.storyboard in Resources */,
@@ -141,10 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38FF092D237C258800E2CF31 /* BubbleSwiftUIView.swift in Sources */,
+				38D875BF238180DA00D8D0AA /* OneBubble.swift in Sources */,
+				38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */,
+				38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */,
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
 				38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */,
 				38FF091B237C236700E2CF31 /* SceneDelegate.swift in Sources */,
+				0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

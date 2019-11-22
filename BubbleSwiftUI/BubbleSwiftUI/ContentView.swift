@@ -13,13 +13,13 @@ struct ContentView: View {
     
     var body: some View {
     HStack {
-               Text(bubble.text)
+        Text(bubble.text)
            }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(bubble: textData[0])
+        ContentView(bubble: TextData(text: "123", size: 1))
     }
 }
 }
