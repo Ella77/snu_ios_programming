@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     private var receivedTalk = BubbleManager()
     private var sentTalk = BubbleManager()
+    
     lazy private var recievedBubbleView: ReceivedBubbles = ReceivedBubbles(bubbleCollection: receivedTalk)
     lazy private var sentBubbledView: SentBubbles = SentBubbles(bubbleCollection: sentTalk)
     
@@ -25,9 +26,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     lazy private var uiHost = UIHostingController(rootView: bubbles)
     
     
-    // 샘플 데이터
-    var bubbleSample = [ "크리스마스라니!", "나 오늘 저녁 뭐 먹지?", "난 고양이보다 강아지가 좋아", "헐 진짜?", "이제 너무 추운 것 같아", "가나다라바사", "인터페이스 프로그래밍 5조", "징글벨 징글벨 징글 올 더 웨이~" ]
-
+    // 샘플 데이터 -> "1" 은 버블 있는 이미지 / "2" 는 버블 없는 이미지 / 다른 String은 그냥 String(이모지 포함)
+    var bubbleSample = [ "🎃", "1", "2", "안녕", "아이폰", "👻", "👀", "ABC" ]
     
     override func viewWillAppear(_ animated: Bool) {
         uiHost.rootView = bubbles
@@ -44,8 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // 2초 마다 하나씩 뜨도록 타이머 설정
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             if (i < self.bubbleSample.count) {
-                var text = self.bubbleSample[i]
-                var size: Int  { return text.count < 10 ? 1 : 2 }
+                let text = self.bubbleSample[i]
                 let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
                 self.recievedBubbleView.bubbleViewUpdate(bubble: newBub)
                 self.viewWillAppear(true)
@@ -87,11 +86,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        // 텍스브 보내면 sentBubbles에 뜨도록 설정
         if let text = textField.text {
             let newBub = sentTalk.makeNewBubble(txt: text)
             sentBubbledView.bubbleViewUpdate(bubble: newBub)
             uiHost.rootView = bubbles
-            
+
         }
         return false //return 누르면 키보드 사라짐
     }

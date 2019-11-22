@@ -15,13 +15,18 @@ struct ReceivedBubbles: View {
     
     init(bubbleCollection: BubbleManager) {
         for bubble in bubbleCollection.bubbles {
-            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.size)
+            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.type)
         }
         bubbleKeys = bubbleView.keys.map { $0 }
     }
     
     mutating func bubbleViewUpdate(bubble bub: Bubble) {
-        bubbleView[bub] = OneBubble(bubText: bub.text, bubType: bub.size)
+        // 최대 4개 띄울 수 있게 
+        if (bubbleKeys.count >= 4) {
+            bubbleKeys.remove(at: 0)
+        }
+        
+        bubbleView[bub] = OneBubble(bubText: bub.text, bubType: bub.type)
         bubbleKeys.append(bub)
     }
     
