@@ -13,27 +13,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     
-  var keyboardShown:Bool = false // 키보드 상태 확인
-  var originY:CGFloat? // 오브젝트의 기본 위치
-    private var talk = BubbleManager()
-    lazy private var bubbles = BubbleView(bubbleCollection: talk)
+    var keyboardShown:Bool = false // 키보드 상태 확인
+    var originY:CGFloat? // 오브젝트의 기본 위치
+    
+    private var receivedTalk = BubbleManager()
+    private var sentTalk = BubbleManager()
+    lazy private var recievedBubbleView: ReceivedBubbles = ReceivedBubbles(bubbleCollection: receivedTalk)
+    lazy private var sentBubbledView: SentBubbles = SentBubbles(bubbleCollection: sentTalk)
+    
+    private var bubbles: BubbleView { return BubbleView(recievedBubbleView: recievedBubbleView, sentBubblesView: sentBubbledView) }
     lazy private var uiHost = UIHostingController(rootView: bubbles)
     
-  
+    
     // 샘플 데이터
     var bubbleSample = [ "크리스마스라니!", "나 오늘 저녁 뭐 먹지?", "난 고양이보다 강아지가 좋아", "헐 진짜?", "이제 너무 추운 것 같아", "가나다라바사", "인터페이스 프로그래밍 5조", "징글벨 징글벨 징글 올 더 웨이~" ]
-    
-    
 
     
     override func viewWillAppear(_ animated: Bool) {
         uiHost.rootView = bubbles
-        //print(uiHost.rootView.bubbleKeys)
-    //registerForKeyboardNotifications()
+        print(self.recievedBubbleView.bubbleKeys)
+        //registerForKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-      //unregisterForKeyboardNotifications()
+        //unregisterForKeyboardNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,8 +46,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if (i < self.bubbleSample.count) {
                 var text = self.bubbleSample[i]
                 var size: Int  { return text.count < 10 ? 1 : 2 }
-                let newBub : Bubble = self.talk.makeNewBubble(txt: text)
-                self.bubbles.bubbleViewUpdate(bubble: newBub)
+                let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+                self.recievedBubbleView.bubbleViewUpdate(bubble: newBub)
                 self.viewWillAppear(true)
                 i += 1
             } else {
@@ -62,34 +65,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.returnKeyType = .done
         
         //textfield올리기
-    NotificationCenter.default.addObserver(self, selector:
-        #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
-        object: nil)
-    NotificationCenter.default.addObserver(self, selector:
-        #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
-        object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
+                                             object: nil)
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
+                                             object: nil)
     }
-  
-              
+    
+    
     //키보드 delegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
+        
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-     
+        
         return updatedText.count <= 10
     } //글자수 10자로 제한
     
-
+    
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return false //return 누르면 키보드 사라짐
+        if let text = textField.text {
+            let newBub = sentTalk.makeNewBubble(txt: text)
+            sentBubbledView.bubbleViewUpdate(bubble: newBub)
+            uiHost.rootView = bubbles
+            
         }
+        return false //return 누르면 키보드 사라짐
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-               self.view.endEditing(true)
-           } //화면터치 시 키보드 내려옴 
+        self.view.endEditing(true)
+    } //화면터치 시 키보드 내려옴
     
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
@@ -100,8 +109,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(_ notification: Notification){
         self.view.transform = .identity
     }
-      
-
+    
+    
     
     // SwiftUI와 Hosting 방식으로 연결
     @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {

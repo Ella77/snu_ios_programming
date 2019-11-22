@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BubblesView: View {
+struct ReceivedBubbles: View {
     //optional로 바꿀 것
     private var bubbleView = [Bubble: BubbleDrawing]()
     private var bubbleKeys: [Bubble] {
@@ -62,7 +62,7 @@ struct BubblesView: View {
 
 struct BubblesViewDrawing_Previews: PreviewProvider {
     static var previews: some View {
-        BubblesView(bubbleCollection: BubbleCollection())
+        ReceivedBubbles(bubbleCollection: BubbleCollection())
     }
 }
 
