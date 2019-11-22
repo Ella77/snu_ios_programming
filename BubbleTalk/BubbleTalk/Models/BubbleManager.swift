@@ -17,7 +17,7 @@ struct BubbleManager {
     init() {
         print("model initialize")
     }
-    mutating func makeNewBubble (txt: String) -> Bubble{
+    mutating func makeNewBubble (txt: String) -> Bubble {
         var sz: Int { return txt.count < 10 ? 1 : 2 }
         let newBubble = Bubble(text: txt, size: sz, id: getId())
         
