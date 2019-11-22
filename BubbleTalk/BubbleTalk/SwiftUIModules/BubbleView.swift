@@ -10,12 +10,21 @@ import SwiftUI
 
 struct BubbleView: View {
     @State private var bubbleMode: Bool = true
-    private var recievedBubbleView: ReceivedBubbles
-    private var sentBubblesView: SentBubbles
     
-    init(recievedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles) {
-        self.recievedBubbleView = recievedBubbleView
+    var receivedBubblesView: ReceivedBubbles
+    private var sentBubblesView: SentBubbles
+
+    init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles) {
+        self.receivedBubblesView = receivedBubbleView
         self.sentBubblesView = sentBubblesView
+    }
+    
+    mutating func addBubToRecievedBubbles(bubble: Bubble) {
+        receivedBubblesView.bubbleViewUpdate(bubble: bubble)
+    }
+    
+    mutating func addBubToSentBubbles(bubble: Bubble) {
+        sentBubblesView.bubbleViewUpdate(bubble: bubble)
     }
     
     var body: some View {
@@ -24,13 +33,11 @@ struct BubbleView: View {
                 Text("Toggle On : Recieved // off: Sent ")
             }
             //.zIndex(1)
-            
             if (bubbleMode) {
-                recievedBubbleView
+                receivedBubblesView
             } else {
                 sentBubblesView
             }
-            
             //.zIndex(2)
         }
     }

@@ -57,8 +57,7 @@ struct OneBubble: View {
             bubProperty = .heartsSteaker
             self.isText = false
             isNotInBubble = true
-            //case 4
-        //case 5
+            
         default:
             bubProperty = .text
             self.isText = true
