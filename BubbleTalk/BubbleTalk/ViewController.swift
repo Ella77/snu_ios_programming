@@ -43,8 +43,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if (i < self.bubbleSample.count) {
                 let text = self.bubbleSample[i]
                 let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
-                self.bubbleView.addBubToRecievedBubbles(bubble: newBub)
-                self.uiHost.rootView = self.bubbleView
+                self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
+//                self.uiHost.rootView = self.bubbleView
                 i += 1
             } else {
                 timer.invalidate()
@@ -71,7 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // SwiftUI와 Hosting 방식으로 연결
     @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {
         uiHost = UIHostingController(coder: coder, rootView: bubbleView)!
-        //        print("\n \(uiHost.rootView) \n")
+//                print("\n \(uiHost.rootView) \n")
         return uiHost
     }
     
@@ -92,7 +92,7 @@ extension ViewController {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        // 텍스브 보내면 sentBubbles에 뜨도록 설정
+        // 텍스트 보내면 sentBubbles에 뜨도록 설정
         if let text = textField.text {
             let newBub = sentTalk.makeNewBubble(txt: text)
             bubbleView.addBubToSentBubbles(bubble: newBub)

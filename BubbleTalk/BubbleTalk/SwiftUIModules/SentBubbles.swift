@@ -38,6 +38,7 @@ struct SentBubbles: View {
                     ForEach(bubbleKeys) { key in
                         Spacer()
                         self.bubbleView[key]
+                            .animation(Animation.default)
                         Spacer()
                     }
                 }
