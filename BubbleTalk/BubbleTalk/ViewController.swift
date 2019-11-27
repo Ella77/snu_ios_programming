@@ -73,6 +73,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector:
             #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
                                              object: nil)
+        NotificationCenter.default.addObserver(self,
+                                                      selector: #selector(textDidChange(_:)),
+                                                      name: UITextField.textDidChangeNotification,
+                                                      object: textField)
+        
+
     }
     
     // SwiftUI와 Hosting 방식으로 연결
@@ -87,14 +93,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // extension about textfield and keyboard
 extension ViewController {
     //키보드 delegate
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+   /* func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         
         return updatedText.count <= 10
-    } //글자수 10자로 제한
+    } //글자수 10자로 제한 */
     
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -120,6 +126,17 @@ extension ViewController {
     
     @objc func keyboardWillHide(_ notification: Notification){
         self.view.transform = .identity
+    }
+    @objc private func textDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+                if text.count >= 10 {
+                    let index = text.index(text.startIndex, offsetBy: 10)
+                    let newString = String(text[..<index])
+                    textField.text = newString
+                }
+            }
+        }
     }
 }
 
