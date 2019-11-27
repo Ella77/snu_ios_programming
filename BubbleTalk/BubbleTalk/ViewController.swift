@@ -19,10 +19,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private var receivedTalk = BubbleManager()
     private var sentTalk = BubbleManager()
     
-    lazy private var receivedBubbleView: ReceivedBubbles = ReceivedBubbles(bubbleCollection: receivedTalk)
-    lazy private var sentBubbledView: SentBubbles = SentBubbles(bubbleCollection: sentTalk)
+    private var receivedBubbleView: ReceivedBubbles {
+        return ReceivedBubbles(bubbleCollection: receivedTalk)
+    }
+    private var sentBubbledView: SentBubbles {
+        return SentBubbles(bubbleCollection: sentTalk)
+    }
     
-    lazy private var bubbleView: BubbleView = BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView)
+    private var bubbleView: BubbleView  {
+        return BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView)
+    }
+    
     lazy private var uiHost = UIHostingController(rootView: bubbleView)
     
     // 샘플 데이터 -> "1" 은 버블 있는 이미지 / "2" 는 버블 없는 이미지 / 다른 String은 그냥 String(이모지 포함)
@@ -95,8 +102,7 @@ extension ViewController {
         // 텍스트 보내면 sentBubbles에 뜨도록 설정
         if let text = textField.text {
             let newBub = sentTalk.makeNewBubble(txt: text)
-            bubbleView.addBubToSentBubbles(bubble: newBub)
-            uiHost.rootView = bubbleView
+            uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
         }
         return false //return 누르면 키보드 사라짐
