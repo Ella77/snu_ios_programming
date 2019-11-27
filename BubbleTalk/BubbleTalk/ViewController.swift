@@ -10,12 +10,23 @@ import UIKit
 import SwiftUI
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    // IBOutlet for Bluetooth test
+//    @IBOutlet weak var messageLabel: UILabel!
     
+    // properties for Bluetooth
+    private var peripheral: BluetoothPeripheral!
+    private var centralManager: BluetoothCentral?
+    private var lastReceivedRssi: [Int64: TimeInterval] = [:]
+    //
+    
+    //
     @IBOutlet weak var textField: UITextField!
     
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
+    //
     
+    //
     private var receivedTalk = BubbleManager()
     private var sentTalk = BubbleManager()
     
@@ -31,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     lazy private var uiHost = UIHostingController(rootView: bubbleView)
+    //
     
     // 샘플 데이터 -> "1" 은 버블 있는 이미지 / "2" 는 버블 없는 이미지 / 다른 String은 그냥 String(이모지 포함)
     var bubbleSample = [ "🎃", "1", "2", "안녕", "아이폰", "👻", "👀", "ABC" ]
@@ -61,9 +73,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Bluetooth setup
+        setupCentral()
+        setupPeripheral()
+        //
         
         self.textField.delegate = self
-        
         textField.returnKeyType = .done
         
         //textfield올리기
@@ -77,8 +92,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                                       selector: #selector(textDidChange(_:)),
                                                       name: UITextField.textDidChangeNotification,
                                                       object: textField)
-        
-
     }
     
     // SwiftUI와 Hosting 방식으로 연결
@@ -105,6 +118,7 @@ extension ViewController {
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
         
+        // 텍스트 작성하면 text로 값 전달
         // 텍스트 보내면 sentBubbles에 뜨도록 설정
         if let text = textField.text {
             let newBub = sentTalk.makeNewBubble(txt: text)
@@ -140,4 +154,76 @@ extension ViewController {
     }
 }
 
+// extension for Bluetooth
+extension ViewController {
+
+    // 메시지 받는거 테스트용
+//    @IBAction func respondToSendMessage(_ sender: UIButton) {
+//        postIfPossible()
+//    }
+    
+    private func setupPeripheral() {
+        peripheral = BluetoothPeripheral.init(uuid: "eab4e877-9e9d-4325-8996-bcea7fcc9b34")
+        peripheral.didUpdateStateHandler = { manager, state in
+            switch state {
+            case .poweredOn:
+                print("Bluetooth Peripheral Power On")
+            case .unavailable:
+                self.stop()
+                print("Bluetooth Peripheral Unavailable")
+                break
+            }
+        }
+    }
+    
+    private func setupCentral() {
+        centralManager = BluetoothCentral(uuid: "eab4e877-9e9d-4325-8996-bcea7fcc9b34")
+        
+        centralManager?.didUpdateStateHandler = { manager, state in
+            switch state {
+            case .poweredOn:
+                manager.scan(allowDuplicate: false)
+                print("Bluetooth Central Power On")
+            case .unavailable:
+                manager.stop()
+                print("Bluetooth Central Unavailable")
+            }
+        }
+        
+        centralManager?.didReceivedDataHandler = { [weak self] (message, rssi, txPower) in
+            guard let self = self, let message = message else { return }
+            // message가 블루투스로 받은 텍스트
+            
+            // 테스트용
+//            self.messageLabel.text = message
+            
+           //******* 여기서 받은 메시지 처리 작업 ********
+            // BubbleManager로 버블 만들기
+        }
+        
+        if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
+    }
+    
+    private func postIfPossible() {
+        if peripheral.currentState == .poweredOn {
+            post()
+        } else {
+            stop()
+        }
+    }
+    
+    private func post() {
+        //******* 여기서 보낸 메시지 처리 작업 ********
+        // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
+        // "Test" 가 날아갈 메시지
+        peripheral?.post(duration: 1, "Test")
+    }
+    
+    private func stop() {
+        if peripheral.isAdvertising, BluetoothPeripheral.hasPermission {
+            peripheral?.stop()
+        }
+    }
+    
+}
 

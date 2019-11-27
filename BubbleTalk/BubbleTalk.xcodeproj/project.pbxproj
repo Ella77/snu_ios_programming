@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63BCAD2382AB57009372E9 /* BubbleManager.swift */; };
+		38392257238E3E09000A9B0E /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38392256238E3E09000A9B0E /* BluetoothCentral.swift */; };
+		38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */; };
 		389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */; };
 		389CEE582387A343003ED291 /* SentBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE572387A343003ED291 /* SentBubbles.swift */; };
 		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		0A63BCAD2382AB57009372E9 /* BubbleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleManager.swift; sourceTree = "<group>"; };
+		38392256238E3E09000A9B0E /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
+		38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedBubbles.swift; sourceTree = "<group>"; };
 		389CEE572387A343003ED291 /* SentBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentBubbles.swift; sourceTree = "<group>"; };
 		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
@@ -62,6 +66,15 @@
 			path = SwiftUIModules;
 			sourceTree = "<group>";
 		};
+		38392255238E3DB9000A9B0E /* BluetoothModules */ = {
+			isa = PBXGroup;
+			children = (
+				38392256238E3E09000A9B0E /* BluetoothCentral.swift */,
+				38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */,
+			);
+			path = BluetoothModules;
+			sourceTree = "<group>";
+		};
 		38CF348D238278B9001206ED /* JSONSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +111,7 @@
 		38FF0917237C236700E2CF31 /* BubbleTalk */ = {
 			isa = PBXGroup;
 			children = (
+				38392255238E3DB9000A9B0E /* BluetoothModules */,
 				38D875B723817E2000D8D0AA /* Models */,
 				1E029EA7237FAB5100889072 /* SwiftUIModules */,
 				38FF0918237C236700E2CF31 /* AppDelegate.swift */,
@@ -186,12 +200,14 @@
 			files = (
 				38D875BF238180DA00D8D0AA /* OneBubble.swift in Sources */,
 				38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */,
+				38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */,
 				38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */,
 				389CEE582387A343003ED291 /* SentBubbles.swift in Sources */,
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
 				38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */,
 				38FF091B237C236700E2CF31 /* SceneDelegate.swift in Sources */,
 				389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */,
+				38392257238E3E09000A9B0E /* BluetoothCentral.swift in Sources */,
 				0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
