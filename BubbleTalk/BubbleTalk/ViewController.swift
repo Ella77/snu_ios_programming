@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
     //
@@ -81,7 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //
         
         self.textField.delegate = self
-        textField.returnKeyType = .done
+        textField.returnKeyType = .send
         
         self.hideKeyboard() //화면터치시 키보드 내려옴
         
