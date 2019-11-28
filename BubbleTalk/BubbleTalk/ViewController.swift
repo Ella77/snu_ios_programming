@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     @IBOutlet weak var textField: UITextField!
     
+    
+    
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
     //
@@ -93,6 +95,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                                       name: UITextField.textDidChangeNotification,
                                                       object: textField)
     }
+     
     
     // SwiftUI와 Hosting 방식으로 연결
     @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {
@@ -128,9 +131,9 @@ extension ViewController {
         return false //return 누르면 키보드 사라짐
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    } //화면터치 시 키보드 내려옴
+    } //화면터치 시 키보드 내려옴 */
     
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
@@ -151,6 +154,10 @@ extension ViewController {
                 }
             }
         }
+    }
+    //optional func textFieldShouldClear(_ textField: UITextField) -> Bool
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
     }
 }
 
@@ -224,6 +231,8 @@ extension ViewController {
             peripheral?.stop()
         }
     }
+    
+    
     
 }
 
