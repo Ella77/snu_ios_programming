@@ -83,6 +83,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.textField.delegate = self
         textField.returnKeyType = .done
         
+        self.hideKeyboard() //화면터치시 키보드 내려옴
+        
         //textfield올리기
         NotificationCenter.default.addObserver(self, selector:
             #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification,
@@ -118,6 +120,18 @@ extension ViewController {
         return updatedText.count <= 10
     } //글자수 10자로 제한 */
     
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -131,9 +145,7 @@ extension ViewController {
         return false //return 누르면 키보드 사라짐
     }
     
-     /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    } //화면터치 시 키보드 내려옴 */
+     
     
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
