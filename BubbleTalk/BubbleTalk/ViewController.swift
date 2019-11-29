@@ -195,10 +195,15 @@ extension ViewController {
             // message가 블루투스로 받은 텍스트
             
             // 테스트용
-//            self.messageLabel.text = message
+            //self.messageLabel.text = message
             
            //******* 여기서 받은 메시지 처리 작업 ********
             // BubbleManager로 버블 만들기
+            
+            //line 224 "Test" 받는지 확인해야
+            //let textbub = self.messageLabel.text
+            //let tmpBub : Bubble = self.receivedTalk.makeNewBubble(txt: textbub)
+            //self.uiHost.rootView.addBubToRecievedBubbles(bubble: tmpBub)
         }
         
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
