@@ -23,6 +23,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     
     
+    @IBAction func sendMessageAction(_ sender: UIButton) {
+        textFieldShouldReturn(textField)
+    }
     
     
     var keyboardShown: Bool = false // 키보드 상태 확인
