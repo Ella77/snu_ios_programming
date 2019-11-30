@@ -31,20 +31,19 @@ struct SentBubbles: View {
     }
     
     var body: some View {
-        Group {
-            HStack(alignment: .firstTextBaseline) {
-                Spacer()
-                VStack {
-                    ForEach(bubbleKeys) { key in
-                        Spacer()
-                        self.bubbleView[key]
-                            .animation(Animation.default)
-                        Spacer()
-                    }
-                }
-                Spacer()
+        
+        VStack {
+            ForEach(bubbleKeys) { key in
+                self.bubbleView[key]
+                    .animation(Animation.default)
             }
         }
+            
+        .background(
+            Image("background")
+                .aspectRatio(contentMode: .fit))
+        
+        
     }
 }
 

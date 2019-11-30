@@ -32,12 +32,18 @@ struct ReceivedBubbles: View {
     
     var body: some View {
         ZStack {
-            ForEach(bubbleKeys) { key in
-                self.bubbleView[key]
-                    .animation(Animation.default)
+            GeometryReader { screen in
+                ForEach(self.bubbleKeys) { key in
+                    self.bubbleView[key]
+                        .animation(Animation.default)
+                }
             }
 
-        }
+        }.background(
+            Image("background")
+                .aspectRatio(contentMode: .fill)
+        )
+        
 //        Group {
 //            HStack(alignment: .firstTextBaseline) {
 //                Spacer()

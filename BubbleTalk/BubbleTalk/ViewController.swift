@@ -141,10 +141,13 @@ extension ViewController {
         
         // 텍스트 작성하면 text로 값 전달
         // 텍스트 보내면 sentBubbles에 뜨도록 설정
+        
         if let text = textField.text {
             let newBub = sentTalk.makeNewBubble(txt: text)
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
+//            // 블루투스 보내는거 테스트 (11.30)
+//            postIfPossible(text: text)
         }
         
         return false //return 누르면 키보드 사라짐
@@ -217,7 +220,8 @@ extension ViewController {
         centralManager?.didReceivedDataHandler = { [weak self] (message, rssi, txPower) in
             guard let self = self, let message = message else { return }
             // message가 블루투스로 받은 텍스트
-            
+            let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: message)
+            self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
             // 테스트용
             //self.messageLabel.text = message
             
@@ -233,19 +237,20 @@ extension ViewController {
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
     }
     
-    private func postIfPossible(text: String) {
+    private func postIfPossible() {
         if peripheral.currentState == .poweredOn {
-            post(text: text)
+            post()
         } else {
             stop()
         }
     }
     
-    private func post(text: String) {
+    private func post() {
         //******* 여기서 보낸 메시지 처리 작업 ********
         // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
         // "Test" 가 날아갈 메시지
-        peripheral?.post(duration: 1, text)
+        print("블루투스로 텍스트 날아갔습니다")
+        peripheral?.post(duration: 1, "text")
     }
     
     private func stop() {
