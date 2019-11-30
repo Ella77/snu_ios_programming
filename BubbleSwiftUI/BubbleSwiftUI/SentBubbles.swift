@@ -36,24 +36,13 @@ struct SentBubbles: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    ForEach(bubbleKeysFirstRow) { key in
+                    ForEach(bubbleKeys) { key in
                         Spacer()
                         self.bubbleView[key]
                         Spacer()
                     }
                     Spacer()
                 }
-                Spacer()
-                VStack {
-                    Spacer()
-                    ForEach(bubbleKeysSecondRow) { key in
-                        Spacer()
-                        self.bubbleView[key]
-                        Spacer()
-                    }
-                    Spacer()
-                }
-                Spacer()
             }
         }
     }
