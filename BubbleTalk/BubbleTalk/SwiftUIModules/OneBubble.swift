@@ -19,7 +19,7 @@ struct OneBubble: View {
     enum BubProperty: String {
         //        case largeBlue = "blueLargeBubble"
         //        case smallPink = "pinkSmallBubble"
-        case hearts = "hearts"
+        case hearts = "piggy"
         case heartsSteaker = "hearts_sticker"
         case text
         
@@ -79,13 +79,18 @@ struct OneBubble: View {
                 )
             } else if (isNotInBubble) {
                 Image(bubProperty.rawValue)
+
             } else {
                 Image(bubProperty.backBubble())
+                    .resizable()
+                    
+                    .frame(width:170, height:170)
                     .foregroundColor(.black)
+                    
                     .background(
                         Image(bubProperty.rawValue)
-                            //.resizable()
-                            //.frame(width:40, height:40)
+                            .resizable()
+                            .frame(width:130, height:130)
                             .shadow(radius: 8)
                         //.animation(.spring())
                 )
@@ -96,7 +101,7 @@ struct OneBubble: View {
 
 struct BubbleDrawing_Previews: PreviewProvider {
     static var previews: some View {
-        OneBubble(bubText: "", bubType: 3)
+        OneBubble(bubText: "2", bubType: 2)
         
     }
 }
