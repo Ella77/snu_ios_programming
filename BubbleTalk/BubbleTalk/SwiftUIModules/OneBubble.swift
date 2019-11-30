@@ -65,35 +65,44 @@ struct OneBubble: View {
     }
     
     var body: some View {
-        Group {
-            if (isText) {
-                Image(bubProperty.backBubble())
+        GeometryReader { screen in
+            if (self.isText) {
+                
+                Image(self.bubProperty.backBubble())
                     //.multilineTextAlignment(.center)
-                    .foregroundColor(.black)
-                    //.padding()
-                    .background(
-                        Text(bubText).font(.system(size: 80))
-                            .frame(alignment: .center)
-                            .lineLimit(1)
-                        //                            .frame(width: bubProperty.bubWidth(), alignment: .center)
-                )
-            } else if (isNotInBubble) {
-                Image(bubProperty.rawValue)
-
-            } else {
-                Image(bubProperty.backBubble())
                     .resizable()
                     
                     .frame(width:170, height:170)
                     .foregroundColor(.black)
-                    
+                    //.padding()
                     .background(
-                        Image(bubProperty.rawValue)
+                        Text(self.bubText).font(.system(size: 80))
+                            .frame(alignment: .center)
+                            .lineLimit(1)
+                        //                            .frame(width: bubProperty.bubWidth(), alignment: .center)
+                            
+                )
+                .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 30...(screen.size.height - 30)))))
+            } else if (self.isNotInBubble) {
+                Image(self.bubProperty.rawValue)
+                    .resizable()
+                    
+                    .frame(width:170, height:170)
+                    .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 30...(screen.size.height - 30)))))
+
+            } else {
+                Image(self.bubProperty.backBubble())
+                    .resizable()
+                    .frame(width:170, height:170)
+                    .foregroundColor(.black)
+                    .background(
+                        Image(self.bubProperty.rawValue)
                             .resizable()
                             .frame(width:130, height:130)
                             .shadow(radius: 8)
                         //.animation(.spring())
                 )
+                .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 30...(screen.size.height - 30)))))
             }
         }
     }

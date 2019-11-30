@@ -20,12 +20,13 @@ struct BubbleView: View {
     }
     
     var body: some View {
-        Form() {
+        Group() {
             Toggle(isOn: $bubbleMode) {
                 Text("Toggle On : Recieved // off: Sent ")
             }
-            //.zIndex(1)
-            if (bubbleMode) {
+        
+//            //.zIndex(1)
+            if(bubbleMode) {
                 receivedBubblesView
             } else {
                 sentBubblesView

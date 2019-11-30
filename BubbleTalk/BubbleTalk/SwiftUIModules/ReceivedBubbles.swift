@@ -22,7 +22,7 @@ struct ReceivedBubbles: View {
     
     mutating func bubbleViewUpdate(bubble bub: Bubble) {
         // 최대 4개 띄울 수 있게 
-        if (bubbleKeys.count >= 4) {
+        if (bubbleKeys.count >= 8) {
             bubbleKeys.remove(at: 0)
         }
         

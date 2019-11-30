@@ -143,6 +143,7 @@ extension ViewController {
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
         }
+        
         return false //return 누르면 키보드 사라짐
     }
     
@@ -229,19 +230,19 @@ extension ViewController {
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
     }
     
-    private func postIfPossible() {
+    private func postIfPossible(text: String) {
         if peripheral.currentState == .poweredOn {
-            post()
+            post(text: text)
         } else {
             stop()
         }
     }
     
-    private func post() {
+    private func post(text: String) {
         //******* 여기서 보낸 메시지 처리 작업 ********
         // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
         // "Test" 가 날아갈 메시지
-        peripheral?.post(duration: 1, "Test")
+        peripheral?.post(duration: 1, text)
     }
     
     private func stop() {
