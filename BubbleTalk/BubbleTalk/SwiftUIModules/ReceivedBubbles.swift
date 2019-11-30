@@ -31,20 +31,27 @@ struct ReceivedBubbles: View {
     }
     
     var body: some View {
-        Group {
-            HStack(alignment: .firstTextBaseline) {
-                Spacer()
-                VStack {
-                    ForEach(bubbleKeys) { key in
-                        Spacer()
-                        self.bubbleView[key]
-                            .animation(Animation.default)
-                        Spacer()
-                    }
-                }
-                Spacer()
+        ZStack {
+            ForEach(bubbleKeys) { key in
+                self.bubbleView[key]
+                    .animation(Animation.default)
             }
+
         }
+//        Group {
+//            HStack(alignment: .firstTextBaseline) {
+//                Spacer()
+//                VStack {
+//                    ForEach(bubbleKeys) { key in
+//                        Spacer()
+//                        self.bubbleView[key]
+//                            .animation(Animation.default)
+//                        Spacer()
+//                    }
+//                }
+//                Spacer()
+//            }
+//        }
     }
 }
 
@@ -80,3 +87,5 @@ extension Array {
         return halfOfSelf
     }
 }
+
+

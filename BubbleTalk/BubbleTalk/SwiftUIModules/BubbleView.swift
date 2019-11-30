@@ -19,14 +19,6 @@ struct BubbleView: View {
         self.sentBubblesView = sentBubblesView
     }
     
-    mutating func addBubToRecievedBubbles(bubble: Bubble) {
-        receivedBubblesView.bubbleViewUpdate(bubble: bubble)
-    }
-    
-    mutating func addBubToSentBubbles(bubble: Bubble) {
-        sentBubblesView.bubbleViewUpdate(bubble: bubble)
-    }
-    
     var body: some View {
         Form() {
             Toggle(isOn: $bubbleMode) {
@@ -43,9 +35,22 @@ struct BubbleView: View {
     }
 }
 
+extension BubbleView: UpdateBubbleViewState {
+    mutating func addBubToRecievedBubbles(bubble: Bubble) {
+        receivedBubblesView.bubbleViewUpdate(bubble: bubble)
+    }
+    mutating func addBubToSentBubbles(bubble: Bubble) {
+        sentBubblesView.bubbleViewUpdate(bubble: bubble)
+    }
+}
+
 //struct BubblesViewDrawing_Previews: PreviewProvider {
 //    static var previews: some View {
 //        BubbleView()
 //    }
 //}
 
+protocol UpdateBubbleViewState {
+    mutating func addBubToRecievedBubbles(bubble: Bubble)
+    mutating func addBubToSentBubbles(bubble: Bubble)
+}
