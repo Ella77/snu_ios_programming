@@ -28,9 +28,8 @@
                                     <segue destination="DW3-w1-tIM" kind="embed" destinationCreationSelector="addSwiftUI:" id="IDq-xy-Iv0"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-vP-1rj">
-                                <rect key="frame" x="280" y="676" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-vP-1rj">
+                                <rect key="frame" x="280" y="670.66666666666663" width="34" height="40.666666666666629"/>
                                 <state key="normal" title="send"/>
                                 <connections>
                                     <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
@@ -43,9 +42,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FKT-1K-rBe" secondAttribute="bottom" constant="70" id="2uF-jI-xVH"/>
                             <constraint firstItem="ePL-HB-zCc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7en-GL-Vba"/>
                             <constraint firstItem="ePL-HB-zCc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-1" id="83L-Dw-dP3"/>
+                            <constraint firstItem="SIH-vP-1rj" firstAttribute="centerY" secondItem="FKT-1K-rBe" secondAttribute="centerY" id="FLF-Al-MJs"/>
                             <constraint firstItem="ePL-HB-zCc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IMX-Ay-ibk"/>
                             <constraint firstItem="FKT-1K-rBe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PFP-2X-rcp"/>
                             <constraint firstItem="ePL-HB-zCc" firstAttribute="centerX" secondItem="FKT-1K-rBe" secondAttribute="centerX" id="aJ5-Zp-xQW"/>
+                            <constraint firstItem="SIH-vP-1rj" firstAttribute="firstBaseline" secondItem="ePL-HB-zCc" secondAttribute="baseline" constant="22" symbolType="layoutAnchor" id="clm-RZ-iza"/>
+                            <constraint firstItem="SIH-vP-1rj" firstAttribute="leading" secondItem="FKT-1K-rBe" secondAttribute="trailing" constant="-79" id="gP6-cX-XAH"/>
                             <constraint firstItem="FKT-1K-rBe" firstAttribute="top" secondItem="ePL-HB-zCc" secondAttribute="bottom" constant="11" id="ojA-i9-xo5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
