@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct OneBubble: View {
+    @State private var wasDragged: Bool = false
+    @State private var currentPosition: CGSize = .zero
+    @State private var newPosition: CGSize = .zero
     
     var bubText: String
     var bubProperty: BubProperty
@@ -26,7 +29,7 @@ struct OneBubble: View {
         case text
         
         func backBubble() -> String {
-            return "bubbleframeimg"
+            return "newWhiteBubble"
         }
         
         //        func lineLimit() -> Int {
@@ -70,6 +73,7 @@ struct OneBubble: View {
         GeometryReader { screen in
             if (self.isText) {
                 
+<<<<<<< HEAD
                 Image(self.bubProperty.backBubble())
                     //.multilineTextAlignment(.center)
                     .resizable()
@@ -144,6 +148,111 @@ struct OneBubble: View {
                 )
                 
                 
+=======
+                if (!self.wasDragged) {
+                    Text(self.bubText).font(.system(size: 60))
+                        .background(
+                            Image(self.bubProperty.backBubble())
+                                .resizable()
+                                .frame(width:170, height:170)
+                                .foregroundColor(.black)
+                    )
+                        .frame(alignment: .center)
+                        .lineLimit(1)
+                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .onTapGesture {
+                            withAnimation { self.wasDragged.toggle() }
+                            
+                    }
+                } else {
+                    Text(self.bubText).font(.system(size: 60))
+                        .background(
+                            Image(self.bubProperty.backBubble())
+                                .resizable()
+                                .frame(width:170, height:170)
+                                .foregroundColor(.black)
+                    )
+                        .frame(alignment: .center)
+                        .lineLimit(1)
+                        .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+                        .gesture(DragGesture()
+                            .onChanged { value in
+                                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                        }
+                        .onEnded { value in
+                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                            self.newPosition = self.currentPosition
+                            }
+                    )
+                }
+            } else if (self.isNotInBubble) {
+                if (!self.wasDragged) {
+                    Image(self.bubProperty.rawValue)
+                        
+                        .resizable()
+                        .frame(width:170, height:170)
+                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .onTapGesture {
+                            withAnimation { self.wasDragged.toggle() }
+                            
+                    }
+                } else {
+                    Image(self.bubProperty.rawValue)
+                        .resizable()
+                        .frame(width:170, height:170)
+                        .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+                        .gesture(DragGesture()
+                            .onChanged { value in
+                                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                        }
+                        .onEnded { value in
+                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                            self.newPosition = self.currentPosition
+                            }
+                    )
+                }
+                
+            } else {
+                if (!self.wasDragged) {
+                    Image(self.bubProperty.rawValue)
+                        .resizable()
+                        .frame(width:130, height:130)
+                        .shadow(radius: 8)
+                        .background(
+                            
+                            Image(self.bubProperty.backBubble())
+                                .resizable()
+                                .frame(width:170, height:170)
+                                .foregroundColor(.black)
+                    )
+                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .onTapGesture {
+                            withAnimation { self.wasDragged.toggle() }
+                            
+                    }
+                } else {
+                    Image(self.bubProperty.rawValue)
+                        .resizable()
+                        .frame(width:130, height:130)
+                        .shadow(radius: 8)
+                        .background(
+                            Image(self.bubProperty.backBubble())
+                                .resizable()
+                                .frame(width:170, height:170)
+                                .foregroundColor(.black)
+                    )
+                        .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+                        .gesture(DragGesture()
+                            .onChanged { value in
+                                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                        }
+                        .onEnded { value in
+                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                            self.newPosition = self.currentPosition
+                            }
+                    )
+                }
+>>>>>>> 2495e87cc9aa7455c4d9d4818cfa0652aabd6e1f
             }
         }
     }

@@ -11,28 +11,40 @@ import SwiftUI
 struct BubbleView: View {
     @State private var bubbleMode: Bool = true
     
+    
     var receivedBubblesView: ReceivedBubbles
     private var sentBubblesView: SentBubbles
-
+    
     init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles) {
         self.receivedBubblesView = receivedBubbleView
         self.sentBubblesView = sentBubblesView
     }
     
     var body: some View {
-        Group() {
-            Toggle(isOn: $bubbleMode) {
-                Text("Toggle On : Recieved // off: Sent ")
-            }
-        
-//            //.zIndex(1)
-            if(bubbleMode) {
+        NavigationView {
+            TabView {
                 receivedBubblesView
-            } else {
+                    .tabItem {
+                        Text("ReceivedBubble")
+                        }
                 sentBubblesView
+                    .tabItem { 
+                        Text("SentBubble")
+                }
+//                .transition(AnyTransition.scale
+//                .combined(with: .opacity))
+//                .animation(Animation.easeInOut(duration: 1))
             }
-            //.zIndex(2)
+            .navigationBarTitle(Text("BubbleTalk"))
+            .navigationBarItems(trailing: NavigationLink(destination: Text("보관함")) {
+                Text("보관함")
+            })
         }
+        .background(
+            Image("background")
+                .aspectRatio(contentMode: .fill)
+        )
+        
     }
 }
 
