@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         var i = 0
+        // todo 1. 블투로 받아오기테스트 2. 타이머없애기
         // 2초 마다 하나씩 뜨도록 타이머 설정
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             if (i < self.bubbleSample.count) {
@@ -143,11 +144,12 @@ extension ViewController {
         // 텍스트 보내면 sentBubbles에 뜨도록 설정
         
         if let text = textField.text {
+            print(text)
             let newBub = sentTalk.makeNewBubble(txt: text)
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
-//            // 블루투스 보내는거 테스트 (11.30)
-//            postIfPossible(text: text)
+//            // todo 블루투스 보내는거 테스트 (11.30)
+            postIfPossible(text: text)
         }
         
         return false //return 누르면 키보드 사라짐
@@ -237,20 +239,20 @@ extension ViewController {
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
     }
     
-    private func postIfPossible() {
+    private func postIfPossible(text: String) {
         if peripheral.currentState == .poweredOn {
-            post()
+            post(text: text)
         } else {
             stop()
         }
     }
     
-    private func post() {
+    private func post(text: String) {
         //******* 여기서 보낸 메시지 처리 작업 ********
         // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
         // "Test" 가 날아갈 메시지
         print("블루투스로 텍스트 날아갔습니다")
-        peripheral?.post(duration: 1, "text")
+        peripheral?.post(duration: 1, text)
     }
     
     private func stop() {
