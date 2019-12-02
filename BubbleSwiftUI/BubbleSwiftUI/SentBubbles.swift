@@ -1,15 +1,14 @@
 //
-//  BubblesViewDrawing.swift
+//  SentBubbles.swift
 //  BubbleSwiftUI
 //
-//  Created by JSKeum on 2019/11/16.
+//  Created by JSKeum on 2019/11/22.
 //  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 
 import SwiftUI
 
-struct BubblesView: View {
-    //optional로 바꿀 것
+struct SentBubbles: View {
     private var bubbleView = [Bubble: BubbleDrawing]()
     private var bubbleKeys: [Bubble] {
         return bubbleView.keys.map { $0 }
@@ -37,49 +36,20 @@ struct BubblesView: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    ForEach(bubbleKeysFirstRow) { key in
+                    ForEach(bubbleKeys) { key in
                         Spacer()
                         self.bubbleView[key]
                         Spacer()
                     }
                     Spacer()
                 }
-                Spacer()
-                VStack {
-                    Spacer()
-                    ForEach(bubbleKeysSecondRow) { key in
-                        Spacer()
-                        self.bubbleView[key]
-                        Spacer()
-                    }
-                    Spacer()
-                }
-                Spacer()
             }
         }
     }
 }
 
-struct BubblesViewDrawing_Previews: PreviewProvider {
+struct SentBubbles_Previews: PreviewProvider {
     static var previews: some View {
-        BubblesView(bubbleCollection: BubbleCollection())
-    }
-}
-
-// array 절반 쪼개기
-extension Array {
-    var splitFirstHalf: Array {
-        var halfOfSelf: Array = []
-        for i in (0..<self.count/2) {
-            halfOfSelf.append(self[i])
-        }
-        return halfOfSelf
-    }
-    var splitSecondHalf: Array {
-        var halfOfSelf: Array = []
-        for i in (self.count/2..<self.count) {
-            halfOfSelf.append(self[i])
-        }
-        return halfOfSelf
+        SentBubbles(bubbleCollection: BubbleCollection())
     }
 }

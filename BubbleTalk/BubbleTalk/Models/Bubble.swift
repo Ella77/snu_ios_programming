@@ -11,7 +11,7 @@ import Foundation
 struct Bubble: Hashable, Identifiable {
     var id: Int
     var text: String
-    var size: Int
+    var type: Int
     
     /*
      extension Bubble{
@@ -38,9 +38,9 @@ struct Bubble: Hashable, Identifiable {
      }
      */
     
-    init(text: String, size: Int, id: Int) {
+    init(text: String, type: Int, id: Int) {
         self.text = text
-        self.size = size
+        self.type = type
         self.id = id
     }
 

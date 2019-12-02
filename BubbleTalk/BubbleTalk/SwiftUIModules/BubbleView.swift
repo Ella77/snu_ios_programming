@@ -9,68 +9,61 @@
 import SwiftUI
 
 struct BubbleView: View {
-    //optional로 바꿀 것
-    private var bubbleView = [Bubble: OneBubble]()
-    var bubbleKeys: [Bubble]
+    @State private var bubbleMode: Bool = true
     
-    init(bubbleCollection: BubbleCollection) {
-        for bubble in bubbleCollection.bubbles {
-            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.size)
-        }
-        bubbleKeys = bubbleView.keys.map { $0 }
-    }
     
-    mutating func bubbleViewUpdate(bubble bub: Bubble) {
-        bubbleView[bub] = OneBubble(bubText: bub.text, bubType: bub.size)
-        bubbleKeys.append(bub)
+    var receivedBubblesView: ReceivedBubbles
+    private var sentBubblesView: SentBubbles
+    
+    init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles) {
+        self.receivedBubblesView = receivedBubbleView
+        self.sentBubblesView = sentBubblesView
     }
     
     var body: some View {
-        Group {
-            HStack(alignment: .firstTextBaseline) {
-                Spacer()
-                VStack {
-                    ForEach(bubbleKeys) { key in
-                        Spacer()
-                        self.bubbleView[key]
-                        Spacer()
-                    }
+        NavigationView {
+            TabView {
+                receivedBubblesView
+                    .tabItem {
+                        Text("ReceivedBubble")
+                        }
+                sentBubblesView
+                    .tabItem { 
+                        Text("SentBubble")
                 }
-                Spacer()
+//                .transition(AnyTransition.scale
+//                .combined(with: .opacity))
+//                .animation(Animation.easeInOut(duration: 1))
             }
+            .navigationBarTitle(Text("BubbleTalk"))
+            .navigationBarItems(trailing: NavigationLink(destination: Text("보관함")) {
+                Text("보관함")
+            })
         }
+        .background(
+            Image("background")
+                .aspectRatio(contentMode: .fill)
+        )
+        
     }
 }
 
-struct BubblesViewDrawing_Previews: PreviewProvider {
-    static var previews: some View {
-        BubbleView(bubbleCollection: BubbleCollection())
+extension BubbleView: UpdateBubbleViewState {
+    mutating func addBubToRecievedBubbles(bubble: Bubble) {
+        receivedBubblesView.bubbleViewUpdate(bubble: bubble)
+    }
+    mutating func addBubToSentBubbles(bubble: Bubble) {
+        sentBubblesView.bubbleViewUpdate(bubble: bubble)
     }
 }
 
-// Bubble 2열로 배치하기 위한 프로토콜
-protocol splitArrayProps {
-    var bubbleKeysFirstRow: [Bubble] { get set }
-    var bubbleKeysSecondRow: [Bubble] { get set }
-}
-// array 절반 쪼개기
-extension Array {
-    var splitFirstHalf: Array {
-        var halfOfSelf: Array = []
-        for i in (0..<self.count/2) {
-            halfOfSelf.append(self[i])
-        }
-        return halfOfSelf
-    }
-    var splitSecondHalf: Array {
-        var halfOfSelf: Array = []
-        if (self.count == 1) {
-            return halfOfSelf
-        } else {
-            for i in (self.count/2..<self.count) {
-                halfOfSelf.append(self[i])
-            }
-        }
-        return halfOfSelf
-    }
+//struct BubblesViewDrawing_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BubbleView()
+//    }
+//}
+
+protocol UpdateBubbleViewState {
+    mutating func addBubToRecievedBubbles(bubble: Bubble)
+    mutating func addBubToSentBubbles(bubble: Bubble)
 }

@@ -13,6 +13,9 @@ struct BubbleDrawing: View {
     var bubText: String
     var bubProperty: BubProperty
     
+    @State private var currentPosition: CGSize = .zero
+    @State private var newPosition: CGSize = .zero
+    
     // 버블 종류 2가지
     enum BubProperty: String {
         case largeBlue = "blueLargeBubble"
@@ -53,8 +56,20 @@ struct BubbleDrawing: View {
                     Image(bubProperty.rawValue)
                         //.resizable()
                         .shadow(radius: 8)
-                 .animation(.spring())
-
+                        .animation(.spring())
+                        
+                        
+                    )
+            .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+            .gesture(DragGesture()
+                .onChanged { value in
+                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+            }   // 4.
+                .onEnded { value in
+                    self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                    print(self.newPosition.width)
+                    self.newPosition = self.currentPosition
+                }
             )
         }
     }
