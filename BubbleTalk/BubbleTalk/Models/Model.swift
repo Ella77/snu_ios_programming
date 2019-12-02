@@ -31,14 +31,14 @@ class Model {
                         blue: .random(in: 0...1),
                         alpha: 1.0)
     }
-    
+    /*
     // a random number in the range 0 - ViewHeight and 0 - ViewWidth respectively
     private func getX() -> CGFloat{
         return CGFloat(arc4random_uniform(UInt32(0..viewWidth)))
     }
     private func getY() -> CGFloat{
        return CGFloat(arc4random_uniform(UInt32(0..viewHeight)))
-    }
+    }*/
 
 }
 
