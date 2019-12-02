@@ -148,7 +148,6 @@ extension ViewController {
             let newBub = sentTalk.makeNewBubble(txt: text)
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
-//            // todo 블루투스 보내는거 테스트 (11.30)
             postIfPossible(text: text)
         }
         
@@ -225,15 +224,15 @@ extension ViewController {
             let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: message)
             self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
             // 테스트용
-            //self.messageLabel.text = message
+//            self.messageLabel.text = message
             
            //******* 여기서 받은 메시지 처리 작업 ********
             // BubbleManager로 버블 만들기
             
             //line 224 "Test" 받는지 확인해야
-            //let textbub = self.messageLabel.text
-            //let tmpBub : Bubble = self.receivedTalk.makeNewBubble(txt: textbub)
-            //self.uiHost.rootView.addBubToRecievedBubbles(bubble: tmpBub)
+//            let textbub = self.messageLabel.text
+//            let tmpBub : Bubble = self.receivedTalk.makeNewBubble(txt: textbub)
+//            self.uiHost.rootView.addBubToRecievedBubbles(bubble: tmpBub)
         }
         
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
