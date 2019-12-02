@@ -252,6 +252,10 @@ extension ViewController {
         // "Test" 가 날아갈 메시지
         print("블루투스로 텍스트 날아갔습니다")
         peripheral?.post(duration: 1, text)
+        
+        // 내가 보낸 메세지로 만든 버블
+        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+        self.uiHost.rootView.addBubToRecievedBubbles(bubble: sentBub)
     }
     
     private func stop() {
