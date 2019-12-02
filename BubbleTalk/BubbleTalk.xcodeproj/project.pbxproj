@@ -22,6 +22,7 @@
 		38FF0920237C236700E2CF31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FF091E237C236700E2CF31 /* Main.storyboard */; };
 		38FF0922237C236900E2CF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38FF0921237C236900E2CF31 /* Assets.xcassets */; };
 		38FF0925237C236900E2CF31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38FF0923237C236900E2CF31 /* LaunchScreen.storyboard */; };
+		F5C27B1D23953E8B000EF2CC /* BubbleBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C27B1C23953E8B000EF2CC /* BubbleBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		38FF0921237C236900E2CF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38FF0924237C236900E2CF31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38FF0926237C236900E2CF31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5C27B1C23953E8B000EF2CC /* BubbleBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				38D875B823817F6C00D8D0AA /* Bubble.swift */,
 				0A63BCAD2382AB57009372E9 /* BubbleManager.swift */,
+				F5C27B1C23953E8B000EF2CC /* BubbleBox.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				38D875BF238180DA00D8D0AA /* OneBubble.swift in Sources */,
 				38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */,
 				38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */,
+				F5C27B1D23953E8B000EF2CC /* BubbleBox.swift in Sources */,
 				38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */,
 				389CEE582387A343003ED291 /* SentBubbles.swift in Sources */,
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
