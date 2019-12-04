@@ -88,7 +88,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.textField.delegate = self
         textField.returnKeyType = .send
         
-        self.hideKeyboard() //화면터치시 키보드 내려옴
+//        self.hideKeyboard() //화면터치시 키보드 내려옴
         
         //textfield올리기
         NotificationCenter.default.addObserver(self, selector:
@@ -125,6 +125,7 @@ extension ViewController {
         return updatedText.count <= 10
     } //글자수 10자로 제한 */
     
+    // 여기서 tapgesture를 키보드 액션에 할당해버리는 문제 발생. 해결 위해 remove 함수 추가
     func hideKeyboard()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -132,6 +133,17 @@ extension ViewController {
             action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
+    func removeTapGesture() {
+           if let gestureRecognizers = view.gestureRecognizers {
+           for gesture in gestureRecognizers {
+               if let tapGesture  = gesture as? UITapGestureRecognizer {
+                   view.removeGestureRecognizer(tapGesture)
+               }
+           }
+           }
+           
+       }
+    
     @objc func dismissKeyboard()
     {
         view.endEditing(true)
@@ -160,10 +172,16 @@ extension ViewController {
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
+        
+        // 탭하면 키보드 내려가게 하는 제스쳐 On
+        hideKeyboard()
     }
     
     @objc func keyboardWillHide(_ notification: Notification){
         self.view.transform = .identity
+        
+        // 탭하면 키보드 내려가게 하는 제스쳐 Off
+        removeTapGesture()
     }
     @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
