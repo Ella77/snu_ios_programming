@@ -62,20 +62,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        var i = 0
-        // todo 1. 블투로 받아오기테스트 2. 타이머없애기
-        // 2초 마다 하나씩 뜨도록 타이머 설정
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-            if (i < self.bubbleSample.count) {
-                let text = self.bubbleSample[i]
-                let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
-                self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
-//                self.uiHost.rootView = self.bubbleView
-                i += 1
-            } else {
-                timer.invalidate()
-            }
-        }
+//        var i = 0
+//        // todo 1. 블투로 받아오기테스트 2. 타이머없애기
+//        // 2초 마다 하나씩 뜨도록 타이머 설정
+//        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+//            if (i < self.bubbleSample.count) {
+//                let text = self.bubbleSample[i]
+//                let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+//                self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
+////                self.uiHost.rootView = self.bubbleView
+//                i += 1
+//            } else {
+//                timer.invalidate()
+//            }
+//        }
     }
     
     override func viewDidLoad() {
@@ -251,11 +251,11 @@ extension ViewController {
         // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
         // "Test" 가 날아갈 메시지
         print("블루투스로 텍스트 날아갔습니다")
-        peripheral?.post(duration: 0.1, text)
+        peripheral?.post(duration: 1, text)
         
         // 내가 보낸 메세지로 만든 버블
-        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
-        self.uiHost.rootView.addBubToRecievedBubbles(bubble: sentBub)
+//        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+//        self.uiHost.rootView.addBubToRecievedBubbles(bubble: sentBub)
     }
     
     private func stop() {
