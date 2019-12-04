@@ -6,7 +6,7 @@
 //  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 
 
 struct BubbleBox{
@@ -57,4 +57,4 @@ struct BubbleBox{
         }
     }
   
-}
+}*/
