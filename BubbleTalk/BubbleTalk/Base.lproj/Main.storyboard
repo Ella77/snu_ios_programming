@@ -52,6 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="textBox" destination="h5E-tj-fTg" id="Y8S-Tg-4e0"/>
                         <outlet property="textField" destination="FKT-1K-rBe" id="E9M-9j-QlZ"/>
                     </connections>
                 </viewController>

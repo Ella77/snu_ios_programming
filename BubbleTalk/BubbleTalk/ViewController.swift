@@ -20,6 +20,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     
     //
+    
+    @IBOutlet weak var textBox: UIView!
     @IBOutlet weak var textField: UITextField!
     
     
@@ -171,14 +173,16 @@ extension ViewController {
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
-        
+//        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
+        let screen = UIScreen.main.bounds
+        self.textBox.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + screen.height / 8)
+//        print("키보드 높이 : \(-keyboardFrame.cgRectValue.height)")
         // 탭하면 키보드 내려가게 하는 제스쳐 On
         hideKeyboard()
     }
     
     @objc func keyboardWillHide(_ notification: Notification){
-        self.view.transform = .identity
+        self.textBox.transform = .identity
         
         // 탭하면 키보드 내려가게 하는 제스쳐 Off
         removeTapGesture()
