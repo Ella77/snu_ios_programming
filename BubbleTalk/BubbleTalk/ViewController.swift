@@ -171,7 +171,7 @@ extension ViewController {
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 150)
+        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
         
         // 탭하면 키보드 내려가게 하는 제스쳐 On
         hideKeyboard()
