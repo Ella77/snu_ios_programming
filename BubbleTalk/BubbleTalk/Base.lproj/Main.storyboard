@@ -44,16 +44,51 @@
                                             <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiJ-Je-YcW">
+                                        <rect key="frame" x="253" y="2" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onSettingsButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yjt-l8-AS4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
+                                <rect key="frame" x="270" y="583" width="46" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
+                                        <rect key="frame" x="0.0" y="30" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
+                                        <rect key="frame" x="0.0" y="60" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mug-VQ-95Q" secondAttribute="trailing" constant="59" id="I9D-gH-PhB"/>
+                            <constraint firstItem="Mug-VQ-95Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="270" id="NB7-Hk-nF6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mug-VQ-95Q" secondAttribute="bottom" constant="105" id="brE-nn-QT2"/>
+                            <constraint firstItem="Mug-VQ-95Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="539" id="hwN-2H-ZP5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bubbleChoicesHeight" destination="brE-nn-QT2" id="J8u-ZZ-eEf"/>
                         <outlet property="textBox" destination="h5E-tj-fTg" id="Y8S-Tg-4e0"/>
                         <outlet property="textField" destination="FKT-1K-rBe" id="E9M-9j-QlZ"/>
+                        <outletCollection property="bubbleChoices" destination="qah-8V-mBf" collectionClass="NSMutableArray" id="Cy9-pC-oxn"/>
+                        <outletCollection property="bubbleChoices" destination="zhn-C9-pLB" collectionClass="NSMutableArray" id="pD1-hd-LGK"/>
+                        <outletCollection property="bubbleChoices" destination="9jT-4x-GT6" collectionClass="NSMutableArray" id="hwe-wd-U6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

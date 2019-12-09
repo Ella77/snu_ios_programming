@@ -29,6 +29,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textFieldShouldReturn(textField)
     }
     
+    @IBAction func onSettingsButtonTap(_ sender: AnyObject) {
+        UIView.animate(withDuration: 0.3) {
+               self.bubbleChoices.forEach {
+                   $0.isHidden = !$0.isHidden
+               }
+           }
+    
+       }
+    @IBOutlet var bubbleChoices: [UIButton]! {
+        didSet {
+            self.bubbleChoices.forEach {
+                $0.isHidden = true
+            }
+        }
+    }
+    @IBOutlet weak var bubbleChoicesHeight: NSLayoutConstraint!
     
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
@@ -103,6 +119,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                                selector: #selector(textDidChange(_:)),
                                                name: UITextField.textDidChangeNotification,
                                                object: textField)
+        
     }
     
     
@@ -176,6 +193,7 @@ extension ViewController {
 //        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
         let screen = UIScreen.main.bounds
         self.textBox.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + screen.height / 8)
+        self.bubbleChoicesHeight.constant = 0 - keyboardFrame.cgRectValue.height + screen.height / 8
 //        print("키보드 높이 : \(-keyboardFrame.cgRectValue.height)")
         // 탭하면 키보드 내려가게 하는 제스쳐 On
         hideKeyboard()
@@ -183,6 +201,8 @@ extension ViewController {
     
     @objc func keyboardWillHide(_ notification: Notification){
         self.textBox.transform = .identity
+        
+        
         
         // 탭하면 키보드 내려가게 하는 제스쳐 Off
         removeTapGesture()
