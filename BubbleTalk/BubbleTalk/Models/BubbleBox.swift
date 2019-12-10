@@ -33,6 +33,18 @@ struct BubbleBox{
         //
         
     }
+   
+//    mutating func indexes(of item : Bubble) -> [Int] {
+//            return bubbles.filter({ $0.element  == item }).map({ $0.offset })
+//
+//        //usage : items.indexes(of: Bubble~)
+//
+//        // get index from id
+//        // let index = firstIndex(where: { $0.id == item.id })
+//        // return index
+//        }
+    
+
     private func getTime()-> String{
         let currentDateTime = Date()
         let formatter = DateFormatter()
