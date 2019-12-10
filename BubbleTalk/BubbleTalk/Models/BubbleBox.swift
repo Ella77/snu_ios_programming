@@ -128,3 +128,46 @@ struct BubbleBox{
     
   
 }
+
+
+
+//// struct renewal for json encoding
+//struct BubbleBox: Encodable, ExpressibleByArrayLiteral {
+//    var bubbles = [Bubble]()
+//
+//    typealias ArrayLiteralElement = Bubble
+//
+//    init(arrayLiteral elements: Bubble...) {
+//        bubbles = elements
+//    }
+//
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: CodingKeys.self)
+//        for (i, photo) in bubbles.enumerated() {
+//            try container.encode(photo, forKey: CodingKeys(stringValue: "bubble\(i + 1)")!)
+//        }
+//       //TODO CodingKeys("bubble1"...) when var bubble1 = Bubble()
+
+//    }
+//
+//    struct CodingKeys: CodingKey, ExpressibleByStringLiteral {
+//        var stringValue: String { return key }
+//
+//        init?(stringValue: String) {
+//            key = stringValue
+//        }
+//
+//        var intValue: Int? { return Int(key) }
+//
+//        init?(intValue: Int) {
+//            key = "\(intValue)"
+//        }
+//
+//        init(stringLiteral value: String) {
+//            key = value
+//        }
+//
+//        var key: String
+//    }
+//}
+
