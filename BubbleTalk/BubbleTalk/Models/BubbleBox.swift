@@ -16,21 +16,22 @@ struct BubbleBox{
         print("model initialize")
     }
     
-    private func show() -> [Bubble] {
-        return bubbles
-    }
+//    private func show() -> [Bubble] {
+//        return bubbles
+//    }
     
     mutating func add( a : Bubble ) -> Bubble {
         //load time and save with timestamp
+        if(bubbles.count < maxNumofBubbles){
         _ = getTime()
         bubbles.append(a)
-        
-        
-        
+        }else { print("full capacity!") }
     }
+    
     mutating func delete( a : Bubble) -> Bubble {
-        bubbles.remove(at:0)
-        //
+        let selectedBubble = bubbles.firstIndex(of: a)
+        bubbles.remove(at: selectedBubble!)
+        
         
     }
    
@@ -60,12 +61,12 @@ struct BubbleBox{
     
     private func getCount()->Int{
         //get total number of bubbles in bubblebox
-        return BubbleBox.bubbles.count
+        return bubbles.count
     }
     
-    private func getOldestBubbles() -> Bubble{
-        return bubbles[0]
-    }
+//    private func getOldestBubbles() -> Bubble{
+//        return bubbles[0]
+//    }
     
 //    private func reachMaxBubbles() -> Bool {
 //     //alert and delete oldest bubble
