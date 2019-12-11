@@ -6,12 +6,12 @@
 //  Copyright © 2019 BubbleTalkTeam. All rights reserved.
 //
 
-/*import Foundation
+import Foundation
 
 
 struct BubbleBox{
      var bubbles = [Bubble]()
-    private let maxNumofBubbles: Int = 50
+     private let maxNumofBubbles: Int = 50
      init() {
         print("model initialize")
         self.Bubble = None
@@ -56,5 +56,23 @@ struct BubbleBox{
             return False
         }
     }
+    
+    private func exportToJson() -> Bool {
+//        let encoder = JSONEncoder()
+//        for includedBubble in bubbles {
+//            let jsonData = try? encoder.encode(includedBubble)
+//
+//        }
+        
+//        let jsonData = try? JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
+//        print(String(data: jsonData, encoding: .utf8))
+        
+       if let theJSONData = try?  JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted),
+         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
+             print("JSON string = \n\(theJSONText)")
+       }
+   }
+
+    
   
-}*/
+}
