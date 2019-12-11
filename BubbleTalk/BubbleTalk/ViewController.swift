@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendMessageAction(_ sender: UIButton) {
         
-        if let index = bubbleIndex {
+        if let index = bubbleIndex, let ads = textField.text {
             textFieldShouldReturn(textField, index)
         } else {
             textFieldShouldReturn(textField, 0)
@@ -67,6 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func bubble0Choice(_ sender: UIButton) {
          bubbleIndex = 0
+        print("bubble)Choice")
     }
     
     var keyboardShown: Bool = false // 키보드 상태 확인
@@ -204,10 +205,11 @@ extension ViewController {
         // 텍스트 보내면 sentBubbles에 뜨도록 설정
         
         if let text = textField.text {
-            print(text)
-            let index = String(text.last!)
+//            print(text)
+            let index = String(index)
             let messageWithOutIndex = String(text.dropLast())
             let newBub = sentTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
+            
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
             let num = index
