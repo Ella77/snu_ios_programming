@@ -43,15 +43,15 @@
                                                 <rect key="frame" x="316" y="4" width="28" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                <state key="normal" backgroundImage="plus.circle" catalog="system"/>
+                                                <state key="normal" title="sendbutton" backgroundImage="sendbutton"/>
                                                 <connections>
                                                     <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiJ-Je-YcW">
-                                                <rect key="frame" x="9" y="2" width="46" height="30"/>
+                                                <rect key="frame" x="8" y="2" width="48" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="bubble"/>
                                                 <connections>
                                                     <action selector="onSettingsButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yjt-l8-AS4"/>
                                                 </connections>
@@ -59,19 +59,35 @@
                                         </subviews>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
-                                        <rect key="frame" x="27" y="20" width="46" height="90"/>
+                                        <rect key="frame" x="27" y="-9" width="55" height="120"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-nX-aaZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
+                                                <state key="normal" title="Button0"/>
+                                                <connections>
+                                                    <action selector="bubble0Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eD-64-870"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="0.0" y="30" width="55" height="30"/>
+                                                <state key="normal" title="Button1"/>
+                                                <connections>
+                                                    <action selector="bubble1Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpl-pU-J5Q"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
-                                                <rect key="frame" x="0.0" y="30" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="0.0" y="60" width="55" height="30"/>
+                                                <state key="normal" title="Button2"/>
+                                                <connections>
+                                                    <action selector="bubble2Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyf-GT-mSW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
-                                                <rect key="frame" x="0.0" y="60" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="0.0" y="90" width="55" height="30"/>
+                                                <state key="normal" title="Button3"/>
+                                                <connections>
+                                                    <action selector="bubble3Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4m-u3-paL"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -89,6 +105,7 @@
                         <outletCollection property="bubbleChoices" destination="9jT-4x-GT6" collectionClass="NSMutableArray" id="hwe-wd-U6S"/>
                         <outletCollection property="bubbleChoices" destination="zhn-C9-pLB" collectionClass="NSMutableArray" id="pD1-hd-LGK"/>
                         <outletCollection property="bubbleChoices" destination="qah-8V-mBf" collectionClass="NSMutableArray" id="Cy9-pC-oxn"/>
+                        <outletCollection property="bubbleChoices" destination="d9K-nX-aaZ" collectionClass="NSMutableArray" id="0Rm-Sd-jXq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -105,6 +122,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus.circle" catalog="system" width="64" height="60"/>
+        <image name="sendbutton" width="94" height="94"/>
     </resources>
 </document>

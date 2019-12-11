@@ -18,21 +18,35 @@ struct BubbleBox{
     
     mutating func add( a : Bubble ) {
         //load time and save with timestamp
-        if(bubbles.count < 50){
+        if(bubbles.count < maxNumofBubbles){
         _ = getTime()
         bubbles.append(a)
         }else { print("full capacity!") }
         
     }
     
-    mutating func delete( a : Bubble) -> Bubble {
+    mutating func delete( a : Bubble) {
         let selectedBubble = bubbles.firstIndex(of: a)
-        return bubbles.remove(at: selectedBubble!)
-        
+        bubbles.remove(at: selectedBubble!)
         
         
         
     }
+   
+//    mutating func indexes(of item : Bubble) -> [Int] {
+//            return bubbles.filter({ $0.element  == item }).map({ $0.offset })
+//        // search by element
+//        //usage : bubbles.indexes(of: Bubble~)
+    
+//     mutating func getindexes(of item : Bubble) -> Int {
+//    let index = bubbles.firstIndex(where: { $0.id == item.id })
+//        return index
+    // search by bubble id
+    // usage : bubbles.getindexes(of : Bubble~)
+    
+//    }
+
+
     private func getTime()-> String{
         let currentDateTime = Date()
         let formatter = DateFormatter()
