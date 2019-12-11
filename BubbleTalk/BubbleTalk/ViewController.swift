@@ -94,7 +94,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     
     // 샘플 데이터 -> "1" 은 버블 있는 이미지 / "2" 는 버블 없는 이미지 / 다른 String은 그냥 String(이모지 포함)
-    var bubbleSample = [ "🎃0", "11", "22", "안녕3", "아이폰0", "👻1", "👀2", "ABC3" ]
+    var bubbleSample = [ "🎃1", "11", "1", "안녕1", "아이폰1", "👻1", "👀1", "ABC1" ]
     
     override func viewWillAppear(_ animated: Bool) {
         //registerForKeyboardNotifications()
