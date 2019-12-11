@@ -32,11 +32,15 @@ struct SentBubbles: View {
     
     var body: some View {
         
-        VStack {
-            ForEach(bubbleKeys) { key in
-                self.bubbleView[key]
-                    .animation(Animation.default)
+        ZStack {
+            GeometryReader { screen in
+                ForEach(self.bubbleKeys) { key in
+                    self.bubbleView[key]
+                    //                        .animation(Animation.default)
+                    
+                }
             }
+            
         }
             
         .background(

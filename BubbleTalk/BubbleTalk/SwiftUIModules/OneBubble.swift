@@ -10,9 +10,13 @@ import SwiftUI
 
 struct OneBubble: View {
     @State private var wasDragged: Bool = false
-    @State private var currentPosition: CGSize = .zero
-    @State private var newPosition: CGSize = .zero
+    @State private var currentPosition: CGSize = CGSize(width: 300, height: 300)
+    @State private var newPosition: CGSize = CGSize(width: 300, height: 300)
+    @State var beingTouched: Bool = false
     
+    mutating func asd() {
+        
+    }
     var bubText: String
     var bubProperty: BubProperty
 //    var isText: Bool
@@ -70,10 +74,12 @@ struct OneBubble: View {
     }
     
     var body: some View {
+        
         GeometryReader { screen in
+            
                 if (!self.wasDragged) {
                     Image(self.bubProperty.rawValue).resizable()
-                    .frame(width:170, height:170)
+                        .frame(width: 170 , height:170)
                                             .background(
                                                Text(self.bubText).font(.system(size: 60))
                                                     .foregroundColor(.black)
@@ -81,30 +87,42 @@ struct OneBubble: View {
                         .frame(alignment: .center)
                         .lineLimit(1)
                         .position(CGPoint(x: self.randomXPosition * screen.size.width, y: self.randomYPosition * screen.size.height))
+                        
                         .onTapGesture {
                             withAnimation { self.wasDragged.toggle() }
+                            self.beingTouched = !self.beingTouched
+                            self.currentPosition = CGSize(width: self.randomXPosition * screen.size.width, height: self.randomYPosition * screen.size.height)
+                            
+                            
                             
                     }
+                    
                 } else {
-                    Text(self.bubText).font(.system(size: 60))
-                        .background(
-                            Image(self.bubProperty.backBubble())
-                                .resizable()
-                                .frame(width:170, height:170)
-                                .foregroundColor(.black)
-                    )
-                        .frame(alignment: .center)
-                        .lineLimit(1)
-                        .offset(x: self.currentPosition.width, y: self.currentPosition.height)
+                     Image(self.bubProperty.rawValue).resizable()
+                        .frame(width: self.beingTouched ? 200 : 170 , height: self.beingTouched ? 200 : 170)
+                                                               .background(
+                                                                  Text(self.bubText).font(.system(size: 60))
+                                                                       .foregroundColor(.black)
+                                                           )
+                                           .frame(alignment: .center)
+                                           .lineLimit(1)
+                        
+                        // beingTouched true일 때만 드래그 가능하도록 바꿔야
                         .gesture(DragGesture()
                             .onChanged { value in
-                                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                                self.currentPosition = CGSize(width: value.translation.width + self.currentPosition.width, height: value.translation.height + self.currentPosition.height)
                         }
                         .onEnded { value in
-                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
-                            self.newPosition = self.currentPosition
+                            self.currentPosition = CGSize(width: value.translation.width + self.currentPosition.width, height: value.translation.height + self.currentPosition.height)
+                            self.beingTouched = !self.beingTouched
                             }
                     )
+                        
+                    .position(CGPoint(x: self.currentPosition.width, y: self.currentPosition.height))
+                    .onTapGesture {
+                        self.beingTouched = !self.beingTouched
+                    }
+                  
                 }
         }
     }

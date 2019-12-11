@@ -35,7 +35,8 @@ struct ReceivedBubbles: View {
             GeometryReader { screen in
                 ForEach(self.bubbleKeys) { key in
                     self.bubbleView[key]
-                        .animation(Animation.default)
+//                        .animation(Animation.default)
+                    
                 }
             }
 
