@@ -20,7 +20,7 @@ struct BubbleBox{
 //        return bubbles
 //    }
     
-    mutating func add( a : Bubble ) -> Bubble {
+    mutating func add( a : Bubble ) {
         //load time and save with timestamp
         if(bubbles.count < maxNumofBubbles){
         _ = getTime()
