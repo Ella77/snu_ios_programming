@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     //
     
+    @IBOutlet weak var box: UIView!
     @IBOutlet weak var textBox: UIView!
     @IBOutlet weak var textField: UITextField!
     
@@ -192,15 +193,15 @@ extension ViewController {
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
 //        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
         let screen = UIScreen.main.bounds
-        self.textBox.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + screen.height / 8)
-        self.bubbleChoicesHeight.constant = 0 - keyboardFrame.cgRectValue.height + screen.height / 8
+        self.box.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + screen.height / 8)
+        //self.bubbleChoicesHeight.constant = 0 - keyboardFrame.cgRectValue.height + screen.height / 8
 //        print("키보드 높이 : \(-keyboardFrame.cgRectValue.height)")
         // 탭하면 키보드 내려가게 하는 제스쳐 On
         hideKeyboard()
     }
     
     @objc func keyboardWillHide(_ notification: Notification){
-        self.textBox.transform = .identity
+        self.box.transform = .identity
         
         
         

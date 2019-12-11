@@ -11,7 +11,7 @@ import Foundation
 
 struct BubbleBox{
      var bubbles = [Bubble]()
-    private let maxNumofBubbles: Int = 50
+     private let maxNumofBubbles: Int = 50
      init() {
         print("model initialize")
     }
@@ -64,5 +64,47 @@ struct BubbleBox{
 //            return false
 //        }
     }
+    
+    func exportToJson() -> Bool {
+//        let encoder = JSONEncoder()
+//        for includedBubble in bubbles {
+//            let jsonData = try? encoder.encode(includedBubble)
+//
+//        }
+        
+//        let jsonData = try? JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
+//        print(String(data: jsonData, encoding: .utf8))
+        
+//       if let theJSONData = try?  JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted),
+//         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
+//             print("JSON string = \n\(theJSONText)")
+        
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("bubblebox.json")
+
+            try JSONSerialization.data(withJSONObject: bubbles)
+                .write(to: fileURL)
+        } catch {
+            print(error)
+        }
+   }
+    
+    func importToBox() -> Bool {
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent("bubblebox.json")
+
+            let data = try Data(contentsOf: fileURL)
+//            let foo = try JSONDecoder().decode(Foo.self, from: data)
+//            print(foo)
+        } catch {
+            print(error)
+        }
+    }
+
+    
   
 }
