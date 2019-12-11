@@ -27,7 +27,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func sendMessageAction(_ sender: UIButton) {
-        textFieldShouldReturn(textField)
+        
+        if let index = bubble1 {
+            textFieldShouldReturn(textField, index)
+        }
+        if let index = bubble2 {
+            textFieldShouldReturn(textField, index)
+        }
+        if let index = bubble3 {
+            textFieldShouldReturn(textField, index)
+        }
+        if let index = bubble0 {
+            textFieldShouldReturn(textField, index)
+        } else {
+            textFieldShouldReturn(textField, 0) }
     }
     
     @IBAction func onSettingsButtonTap(_ sender: AnyObject) {
@@ -44,8 +57,41 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 $0.isHidden = true
             }
         }
+        
     }
-    @IBOutlet weak var bubbleChoicesHeight: NSLayoutConstraint!
+    
+    private var bubble1: Int?
+    private var bubble2: Int?
+    private var bubble3: Int?
+    private var bubble0: Int?
+    
+    @IBAction func bubble1Choice(_ sender: UIButton)  {
+        bubble1 = 1
+        bubble2 = nil
+        bubble3 = nil
+        bubble0 = nil
+    }
+    
+    @IBAction func bubble2Choice(_ sender: UIButton) {
+        bubble2 = 2
+        bubble1 = nil
+        bubble3 = nil
+        bubble0 = nil
+    }
+    
+    @IBAction func bubble3Choice(_ sender: UIButton) {
+        bubble3 = 3
+        bubble1 = nil
+        bubble2 = nil
+        bubble0 = nil
+    }
+    
+    @IBAction func bubble0Choice(_ sender: UIButton) {
+        bubble0 = 0
+        bubble1 = nil
+        bubble2 = nil
+        bubble3 = nil
+    }
     
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
@@ -169,7 +215,7 @@ extension ViewController {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_: UITextField) -> Bool {
+    func textFieldShouldReturn(_: UITextField, _ index: Int) -> Bool {
         textField.resignFirstResponder()
         
         // 텍스트 작성하면 text로 값 전달
@@ -180,8 +226,16 @@ extension ViewController {
             let newBub = sentTalk.makeNewBubble(txt: text)
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
-            postIfPossible(text: text)
+            let num = index
+            let numString = String(num)
+            
+            let message = text + numString
+            print("message : " + message )
+            
+            postIfPossible(text: message)
         }
+        
+      
         
         return false //return 누르면 키보드 사라짐
     }
