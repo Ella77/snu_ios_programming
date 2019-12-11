@@ -11,10 +11,13 @@ import Foundation
 
 struct BubbleBox{
      var bubbles = [Bubble]()
+    
      private let maxNumofBubbles: Int = 50
      init() {
         print("model initialize")
     }
+    
+    
     
 //    private func show() -> [Bubble] {
 //        return bubbles
@@ -82,7 +85,7 @@ struct BubbleBox{
 //            return false
 //        }
     
-    func exportToJson() {
+    mutating func exportToJson(from object: Any) {
 //        let encoder = JSONEncoder()
 //        for includedBubble in bubbles {
 //            let jsonData = try? encoder.encode(includedBubble)
@@ -101,14 +104,14 @@ struct BubbleBox{
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent("bubblebox.json")
 
-            try JSONSerialization.data(withJSONObject: bubbles)
+            try JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
                 .write(to: fileURL)
         } catch {
             print(error)
         }
    }
     
-    func importToBox() {
+    mutating func importToBox() {
         do {
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)

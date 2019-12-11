@@ -100,6 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     private var receivedTalk = BubbleManager()
     private var sentTalk = BubbleManager()
+    private var bubbleBox = BubbleBox()
     
     private var receivedBubbleView: ReceivedBubbles {
         return ReceivedBubbles(bubbleCollection: receivedTalk)
@@ -134,6 +135,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     if (i < self.bubbleSample.count) {
                         let text = self.bubbleSample[i]
                         let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+                        self.bubbleBox.add(a: newBub)
+                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+//                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
                         self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
         //                self.uiHost.rootView = self.bubbleView
                         i += 1
