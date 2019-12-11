@@ -22,7 +22,7 @@ struct BubbleBox{
     
     mutating func add( a : Bubble ) -> Bubble {
         //load time and save with timestamp
-        if(bubbles.count < 50){
+        if(bubbles.count < maxNumofBubbles){
         _ = getTime()
         bubbles.append(a)
         }else { print("full capacity!") }
@@ -30,7 +30,7 @@ struct BubbleBox{
     
     mutating func delete( a : Bubble) -> Bubble {
         let selectedBubble = bubbles.firstIndex(of: a)
-        bubbles.remove(at: selectedBubble!)        
+        bubbles.remove(at: selectedBubble!)
         
         
     }
