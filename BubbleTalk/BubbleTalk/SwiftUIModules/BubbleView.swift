@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BubbleView: View {
     @State private var bubbleMode: Bool = true
-    
+    @State private var selection: Int = 0
     
     var receivedBubblesView: ReceivedBubbles
     private var sentBubblesView: SentBubbles
@@ -22,36 +22,44 @@ struct BubbleView: View {
     
     var body: some View {
         NavigationView {
-            TabView {
+            TabView(selection: $selection) {
                 receivedBubblesView
                     .tabItem {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
-                        .imageScale(.large)
-                        }
+                            .imageScale(.large)
+                }.tag(0)
                 sentBubblesView
                     .tabItem { 
                         Image(systemName: "paperplane.fill")
-                        .imageScale(.medium)
-                }
-//                .transition(AnyTransition.scale
-//                .combined(with: .opacity))
-//                .animation(Animation.easeInOut(duration: 1))
+                            .imageScale(.medium)
+                }.tag(1)
+                //                .transition(AnyTransition.scale
+                //                .combined(with: .opacity))
+                //                .animation(Animation.easeInOut(duration: 1))
+                
                 Text("보관함")
                     .tabItem {
                         NavigationLink(destination: Text("보관함")) {
                             Image(systemName: "archivebox")
-                        }
+                            //                            .navigationBarTitle(Text("보관함") , displayMode: .inline)
+                            
+                        }.tag(2)
                 }
+                
             }
-            .navigationBarTitle(Text("BubbleTalk"), displayMode: .inline)
-//            .navigationBarItems(trailing: NavigationLink(destination: Text("보관함")) {
-//                Text("보관함")
-//            })
+                // hidden은 다시
+                //                .navigationBarHidden(selection == 1 ? true : false)
+                .navigationBarTitle(selection == 0 ? Text("받은 버블") : Text("보낸 버블") , displayMode: .inline)
+                
+                .navigationBarItems(trailing: Text("배경"))
+            
         }
+            
         .background(
             Image("background")
                 .aspectRatio(contentMode: .fill)
         )
+        
         
     }
 }
