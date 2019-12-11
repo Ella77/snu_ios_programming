@@ -28,19 +28,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func sendMessageAction(_ sender: UIButton) {
         
-        if let index = bubble1 {
-            textFieldShouldReturn(textField, index)
-        }
-        if let index = bubble2 {
-            textFieldShouldReturn(textField, index)
-        }
-        if let index = bubble3 {
-            textFieldShouldReturn(textField, index)
-        }
-        if let index = bubble0 {
+        if let index = bubbleIndex {
             textFieldShouldReturn(textField, index)
         } else {
-            textFieldShouldReturn(textField, 0) }
+            textFieldShouldReturn(textField, 0)
+        }
     }
     
     @IBAction func onSettingsButtonTap(_ sender: AnyObject) {
@@ -57,40 +49,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 $0.isHidden = true
             }
         }
-        
     }
     
-    private var bubble1: Int?
-    private var bubble2: Int?
-    private var bubble3: Int?
-    private var bubble0: Int?
+    private var bubbleIndex: Int?
     
     @IBAction func bubble1Choice(_ sender: UIButton)  {
-        bubble1 = 1
-        bubble2 = nil
-        bubble3 = nil
-        bubble0 = nil
+        bubbleIndex = 1
     }
     
     @IBAction func bubble2Choice(_ sender: UIButton) {
-        bubble2 = 2
-        bubble1 = nil
-        bubble3 = nil
-        bubble0 = nil
+         bubbleIndex = 2
     }
     
     @IBAction func bubble3Choice(_ sender: UIButton) {
-        bubble3 = 3
-        bubble1 = nil
-        bubble2 = nil
-        bubble0 = nil
+         bubbleIndex = 3
     }
     
     @IBAction func bubble0Choice(_ sender: UIButton) {
-        bubble0 = 0
-        bubble1 = nil
-        bubble2 = nil
-        bubble3 = nil
+         bubbleIndex = 0
     }
     
     var keyboardShown: Bool = false // 키보드 상태 확인
