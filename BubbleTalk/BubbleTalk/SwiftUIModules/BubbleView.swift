@@ -25,20 +25,28 @@ struct BubbleView: View {
             TabView {
                 receivedBubblesView
                     .tabItem {
-                        Text("ReceivedBubble")
+                        Image(systemName: "bubble.left.and.bubble.right.fill")
+                        .imageScale(.large)
                         }
                 sentBubblesView
                     .tabItem { 
-                        Text("SentBubble")
+                        Image(systemName: "paperplane.fill")
+                        .imageScale(.medium)
                 }
 //                .transition(AnyTransition.scale
 //                .combined(with: .opacity))
 //                .animation(Animation.easeInOut(duration: 1))
-            }
-            .navigationBarTitle(Text("BubbleTalk"))
-            .navigationBarItems(trailing: NavigationLink(destination: Text("보관함")) {
                 Text("보관함")
-            })
+                    .tabItem {
+                        NavigationLink(destination: Text("보관함")) {
+                            Image(systemName: "archivebox")
+                        }
+                }
+            }
+            .navigationBarTitle(Text("BubbleTalk"), displayMode: .inline)
+//            .navigationBarItems(trailing: NavigationLink(destination: Text("보관함")) {
+//                Text("보관함")
+//            })
         }
         .background(
             Image("background")

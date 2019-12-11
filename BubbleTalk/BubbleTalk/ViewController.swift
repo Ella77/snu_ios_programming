@@ -11,7 +11,7 @@ import SwiftUI
 
 class ViewController: UIViewController, UITextFieldDelegate {
     // IBOutlet for Bluetooth test
-//    @IBOutlet weak var messageLabel: UILabel!
+    //    @IBOutlet weak var messageLabel: UILabel!
     
     // properties for Bluetooth
     private var peripheral: BluetoothPeripheral!
@@ -20,6 +20,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     
     //
+    
+    @IBOutlet weak var textBox: UIView!
     @IBOutlet weak var textField: UITextField!
     
     
@@ -27,6 +29,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textFieldShouldReturn(textField)
     }
     
+    @IBAction func onSettingsButtonTap(_ sender: AnyObject) {
+        UIView.animate(withDuration: 0.3) {
+               self.bubbleChoices.forEach {
+                   $0.isHidden = !$0.isHidden
+               }
+           }
+    
+       }
+    @IBOutlet var bubbleChoices: [UIButton]! {
+        didSet {
+            self.bubbleChoices.forEach {
+                $0.isHidden = true
+            }
+        }
+    }
+    @IBOutlet weak var bubbleChoicesHeight: NSLayoutConstraint!
     
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
@@ -62,20 +80,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        var i = 0
-        // todo 1. 블투로 받아오기테스트 2. 타이머없애기
-        // 2초 마다 하나씩 뜨도록 타이머 설정
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-            if (i < self.bubbleSample.count) {
-                let text = self.bubbleSample[i]
-                let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
-                self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
-//                self.uiHost.rootView = self.bubbleView
-                i += 1
-            } else {
-                timer.invalidate()
-            }
-        }
+                var i = 0
+                // todo 1. 블투로 받아오기테스트 2. 타이머없애기
+                // 2초 마다 하나씩 뜨도록 타이머 설정
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+                    if (i < self.bubbleSample.count) {
+                        let text = self.bubbleSample[i]
+                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+                        self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
+        //                self.uiHost.rootView = self.bubbleView
+                        i += 1
+                    } else {
+                        timer.invalidate()
+                    }
+                }
     }
     
     override func viewDidLoad() {
@@ -88,7 +106,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.textField.delegate = self
         textField.returnKeyType = .send
         
-        self.hideKeyboard() //화면터치시 키보드 내려옴
+        //        self.hideKeyboard() //화면터치시 키보드 내려옴
         
         //textfield올리기
         NotificationCenter.default.addObserver(self, selector:
@@ -98,16 +116,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
             #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification,
                                              object: nil)
         NotificationCenter.default.addObserver(self,
-                                                      selector: #selector(textDidChange(_:)),
-                                                      name: UITextField.textDidChangeNotification,
-                                                      object: textField)
+                                               selector: #selector(textDidChange(_:)),
+                                               name: UITextField.textDidChangeNotification,
+                                               object: textField)
+        
     }
-     
+    
     
     // SwiftUI와 Hosting 방식으로 연결
     @IBSegueAction func addSwiftUI(_ coder: NSCoder) -> UIViewController? {
         uiHost = UIHostingController(coder: coder, rootView: bubbleView)!
-//                print("\n \(uiHost.rootView) \n")
+        //                print("\n \(uiHost.rootView) \n")
         return uiHost
     }
     
@@ -116,15 +135,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // extension about textfield and keyboard
 extension ViewController {
     //키보드 delegate
-   /* func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-        
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        
-        return updatedText.count <= 10
-    } //글자수 10자로 제한 */
+    /* func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+     let currentText = textField.text ?? ""
+     guard let stringRange = Range(range, in: currentText) else { return false }
+     
+     let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+     
+     return updatedText.count <= 10
+     } //글자수 10자로 제한 */
     
+    // 여기서 tapgesture를 키보드 액션에 할당해버리는 문제 발생. 해결 위해 remove 함수 추가
     func hideKeyboard()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -132,6 +152,17 @@ extension ViewController {
             action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
+    func removeTapGesture() {
+        if let gestureRecognizers = view.gestureRecognizers {
+            for gesture in gestureRecognizers {
+                if let tapGesture  = gesture as? UITapGestureRecognizer {
+                    view.removeGestureRecognizer(tapGesture)
+                }
+            }
+        }
+        
+    }
+    
     @objc func dismissKeyboard()
     {
         view.endEditing(true)
@@ -154,16 +185,27 @@ extension ViewController {
         return false //return 누르면 키보드 사라짐
     }
     
-     
+    
     
     @objc func keyboardWillShow(_ notification: Notification){
         guard let userInfo = notification.userInfo as? [String:Any] else {return}
         guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
-        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
+//        self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + 60)
+        let screen = UIScreen.main.bounds
+        self.textBox.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.cgRectValue.height + screen.height / 8)
+        self.bubbleChoicesHeight.constant = 0 - keyboardFrame.cgRectValue.height + screen.height / 8
+//        print("키보드 높이 : \(-keyboardFrame.cgRectValue.height)")
+        // 탭하면 키보드 내려가게 하는 제스쳐 On
+        hideKeyboard()
     }
     
     @objc func keyboardWillHide(_ notification: Notification){
-        self.view.transform = .identity
+        self.textBox.transform = .identity
+        
+        
+        
+        // 탭하면 키보드 내려가게 하는 제스쳐 Off
+        removeTapGesture()
     }
     @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
@@ -184,11 +226,11 @@ extension ViewController {
 
 // extension for Bluetooth
 extension ViewController {
-
+    
     // 메시지 받는거 테스트용
-//    @IBAction func respondToSendMessage(_ sender: UIButton) {
-//        postIfPossible()
-//    }
+    //    @IBAction func respondToSendMessage(_ sender: UIButton) {
+    //        postIfPossible()
+    //    }
     
     private func setupPeripheral() {
         peripheral = BluetoothPeripheral.init(uuid: "eab4e877-9e9d-4325-8996-bcea7fcc9b34")
@@ -224,15 +266,15 @@ extension ViewController {
             let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: message)
             self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
             // 테스트용
-//            self.messageLabel.text = message
+            //            self.messageLabel.text = message
             
-           //******* 여기서 받은 메시지 처리 작업 ********
+            //******* 여기서 받은 메시지 처리 작업 ********
             // BubbleManager로 버블 만들기
             
             //line 224 "Test" 받는지 확인해야
-//            let textbub = self.messageLabel.text
-//            let tmpBub : Bubble = self.receivedTalk.makeNewBubble(txt: textbub)
-//            self.uiHost.rootView.addBubToRecievedBubbles(bubble: tmpBub)
+            //            let textbub = self.messageLabel.text
+            //            let tmpBub : Bubble = self.receivedTalk.makeNewBubble(txt: textbub)
+            //            self.uiHost.rootView.addBubToRecievedBubbles(bubble: tmpBub)
         }
         
         if BluetoothPeripheral.hasPermission { centralManager?.initialize() }
@@ -254,8 +296,8 @@ extension ViewController {
         peripheral?.post(duration: 1, text)
         
         // 내가 보낸 메세지로 만든 버블
-        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
-        self.uiHost.rootView.addBubToRecievedBubbles(bubble: sentBub)
+        //        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+        //        self.uiHost.rootView.addBubToRecievedBubbles(bubble: sentBub)
     }
     
     private func stop() {

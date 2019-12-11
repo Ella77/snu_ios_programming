@@ -18,7 +18,10 @@ struct OneBubble: View {
     var isText: Bool
     var isNotInBubble: Bool
    
-    
+    // 랜덤 위치 생성
+    private let randomXPosition: CGFloat = CGFloat((8.arc4random)) * 1/8
+    private let randomYPosition: CGFloat = CGFloat((16.arc4random)) * 1/16
+
     // 여러가지 버블 타입
     enum BubProperty: String {
         //        case largeBlue = "blueLargeBubble"
@@ -82,7 +85,7 @@ struct OneBubble: View {
                     )
                         .frame(alignment: .center)
                         .lineLimit(1)
-                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .position(CGPoint(x: self.randomXPosition * screen.size.width, y: self.randomYPosition * screen.size.height))
                         .onTapGesture {
                             withAnimation { self.wasDragged.toggle() }
                             
@@ -114,7 +117,7 @@ struct OneBubble: View {
                         
                         .resizable()
                         .frame(width:170, height:170)
-                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .position(CGPoint(x: self.randomXPosition * screen.size.width, y: self.randomYPosition * screen.size.height))
                         .onTapGesture {
                             withAnimation { self.wasDragged.toggle() }
                             
@@ -148,7 +151,7 @@ struct OneBubble: View {
                                 .frame(width:170, height:170)
                                 .foregroundColor(.black)
                     )
-                        .position(CGPoint(x: CGFloat(CGFloat.random(in: 40...(screen.size.width - 40))), y: CGFloat(CGFloat.random(in: 60...(screen.size.height - 30)))))
+                        .position(CGPoint(x: self.randomXPosition * screen.size.width, y: self.randomYPosition * screen.size.height))
                         .onTapGesture {
                             withAnimation { self.wasDragged.toggle() }
                             

@@ -15,46 +15,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePL-HB-zCc">
-                                <rect key="frame" x="20" y="43" width="335" height="620"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePL-HB-zCc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue destination="DW3-w1-tIM" kind="embed" destinationCreationSelector="addSwiftUI:" id="IDq-xy-Iv0"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-1K-rBe">
-                                <rect key="frame" x="16" y="674" width="343" height="34"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-vP-1rj">
-                                <rect key="frame" x="280" y="670.66666666666663" width="34" height="40.666666666666629"/>
-                                <state key="normal" title="send"/>
-                                <connections>
-                                    <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5E-tj-fTg">
+                                <rect key="frame" x="16" y="672" width="345" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-1K-rBe">
+                                        <rect key="frame" x="0.0" y="0.0" width="308" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-vP-1rj">
+                                        <rect key="frame" x="316" y="4" width="28" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <state key="normal" backgroundImage="plus.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiJ-Je-YcW">
+                                        <rect key="frame" x="253" y="2" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onSettingsButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yjt-l8-AS4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
+                                <rect key="frame" x="270" y="583" width="46" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
+                                        <rect key="frame" x="0.0" y="30" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
+                                        <rect key="frame" x="0.0" y="60" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FKT-1K-rBe" secondAttribute="bottom" constant="70" id="2uF-jI-xVH"/>
-                            <constraint firstItem="ePL-HB-zCc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7en-GL-Vba"/>
-                            <constraint firstItem="ePL-HB-zCc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-1" id="83L-Dw-dP3"/>
-                            <constraint firstItem="SIH-vP-1rj" firstAttribute="centerY" secondItem="FKT-1K-rBe" secondAttribute="centerY" id="FLF-Al-MJs"/>
-                            <constraint firstItem="ePL-HB-zCc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IMX-Ay-ibk"/>
-                            <constraint firstItem="FKT-1K-rBe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="PFP-2X-rcp"/>
-                            <constraint firstItem="ePL-HB-zCc" firstAttribute="centerX" secondItem="FKT-1K-rBe" secondAttribute="centerX" id="aJ5-Zp-xQW"/>
-                            <constraint firstItem="SIH-vP-1rj" firstAttribute="firstBaseline" secondItem="ePL-HB-zCc" secondAttribute="baseline" constant="22" symbolType="layoutAnchor" id="clm-RZ-iza"/>
-                            <constraint firstItem="SIH-vP-1rj" firstAttribute="leading" secondItem="FKT-1K-rBe" secondAttribute="trailing" constant="-79" id="gP6-cX-XAH"/>
-                            <constraint firstItem="FKT-1K-rBe" firstAttribute="top" secondItem="ePL-HB-zCc" secondAttribute="bottom" constant="11" id="ojA-i9-xo5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mug-VQ-95Q" secondAttribute="trailing" constant="59" id="I9D-gH-PhB"/>
+                            <constraint firstItem="Mug-VQ-95Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="270" id="NB7-Hk-nF6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mug-VQ-95Q" secondAttribute="bottom" constant="105" id="brE-nn-QT2"/>
+                            <constraint firstItem="Mug-VQ-95Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="539" id="hwN-2H-ZP5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bubbleChoicesHeight" destination="brE-nn-QT2" id="J8u-ZZ-eEf"/>
+                        <outlet property="textBox" destination="h5E-tj-fTg" id="Y8S-Tg-4e0"/>
                         <outlet property="textField" destination="FKT-1K-rBe" id="E9M-9j-QlZ"/>
+                        <outletCollection property="bubbleChoices" destination="qah-8V-mBf" collectionClass="NSMutableArray" id="Cy9-pC-oxn"/>
+                        <outletCollection property="bubbleChoices" destination="zhn-C9-pLB" collectionClass="NSMutableArray" id="pD1-hd-LGK"/>
+                        <outletCollection property="bubbleChoices" destination="9jT-4x-GT6" collectionClass="NSMutableArray" id="hwe-wd-U6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,4 +104,7 @@
             <point key="canvasLocation" x="1094" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus.circle" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
