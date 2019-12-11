@@ -30,9 +30,7 @@ struct BubbleBox{
     
     mutating func delete( a : Bubble) -> Bubble {
         let selectedBubble = bubbles.firstIndex(of: a)
-        bubbles.remove(at: selectedBubble!)
-        bubbles.replaceSubrange(selectedBubble.., with: bubbles[selectedBubble!+1...])
-        
+        bubbles.remove(at: selectedBubble!)        
         
         
     }
