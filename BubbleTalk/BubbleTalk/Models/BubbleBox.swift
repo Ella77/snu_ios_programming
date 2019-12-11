@@ -67,10 +67,20 @@ struct BubbleBox{
 //        let jsonData = try? JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
 //        print(String(data: jsonData, encoding: .utf8))
         
-       if let theJSONData = try?  JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted),
-         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
-             print("JSON string = \n\(theJSONText)")
-       }
+//       if let theJSONData = try?  JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted),
+//         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
+//             print("JSON string = \n\(theJSONText)")
+        
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("bubblebox.json")
+
+            try JSONSerialization.data(withJSONObject: bubbles)
+                .write(to: fileURL)
+        } catch {
+            print(error)
+        }
    }
 
     
