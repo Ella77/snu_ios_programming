@@ -26,11 +26,13 @@ struct BubbleBox{
         _ = getTime()
         bubbles.append(a)
         }else { print("full capacity!") }
+        
     }
     
-    mutating func delete( a : Bubble) -> Bubble {
+    mutating func delete( a : Bubble) {
         let selectedBubble = bubbles.firstIndex(of: a)
         bubbles.remove(at: selectedBubble!)
+        
         
         
     }
@@ -79,9 +81,8 @@ struct BubbleBox{
 //        else {
 //            return false
 //        }
-    }
     
-    func exportToJson() -> Bool {
+    func exportToJson() {
 //        let encoder = JSONEncoder()
 //        for includedBubble in bubbles {
 //            let jsonData = try? encoder.encode(includedBubble)
@@ -107,7 +108,7 @@ struct BubbleBox{
         }
    }
     
-    func importToBox() -> Bool {
+    func importToBox() {
         do {
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
