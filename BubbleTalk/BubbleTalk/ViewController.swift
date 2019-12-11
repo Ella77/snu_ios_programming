@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //
     
     // 샘플 데이터 -> "1" 은 버블 있는 이미지 / "2" 는 버블 없는 이미지 / 다른 String은 그냥 String(이모지 포함)
-    var bubbleSample = [ "🎃", "1", "2", "안녕", "아이폰", "👻", "👀", "ABC" ]
+    var bubbleSample = [ "🎃0", "11", "22", "안녕3", "아이폰0", "👻1", "👀2", "ABC3" ]
     
     override func viewWillAppear(_ animated: Bool) {
         //registerForKeyboardNotifications()
@@ -110,7 +110,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
                     if (i < self.bubbleSample.count) {
                         let text = self.bubbleSample[i]
-                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
+                        let index = String(self.bubbleSample[i].last!)
+                        let messageWithOutIndex = String(text.dropLast())
+                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
                         self.bubbleBox.add(a: newBub)
                         print("\(self.bubbleBox.bubbles) is in bubbleBox")
 //                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
@@ -203,7 +205,9 @@ extension ViewController {
         
         if let text = textField.text {
             print(text)
-            let newBub = sentTalk.makeNewBubble(txt: text)
+            let index = String(text.last!)
+            let messageWithOutIndex = String(text.dropLast())
+            let newBub = sentTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
             let num = index
@@ -298,7 +302,9 @@ extension ViewController {
         centralManager?.didReceivedDataHandler = { [weak self] (message, rssi, txPower) in
             guard let self = self, let message = message else { return }
             // message가 블루투스로 받은 텍스트
-            let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: message)
+            let index = String(message.last!)
+            let messageWithOutIndex = String(message.dropLast())
+            let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
             self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
             // 테스트용
             //            self.messageLabel.text = message

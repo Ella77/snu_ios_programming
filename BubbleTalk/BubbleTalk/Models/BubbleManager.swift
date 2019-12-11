@@ -16,17 +16,10 @@ struct BubbleManager {
     init() {
         print("model initialize")
     }
-    mutating func makeNewBubble (txt: String) -> Bubble {
-        var bubbleType: Int
-        switch txt {
-        case "1": bubbleType = 1
-        case "2": bubbleType = 2
-        //        case "3": bubbleType = 5
-        default:
-            bubbleType = 0
-        }
+    mutating func makeNewBubble (txt: String, type: String) -> Bubble {
+//        var bubbleType: Int = Int(type)!
         
-        let newBubble = Bubble(text: txt, type: bubbleType, id: getId())
+        let newBubble = Bubble(text: txt, type: Int(type)!, id: getId())
         
         bubbles.append(newBubble)
         return newBubble
