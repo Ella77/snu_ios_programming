@@ -58,32 +58,32 @@
                                             </button>
                                         </subviews>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
-                                        <rect key="frame" x="27" y="-9" width="55" height="120"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
+                                        <rect key="frame" x="27" y="-220" width="374" height="669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-nX-aaZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                                                <state key="normal" title="Button0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="198"/>
+                                                <state key="normal" title="Button0" backgroundImage="blueLargeBubble"/>
                                                 <connections>
                                                     <action selector="bubble0Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eD-64-870"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
-                                                <rect key="frame" x="0.0" y="30" width="55" height="30"/>
-                                                <state key="normal" title="Button1"/>
+                                                <rect key="frame" x="0.0" y="207" width="374" height="384"/>
+                                                <state key="normal" title="Button1" backgroundImage="newWhiteBubble"/>
                                                 <connections>
                                                     <action selector="bubble1Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpl-pU-J5Q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
-                                                <rect key="frame" x="0.0" y="60" width="55" height="30"/>
+                                                <rect key="frame" x="0.0" y="600" width="374" height="30"/>
                                                 <state key="normal" title="Button2"/>
                                                 <connections>
                                                     <action selector="bubble2Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyf-GT-mSW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
-                                                <rect key="frame" x="0.0" y="90" width="55" height="30"/>
+                                                <rect key="frame" x="0.0" y="639" width="374" height="30"/>
                                                 <state key="normal" title="Button3"/>
                                                 <connections>
                                                     <action selector="bubble3Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4m-u3-paL"/>
@@ -122,6 +122,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blueLargeBubble" width="159" height="99"/>
+        <image name="newWhiteBubble" width="187" height="192"/>
         <image name="sendbutton" width="94" height="94"/>
     </resources>
 </document>

@@ -76,13 +76,22 @@ struct OneBubble: View {
             if (self.isText) {
                 
                 if (!self.wasDragged) {
-                    Text(self.bubText).font(.system(size: 60))
-                        .background(
-                            Image(self.bubProperty.backBubble())
-                                .resizable()
-                                .frame(width:170, height:170)
-                                .foregroundColor(.black)
-                    )
+//                    Text(self.bubText).font(.system(size: 60))
+//                        .background(
+//                            Image(self.bubProperty.backBubble())
+//                                .resizable()
+//                                .frame(width:170, height:170)
+//                                .foregroundColor(.black)
+//                    )
+                    /// 자굼 슈저
+                    Image("bubbleframeimg").resizable()
+                    .frame(width:170, height:170)
+                                            .background(
+                                               Text(self.bubText).font(.system(size: 60))
+                                                    
+                                                    .foregroundColor(.black)
+                                        )
+                        
                         .frame(alignment: .center)
                         .lineLimit(1)
                         .position(CGPoint(x: self.randomXPosition * screen.size.width, y: self.randomYPosition * screen.size.height))
