@@ -57,7 +57,7 @@ struct BubbleBox{
         }
     }
     
-    private func exportToJson() -> Bool {
+    func exportToJson() -> Bool {
 //        let encoder = JSONEncoder()
 //        for includedBubble in bubbles {
 //            let jsonData = try? encoder.encode(includedBubble)
@@ -82,6 +82,20 @@ struct BubbleBox{
             print(error)
         }
    }
+    
+    func importToBox() -> Bool {
+        do {
+            let fileURL = try FileManager.default
+                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent("bubblebox.json")
+
+            let data = try Data(contentsOf: fileURL)
+//            let foo = try JSONDecoder().decode(Foo.self, from: data)
+//            print(foo)
+        } catch {
+            print(error)
+        }
+    }
 
     
   
