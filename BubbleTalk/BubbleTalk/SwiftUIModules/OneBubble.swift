@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct OneBubble: View {
+    let screen = UIScreen.main.bounds
+
     @State private var wasDragged: Bool = false
-    @State private var currentPosition: CGSize = .zero
-    @State private var newPosition: CGSize = .zero
+    @State private var currentPosition: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height )
+    @State private var newPosition: CGPoint = .zero
     @State var beingTouched: Bool = false
     
     var bubText: String
     var bubProperty: BubProperty
-//    var isText: Bool
-//    var isNotInBubble: Bool
-   
+    var lastAdded: Bool = true
+    
     // 랜덤 위치 생성
-    private let randomXPosition: CGFloat = CGFloat((8.arc4random)) * 1/8
-    private let randomYPosition: CGFloat = CGFloat((16.arc4random)) * 1/16
-
+    private var randomPosition = CGPoint(x: CGFloat((9.arc4random)) * 1/11 * (UIScreen.main.bounds.width) + 60, y: CGFloat((16.arc4random)) * 1/22 * (UIScreen.main.bounds.height) + 80)
+    
     // 여러가지 버블 타입
     enum BubProperty: String {
         //        case largeBlue = "blueLargeBubble"
@@ -54,17 +54,17 @@ struct OneBubble: View {
     
     init(bubText txt: String, bubType type: Int) {
         bubText = txt
-  
+        
         switch type {
         case 0:
             bubProperty = .whiteBubble
-         
+            
         case 1:
             bubProperty = .blueBubble
-          
+            
         case 2:
             bubProperty = .whiteBubble
-         
+            
         default:
             bubProperty = .whiteBubble
         }
@@ -75,70 +75,70 @@ struct OneBubble: View {
         
         GeometryReader { screen in
             
-                if (!self.wasDragged) {
-                    Image(self.bubProperty.rawValue).resizable()
-                        .frame(width: 170 , height:170)
-                                            .background(
-                                               Text(self.bubText).font(.system(size: 60))
-                                                    .foregroundColor(.black)
-                                        )
-                        .frame(alignment: .center)
-                        .lineLimit(1)
-                        .position(CGPoint(x: self.currentPosition.width, y: self.currentPosition.height))
-                        
-                        .onTapGesture {
-                            withAnimation { self.wasDragged.toggle() }
-                            self.beingTouched = !self.beingTouched
-                            
-                            
-                            
-                    }
-                    .onAppear(perform: {  self.currentPosition = CGSize(width: self.randomXPosition * screen.size.width, height: self.randomYPosition * screen.size.height) })
+            if (!self.wasDragged) {
+                Image(self.bubProperty.rawValue).resizable()
+                    .frame(width: 170 , height:170)
+                    .background(
+                        Text(self.bubText).font(.system(size: 60))
+                            .foregroundColor(.black)
+                )
+                    .frame(alignment: .center)
+                    .lineLimit(1)
+                    .position(self.currentPosition)
                     
-                } else if (self.beingTouched) {
-                     Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: self.beingTouched ? 200 : 170 , height: self.beingTouched ? 200 : 170) 
-                                                               .background(
-                                                                  Text(self.bubText).font(.system(size: 60))
-                                                                       .foregroundColor(.black)
-                                                           )
-                                           .frame(alignment: .center)
-                                           .lineLimit(1)
-                        .position(CGPoint(x: self.currentPosition.width, y: self.currentPosition.height))
-                        // beingTouched true일 때만 드래그 가능하도록 바꿔야
-                        .gesture(DragGesture()
+                    .onTapGesture {
+                        withAnimation { self.wasDragged.toggle() }
+                        self.beingTouched = !self.beingTouched
+                        
+                }                
+                    
+                .onAppear(perform: { self.currentPosition = self.randomPosition } )
+                
+            } else if (self.beingTouched) {
+                Image(self.bubProperty.rawValue).resizable()
+                    .frame(width: self.beingTouched ? 200 : 170 , height: self.beingTouched ? 200 : 170)
+                    .background(
+                        Text(self.bubText).font(.system(size: 60))
+                            .foregroundColor(.black)
+                )
+                    .frame(alignment: .center)
+                    .lineLimit(1)
+                    .position(self.currentPosition)
+                    // beingTouched true일 때만 드래그 가능하도록 바꿔야
+                    .gesture(DragGesture()
                             .onChanged { value in
-                                self.currentPosition.width = value.translation.width + self.newPosition.width
-                                self.currentPosition.height = value.translation.height + self.newPosition.height
+                                self.currentPosition.x = CGFloat(value.translation.width) + self.newPosition.x
+                                self.currentPosition.y = CGFloat(value.translation.height) + self.newPosition.y
                         }
                         .onEnded { value in
-                            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width, height: value.translation.height + self.newPosition.height)
+                            self.currentPosition = CGPoint(x: CGFloat(value.translation.width) + self.newPosition.x, y: CGFloat(value.translation.height) + self.newPosition.y)
+                            
                             self.newPosition = self.currentPosition
                             self.beingTouched = !self.beingTouched
                             }
                     )
-                        
+                    
                     
                     .onTapGesture {
                         self.beingTouched = !self.beingTouched
-                    }
-                        
-                     .onAppear(perform: { self.newPosition = self.currentPosition } )
+                }
                     
-                } else {
-                    Image(self.bubProperty.rawValue).resizable()
-                        .frame(width: 170 , height: 170)
-                                                               .background(
-                                                                  Text(self.bubText).font(.system(size: 60))
-                                                                       .foregroundColor(.black)
-                                                           )
-                                           .frame(alignment: .center)
-                                           .lineLimit(1)
-                        .position(CGPoint(x: self.currentPosition.width, y: self.currentPosition.height))
-                  
+                .onAppear(perform: { self.newPosition = self.currentPosition } )
+                
+            } else {
+                Image(self.bubProperty.rawValue).resizable()
+                    .frame(width: 170 , height: 170)
+                    .background(
+                        Text(self.bubText).font(.system(size: 60))
+                            .foregroundColor(.black)
+                )
+                    .frame(alignment: .center)
+                    .lineLimit(1)
+                    .position(self.currentPosition)
+                    
                     .onTapGesture {
                         self.beingTouched = !self.beingTouched
-                    }
+                }
             }
         }
     }
@@ -149,4 +149,11 @@ struct BubbleDrawing_Previews: PreviewProvider {
         OneBubble(bubText: "2", bubType: 2)
         
     }
+}
+
+extension OneBubble {
+    mutating func unmarkLastAdded() {
+        self.lastAdded = false
+    }
+
 }
