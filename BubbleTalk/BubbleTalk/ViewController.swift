@@ -70,6 +70,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("bubble)Choice")
     }
     
+    @IBAction func backgroundButton(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+               self.backgroundChoices.forEach {
+                   $0.isHidden = !$0.isHidden
+               }
+           }
+    
+       }
+    @IBOutlet var backgroundChoices: [UIButton]! {
+        didSet {
+            self.backgroundChoices.forEach {
+                $0.isHidden = true
+            }
+        }
+    }
+    
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
     //
