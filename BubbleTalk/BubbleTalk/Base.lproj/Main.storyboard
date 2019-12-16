@@ -22,31 +22,6 @@
                                     <segue destination="DW3-w1-tIM" kind="embed" destinationCreationSelector="addSwiftUI:" id="IDq-xy-Iv0"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-3F-Rk4">
-                                <rect key="frame" x="299" y="41" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="backgroundButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7rJ-Ql-jQo"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JT9-Aa-RDx">
-                                <rect key="frame" x="294" y="83" width="46" height="90"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nL-66-3Gq">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vM9-E1-81k">
-                                        <rect key="frame" x="0.0" y="30" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="em6-ti-rjX">
-                                        <rect key="frame" x="0.0" y="60" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c1G-02-kVX">
                                 <rect key="frame" x="0.0" y="593" width="385" height="113"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -83,35 +58,42 @@
                                             </textField>
                                         </subviews>
                                     </view>
-                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
-                                        <rect key="frame" x="15" y="8" width="551" height="98"/>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
+                                        <rect key="frame" x="15" y="8" width="544" height="98"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-nX-aaZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="98" height="98"/>
-                                                <state key="normal" backgroundImage="bubbleselect_red-1"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-nX-aaZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="98"/>
+                                                <state key="normal" title="bubble"/>
                                                 <connections>
                                                     <action selector="bubble0Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eD-64-870"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
-                                                <rect key="frame" x="151" y="0.0" width="98" height="98"/>
+                                                <rect key="frame" x="80" y="0.0" width="98" height="98"/>
                                                 <state key="normal" backgroundImage="bubbleselect_purple-1"/>
                                                 <connections>
                                                     <action selector="bubble1Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpl-pU-J5Q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
-                                                <rect key="frame" x="302" y="0.0" width="98" height="98"/>
+                                                <rect key="frame" x="202" y="0.0" width="98" height="98"/>
                                                 <state key="normal" backgroundImage="bubbleselect_green-1"/>
                                                 <connections>
                                                     <action selector="bubble2Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyf-GT-mSW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
-                                                <rect key="frame" x="453" y="0.0" width="98" height="98"/>
+                                                <rect key="frame" x="324" y="0.0" width="98" height="98"/>
                                                 <state key="normal" backgroundImage="bubbleselect_yellow-1"/>
                                                 <connections>
                                                     <action selector="bubble3Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4m-u3-paL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGj-GM-rUI">
+                                                <rect key="frame" x="446" y="0.0" width="98" height="98"/>
+                                                <state key="normal" backgroundImage="bubbleselect_red-1"/>
+                                                <connections>
+                                                    <action selector="bubble4Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qhm-wX-5mt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -125,15 +107,14 @@
                     </view>
                     <connections>
                         <outlet property="box" destination="c1G-02-kVX" id="LMo-Mh-L2U"/>
+                        <outlet property="spoid" destination="oiJ-Je-YcW" id="whd-Mf-Wrg"/>
                         <outlet property="textBox" destination="h5E-tj-fTg" id="Y8S-Tg-4e0"/>
                         <outlet property="textField" destination="FKT-1K-rBe" id="E9M-9j-QlZ"/>
-                        <outletCollection property="backgroundChoices" destination="4nL-66-3Gq" collectionClass="NSMutableArray" id="w9A-3A-40D"/>
-                        <outletCollection property="backgroundChoices" destination="vM9-E1-81k" collectionClass="NSMutableArray" id="K7l-kJ-xhy"/>
-                        <outletCollection property="backgroundChoices" destination="em6-ti-rjX" collectionClass="NSMutableArray" id="imB-S6-qIR"/>
                         <outletCollection property="bubbleChoices" destination="9jT-4x-GT6" collectionClass="NSMutableArray" id="hwe-wd-U6S"/>
                         <outletCollection property="bubbleChoices" destination="d9K-nX-aaZ" collectionClass="NSMutableArray" id="0Rm-Sd-jXq"/>
                         <outletCollection property="bubbleChoices" destination="zhn-C9-pLB" collectionClass="NSMutableArray" id="pD1-hd-LGK"/>
                         <outletCollection property="bubbleChoices" destination="qah-8V-mBf" collectionClass="NSMutableArray" id="Cy9-pC-oxn"/>
+                        <outletCollection property="bubbleChoices" destination="tGj-GM-rUI" collectionClass="NSMutableArray" id="JjG-uN-hIn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

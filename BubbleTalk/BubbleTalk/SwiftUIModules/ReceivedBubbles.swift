@@ -49,7 +49,8 @@ struct ReceivedBubbles: View {
                 }
             }
 
-        }.background(
+        }
+            .background(
             Image("background")
                 .aspectRatio(contentMode: .fill)
         )
