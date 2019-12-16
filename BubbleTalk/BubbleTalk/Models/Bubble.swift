@@ -69,7 +69,8 @@ if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: dat
 //var jsonString = String(data: tempData , encoding: .utf8)
 //print(jsonString)
 
-let jsonFile = filename.data(using: .utf8)!
-let decoder = JSONDecoder()
-if let decodedata = string { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
-
+//let jsonFile = filename.data(using: .utf8)!
+//let decoder = JSONDecoder()
+//do {
+//    let order = try decoder.decode(Bubble.self, from:jsonFile)
+//    }
