@@ -59,10 +59,17 @@ bubble2.text = "five"
 bubble2.type = 2
 
 var myArray  = [bubble1,bubble2]
-
-let tempData = try? JSONEncoder().encode(myArray)
+let jsonencoder = JSONEncoder()
+jsonencoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+let tempData = try? jsonencoder.encode(myArray)
 //Create JSON
 var Finaldata: Any?
 if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
 
+//var jsonString = String(data: tempData , encoding: .utf8)
+//print(jsonString)
+
+let jsonFile = filename.data(using: .utf8)!
+let decoder = JSONDecoder()
+if let decodedata = string { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
 

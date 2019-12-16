@@ -171,4 +171,14 @@ struct BubbleBox{
 //    }
 //}
 
+//let photoCollection: BubbleBox = [photo1, photo2]
+//let json = try JSONEncoder().encode(photoCollection)
+//print(String(data: json, encoding: .utf8)!)
 
+//mutating func jsondecode () {
+//    let jsonFile = filename.data(using: .utf8)!
+//    let decoder = JSONDecoder()
+//    do {
+//    let order = try decoder.decode(Bubble.self, from:jsonFile)
+//    }
+//}
