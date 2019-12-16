@@ -85,30 +85,21 @@ struct BubbleBox{
 //            return false
 //        }
     
-    mutating func exportToJson(from object: Any) {
-//        let encoder = JSONEncoder()
-//        for includedBubble in bubbles {
-//            let jsonData = try? encoder.encode(includedBubble)
-//
-//        }
+    mutating func exportToJson() {
+    
+        let jsonEncoder = JSONEncoder()
+        let tempData = try? jsonEncoder.encode(bubbles)
         
-//        let jsonData = try? JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
-//        print(String(data: jsonData, encoding: .utf8))
+        //Create JSON
+//        var Finaldata: Any?
+//        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+        print(String(data: tempData!, encoding: .utf8)!);
         
-//       if let theJSONData = try?  JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted),
-//         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
-//             print("JSON string = \n\(theJSONText)")
         
-        do {
-            let fileURL = try FileManager.default
-                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                .appendingPathComponent("bubblebox.json")
+        
+        
 
-            try JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
-                .write(to: fileURL)
-        } catch {
-            print(error)
-        }
+
    }
     
     mutating func importToBox() {

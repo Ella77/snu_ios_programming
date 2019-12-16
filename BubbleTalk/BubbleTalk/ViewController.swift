@@ -131,6 +131,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let messageWithOutIndex = String(text.dropLast())
                         let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
                         self.bubbleBox.add(a: newBub)
+                        
+                        self.bubbleBox.exportToJson();
                         print("\(self.bubbleBox.bubbles) is in bubbleBox")
 //                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
                         self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
@@ -352,7 +354,7 @@ extension ViewController {
         // line 118에 있는 textFieldShouldReturn()이 View에서 텍스트 입력하면 return하는 곳입니다
         // "Test" 가 날아갈 메시지
         print("블루투스로 텍스트 날아갔습니다")
-        peripheral?.post(duration: 1, text)
+        peripheral?.post(duration: 3, text)
         
         // 내가 보낸 메세지로 만든 버블
         //        let sentBub : Bubble = self.receivedTalk.makeNewBubble(txt: text)
