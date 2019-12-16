@@ -101,6 +101,39 @@ struct BubbleBox{
 
 
    }
+
+//    mutating func parse(jsonFile: String) -> [Bubble] {
+//            guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json"),
+//                let data = try? Data(contentsOf: url),
+//                let output = try? JSONDecoder().decode(self, from: data)
+//            else {
+//                return nil
+//            }
+//            print(output)
+//
+//            return output
+//        }
+//    }
+//
+//    //test.json
+//    let output = parse(jsonFile: "test")
+
+    
+    
+    
+    //mutating func JsonDecode(){
+        //var jsonString = String(data: tempData , encoding: .utf8)
+        //print(jsonString)
+        
+        //let jsonFile = filename.data(using: .utf8)! //filename or jsonString
+        //let decoder = JSONDecoder()
+        //do {
+        //    let bubbles = try decoder.decode([Bubble].self, from:jsonFile){
+        //     print(bubbles)
+        //      }
+        //    }
+        
+    //}
     
     mutating func importToBox() {
         do {
