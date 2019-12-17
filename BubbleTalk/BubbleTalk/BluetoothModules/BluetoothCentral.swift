@@ -46,10 +46,12 @@ class BluetoothCentral {
         }
         delegator.didReceivedData = { [weak self] peripheral, data, rssi in
             self?.stop()
-            self?.scan(allowDuplicate: false)
             self?.didReceivedDataHandler?(peripheral.name,
                                           rssi.int64Value,
                                           data[CBAdvertisementDataTxPowerLevelKey] as? Double)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                self?.scan(allowDuplicate: false)
+            }
         }
     }
     
