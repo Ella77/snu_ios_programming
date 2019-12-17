@@ -43,10 +43,12 @@ struct Bubble: Hashable, Identifiable, Codable {
         self.type = type
         self.id = id
     }
+    
 
     
 }
 
+<<<<<<< HEAD
 /* var bubble1 = Bubble()
 bubble1.id = 2
 bubble1.text = "two"
