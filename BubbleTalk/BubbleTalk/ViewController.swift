@@ -121,29 +121,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-                var i = 0
-                // todo 1. 블투로 받아오기테스트 2. 타이머없애기
-                // 2초 마다 하나씩 뜨도록 타이머 설정
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-                    if (i < self.bubbleSample.count) {
-                        let text = self.bubbleSample[i]
-                        let index = String(self.bubbleSample[i].last!)
-                        let messageWithOutIndex = String(text.dropLast())
-                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
-
-//                        self.bubbleBox.add(a: newBub)
-//                        self.bubbleBox.exportToJson();
+//                var i = 0
+//                // todo 1. 블투로 받아오기테스트 2. 타이머없애기
+//                // 2초 마다 하나씩 뜨도록 타이머 설정
+//                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+//                    if (i < self.bubbleSample.count) {
+//                        let text = self.bubbleSample[i]
+//                        let index = String(self.bubbleSample[i].last!)
+//                        let messageWithOutIndex = String(text.dropLast())
+//                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
 //
-//
-//                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
-//                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
-                        self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
-        //                self.uiHost.rootView = self.bubbleView
-                        i += 1
-                    } else {
-                        timer.invalidate()
-                    }
-                }
+////                        self.bubbleBox.add(a: newBub)
+////                        self.bubbleBox.exportToJson();
+////
+////
+////                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+////                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
+//                        self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
+//        //                self.uiHost.rootView = self.bubbleView
+//                        i += 1
+//                    } else {
+//                        timer.invalidate()
+//                    }
+//                }
     }
     
     override func viewDidLoad() {
@@ -185,15 +185,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // extension about textfield and keyboard
 extension ViewController {
     //키보드 delegate
-    /* func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-     let currentText = textField.text ?? ""
-     guard let stringRange = Range(range, in: currentText) else { return false }
-     
-     let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-     
-     return updatedText.count <= 10
-     } //글자수 10자로 제한 */
-    
+
     // 여기서 tapgesture를 키보드 액션에 할당해버리는 문제 발생. 해결 위해 remove 함수 추가
     func hideKeyboard()
     {
