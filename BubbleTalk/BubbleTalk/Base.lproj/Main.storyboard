@@ -31,7 +31,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-1K-rBe">
-                                                <rect key="frame" x="67" y="0.0" width="237" height="34"/>
+                                                <rect key="frame" x="42" y="-10" width="260" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,51 +40,50 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIH-vP-1rj">
-                                                <rect key="frame" x="316" y="0.0" width="28" height="39"/>
+                                                <rect key="frame" x="314" y="-8" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                                <state key="normal" title="sendbutton" backgroundImage="sendbutton"/>
+                                                <state key="normal" backgroundImage="sendbutton"/>
                                                 <connections>
                                                     <action selector="sendMessageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="28Y-gN-A6s"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oiJ-Je-YcW">
-                                                <rect key="frame" x="8" y="2" width="48" height="30"/>
+                                                <rect key="frame" x="7" y="-10" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="bubble"/>
+                                                <state key="normal" backgroundImage="bubblecolor"/>
                                                 <connections>
                                                     <action selector="onSettingsButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yjt-l8-AS4"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
-                                        <rect key="frame" x="27" y="-220" width="159" height="228"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-VQ-95Q">
+                                        <rect key="frame" x="30" y="-19" width="30" height="105"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9K-nX-aaZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="159" height="99"/>
-                                                <state key="normal" title="Button0" backgroundImage="blueLargeBubble"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <connections>
                                                     <action selector="bubble0Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eD-64-870"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qah-8V-mBf">
-                                                <rect key="frame" x="0.0" y="108" width="159" height="42"/>
-                                                <state key="normal" title="Button1" backgroundImage="pinkSmallBubble"/>
+                                                <rect key="frame" x="0.0" y="37" width="30" height="18"/>
+                                                <state key="normal" backgroundImage="bubbleselect_purple"/>
                                                 <connections>
                                                     <action selector="bubble1Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpl-pU-J5Q"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-C9-pLB">
-                                                <rect key="frame" x="0.0" y="159" width="159" height="30"/>
-                                                <state key="normal" title="Button2"/>
+                                                <rect key="frame" x="0.0" y="62" width="30" height="18"/>
+                                                <state key="normal" backgroundImage="bubbleselect_green"/>
                                                 <connections>
                                                     <action selector="bubble2Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyf-GT-mSW"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jT-4x-GT6">
-                                                <rect key="frame" x="0.0" y="198" width="159" height="30"/>
-                                                <state key="normal" title="Button3"/>
+                                                <rect key="frame" x="0.0" y="87" width="30" height="18"/>
+                                                <state key="normal" backgroundImage="bubbleselect_yellow"/>
                                                 <connections>
                                                     <action selector="bubble3Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4m-u3-paL"/>
                                                 </connections>
@@ -150,8 +149,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blueLargeBubble" width="159" height="99"/>
-        <image name="pinkSmallBubble" width="131" height="42"/>
+        <image name="bubblecolor" width="7" height="7"/>
+        <image name="bubbleselect_green" width="16.333333969116211" height="16.333333969116211"/>
+        <image name="bubbleselect_purple" width="16.333333969116211" height="16.333333969116211"/>
+        <image name="bubbleselect_yellow" width="16.333333969116211" height="16.333333969116211"/>
         <image name="sendbutton" width="94" height="94"/>
     </resources>
 </document>
