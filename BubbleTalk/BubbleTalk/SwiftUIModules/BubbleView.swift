@@ -73,7 +73,7 @@ struct BubbleView: View {
                 .navigationBarTitle(self.title, displayMode: .inline
             )
                 
-                .navigationBarItems(trailing: selection == 2 ? Text("") : Text("배경") )
+//                .navigationBarItems(trailing: selection == 2 ? Text("") : Text("배경") )
             
         }
             

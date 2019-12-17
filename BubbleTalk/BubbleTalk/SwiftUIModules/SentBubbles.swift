@@ -34,7 +34,7 @@ struct SentBubbles: View {
     
     var body: some View {
         
-        VStack {
+        ZStack {
             
                 ForEach(self.bubbleKeys) { key in
                     self.bubbleView[key]
@@ -46,8 +46,7 @@ struct SentBubbles: View {
         .background(
             Image("background")
                 .aspectRatio(contentMode: .fit))
-        
-        
+
     }
 }
 

@@ -43,16 +43,16 @@ struct ReceivedBubbles: View {
     
     var body: some View {
         ZStack {
-            GeometryReader { screen in
+           
                 ForEach(self.bubbleKeys) { key in
                     self.bubbleView[key]
                         .animation(self.bubbleView[key]!.lastAdded ? Animation.spring(response: 3, dampingFraction: 0.56, blendDuration: 1 ) : Animation.default)
-                        .shadow(color: self.bubbleView[key]!.lastAdded ? .blue : .clear, radius: 5)
+                        .shadow(color: self.bubbleView[key]!.lastAdded ? .blue : .clear, radius: 1)
                     
-                        .onAppear { print("받은 버블에서 버블키 : \(self.bubbleKeys)") }
+//                        .onAppear { print("받은 버블에서 버블키 : \(self.bubbleKeys)") }
                         
                 }
-            }
+            
 
         }
             .background(

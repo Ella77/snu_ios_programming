@@ -227,8 +227,7 @@ extension ViewController {
         if let text = textField.text {
 //            print(text)
             let index = String(index)
-            let messageWithOutIndex = String(text.dropLast())
-            let newBub = sentTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
+            let newBub = sentTalk.makeNewBubble(txt: text, type: index)
             
             uiHost.rootView.addBubToSentBubbles(bubble: newBub)
             
@@ -242,7 +241,7 @@ extension ViewController {
         }
         
       
-        
+        textField.text = ""
         return false //return 누르면 키보드 사라짐
     }
     

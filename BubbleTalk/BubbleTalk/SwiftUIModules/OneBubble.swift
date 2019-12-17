@@ -26,7 +26,7 @@ struct OneBubble: View {
     var lastAdded: Bool = true
     
     // 랜덤 위치 생성
-    private var randomPosition = CGPoint(x: CGFloat((9.arc4random)) * 1/11 * (UIScreen.main.bounds.width) + 60, y: CGFloat((16.arc4random)) * 1/22 * (UIScreen.main.bounds.height) + 80)
+    private var randomPosition = CGPoint(x: CGFloat((9.arc4random)) * 1/11 * (UIScreen.main.bounds.width) + 60, y: CGFloat((16.arc4random)) * 1/30 * (UIScreen.main.bounds.height) + 80)
     
     // 여러가지 버블 타입
     enum BubProperty: String {

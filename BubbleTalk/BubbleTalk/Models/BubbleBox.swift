@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import Combine
+
+class BubbleBox :ObservableObject {
+    //SwiftUI Biniding
+    var bubbles = [Bubble]() {
+        didSet { objectWillChange.send() }
+    }
+    let objectWillChange = PassthroughSubject<Void, Never>()
 
 
-class BubbleBox{
-    var bubbles = [Bubble]()
-    
 
     private let maxNumofBubbles: Int = 50
     init() {
@@ -37,8 +42,9 @@ class BubbleBox{
     }
 
    func delete( a : Bubble) {
-        let selectedBubble = bubbles.firstIndex(of: a)
-        bubbles.remove(at: selectedBubble!)
+    if let selectedBubble = bubbles.firstIndex(of: a) {
+        bubbles.remove(at: selectedBubble)
+    }
 
 
 
