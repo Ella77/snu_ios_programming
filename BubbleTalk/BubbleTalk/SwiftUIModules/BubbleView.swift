@@ -37,14 +37,14 @@ struct BubbleView: View {
                 receivedBubblesView
                     
                     .tabItem {
-                        Image(systemName: "bubble.left.and.bubble.right.fill")
-                            .imageScale(.large)
+                        Image(selection == 0 ? "receive_blue-1" : "receive")
+                           
                 }.tag(0)
                 sentBubblesView
               
                     .tabItem { 
-                        Image(systemName: "paperplane.fill")
-                            .imageScale(.medium)
+                        Image(selection == 1 ? "mymessage_blue" : "mymessage")
+                            
                 }.tag(1)
                 
                 bubbleStorage
@@ -57,7 +57,7 @@ struct BubbleView: View {
                     
                     
                     .tabItem {
-                        Image(systemName: "archivebox")
+                        Image(selection == 2 ? "inbox_blue" : "inbox")
                        
                 }.tag(2)
                 
