@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textBox: UIView!
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var spoid: UIButton!
     
     @IBAction func sendMessageAction(_ sender: UIButton) {
         
@@ -55,36 +56,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func bubble1Choice(_ sender: UIButton)  {
         bubbleIndex = 1
+         self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_purple"), for: UIControl.State.normal)
     }
     
     @IBAction func bubble2Choice(_ sender: UIButton) {
          bubbleIndex = 2
+        
+        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_green"), for: UIControl.State.normal)
     }
     
     @IBAction func bubble3Choice(_ sender: UIButton) {
          bubbleIndex = 3
+        
+        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_yellow"), for: UIControl.State.normal)
     }
+    @IBAction func bubble4Choice(_ sender: UIButton) {
+        bubbleIndex = 4
+        
+        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_red"), for: UIControl.State.normal)
+    }
+    
     
     @IBAction func bubble0Choice(_ sender: UIButton) {
          bubbleIndex = 0
         print("bubble)Choice")
     }
     
-    @IBAction func backgroundButton(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-               self.backgroundChoices.forEach {
-                   $0.isHidden = !$0.isHidden
-               }
-           }
     
-       }
-    @IBOutlet var backgroundChoices: [UIButton]! {
-        didSet {
-            self.backgroundChoices.forEach {
-                $0.isHidden = true
-            }
-        }
-    }
     
     var keyboardShown: Bool = false // 키보드 상태 확인
     var originY: CGFloat? // 오브젝트의 기본 위치
