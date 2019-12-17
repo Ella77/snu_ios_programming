@@ -32,6 +32,7 @@ struct OneBubble: View {
                case blueBubble = "bubbleblue"
                case purpleBubble = "bubblepurple"
                case redBubble = "bubblered"
+               case noBubble = "bubblenone"
         
         func backBubble() -> String {
             return "newWhiteBubble"
@@ -58,7 +59,7 @@ struct OneBubble: View {
         
         switch type {
         case 0:
-            bubProperty = .purpleBubble
+            bubProperty = .noBubble
             
         case 1:
             bubProperty = .purpleBubble
@@ -72,7 +73,8 @@ struct OneBubble: View {
         case 4:
             bubProperty = .redBubble
         default:
-            bubProperty = .redBubble
+            bubProperty = .blueBubble
+            
         }
         
     }

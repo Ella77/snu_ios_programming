@@ -83,7 +83,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="OmY-oZ-O8C"/>
                                                 </constraints>
-                                                <state key="normal" title="bubble"/>
+                                                <state key="normal" backgroundImage="bubbleselect_transparent"/>
                                                 <connections>
                                                     <action selector="bubble0Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eD-64-870"/>
                                                 </connections>
@@ -207,6 +207,7 @@
         <image name="bubbleselect_green-1" width="49" height="49"/>
         <image name="bubbleselect_purple-1" width="49" height="49"/>
         <image name="bubbleselect_red" width="49" height="49"/>
+        <image name="bubbleselect_transparent" width="49" height="49"/>
         <image name="bubbleselect_yellow-1" width="49" height="49"/>
         <image name="sendbutton" width="94" height="94"/>
     </resources>
