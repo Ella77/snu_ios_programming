@@ -22,7 +22,7 @@ struct BubbleView: View {
     
     var receivedBubblesView: ReceivedBubbles
     private var sentBubblesView: SentBubbles
-    private var bubbleStorage: BubbleStorage = BubbleStorage()
+    private var bubbleStorage: BubbleBoxView = BubbleBoxView()
     
     init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles, textBox: UIView) {
         self.receivedBubblesView = receivedBubbleView
@@ -65,7 +65,7 @@ struct BubbleView: View {
                 //요거 다시 조정
                 .navigationBarTitle(Text("탭 타이틀") , displayMode: .inline)
                 
-                .navigationBarItems(trailing: Text("배경") )
+                .navigationBarItems(trailing: selection == 2 ? Text("") : Text("배경") )
             
         }
             

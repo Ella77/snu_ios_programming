@@ -13,7 +13,7 @@
 		389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */; };
 		389CEE582387A343003ED291 /* SentBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE572387A343003ED291 /* SentBubbles.swift */; };
 		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
-		38B77EA423A8A8770096FD44 /* BubbleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B77EA323A8A8770096FD44 /* BubbleStorage.swift */; };
+		38B77EA423A8A8770096FD44 /* BubbleBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B77EA323A8A8770096FD44 /* BubbleBoxView.swift */; };
 		38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875B823817F6C00D8D0AA /* Bubble.swift */; };
 		38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BC238180A700D8D0AA /* BubbleView.swift */; };
 		38D875BF238180DA00D8D0AA /* OneBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BE238180DA00D8D0AA /* OneBubble.swift */; };
@@ -33,7 +33,7 @@
 		389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedBubbles.swift; sourceTree = "<group>"; };
 		389CEE572387A343003ED291 /* SentBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentBubbles.swift; sourceTree = "<group>"; };
 		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
-		38B77EA323A8A8770096FD44 /* BubbleStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleStorage.swift; sourceTree = "<group>"; };
+		38B77EA323A8A8770096FD44 /* BubbleBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBoxView.swift; sourceTree = "<group>"; };
 		38D875B823817F6C00D8D0AA /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		38D875BC238180A700D8D0AA /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		38D875BE238180DA00D8D0AA /* OneBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneBubble.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 				38D875BE238180DA00D8D0AA /* OneBubble.swift */,
 				389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */,
 				389CEE572387A343003ED291 /* SentBubbles.swift */,
-				38B77EA323A8A8770096FD44 /* BubbleStorage.swift */,
+				38B77EA323A8A8770096FD44 /* BubbleBoxView.swift */,
 			);
 			path = SwiftUIModules;
 			sourceTree = "<group>";
@@ -209,7 +209,7 @@
 				38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */,
 				F5C27B1D23953E8B000EF2CC /* BubbleBox.swift in Sources */,
 				38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */,
-				38B77EA423A8A8770096FD44 /* BubbleStorage.swift in Sources */,
+				38B77EA423A8A8770096FD44 /* BubbleBoxView.swift in Sources */,
 				389CEE582387A343003ED291 /* SentBubbles.swift in Sources */,
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
 				38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */,

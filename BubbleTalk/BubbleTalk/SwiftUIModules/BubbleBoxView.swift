@@ -8,15 +8,22 @@
 
 import SwiftUI
 
-struct BubbleStorage: View {
+struct BubbleBoxView: View {
+//    var bubbleBox: BubbleBox
+    
     var body: some View {
-        Text("보관함")
+        List {
+        Text("보관함 버블1")
+            Text("보관함 버블2")
+            Text("보관함 버블3")
+            Text("보관함 버블4")
+        }
         
     }
 }
 
 struct BubbleStorage_Previews: PreviewProvider {
     static var previews: some View {
-        BubbleStorage()
+        BubbleBoxView()
     }
 }

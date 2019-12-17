@@ -27,10 +27,11 @@ struct OneBubble: View {
     enum BubProperty: String {
         //        case largeBlue = "blueLargeBubble"
         //        case smallPink = "pinkSmallBubble"
-        case hearts = "piggy"
-        case heartsSteaker = "hearts_sticker"
-        case whiteBubble = "newWhiteBubble"
-        case blueBubble = "bubbleframeimg"
+         case greenBubble = "bubblegreen"
+               case yellowBubble = "bubbleyellow"
+               case blueBubble = "bubbleblue"
+               case purpleBubble = "bubblepurple"
+               case redBubble = "bubblered"
         
         func backBubble() -> String {
             return "newWhiteBubble"
@@ -57,16 +58,18 @@ struct OneBubble: View {
         
         switch type {
         case 0:
-            bubProperty = .whiteBubble
+            bubProperty = .purpleBubble
             
         case 1:
-            bubProperty = .blueBubble
+            bubProperty = .greenBubble
             
         case 2:
-            bubProperty = .whiteBubble
+            bubProperty = .yellowBubble
             
+        case 3:
+            bubProperty = .redBubble
         default:
-            bubProperty = .whiteBubble
+            bubProperty = .redBubble
         }
         
     }
