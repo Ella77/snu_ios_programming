@@ -11,58 +11,59 @@ import SwiftUI
 struct BubbleView: View {
     @State private var bubbleMode: Bool = true
     @State private var selection: Int = 0
-    @State private var presentModally: Bool = false
     @State private var background: Bool = false
+    
+    private var title: titleView = titleView(title: "")
     
     
     // 약간 억지로 viewcontroller의 textbox 안보이게 하기 위해 설정
     var uiTextBox: UIView?
     
+    
     var receivedBubblesView: ReceivedBubbles
     private var sentBubblesView: SentBubbles
+    private var bubbleStorage: BubbleStorage = BubbleStorage()
     
     init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles, textBox: UIView) {
         self.receivedBubblesView = receivedBubbleView
         self.sentBubblesView = sentBubblesView
         self.uiTextBox = textBox
+        
     }
     
     var body: some View {
         NavigationView {
             TabView(selection: $selection) {
                 receivedBubblesView
+                    
                     .tabItem {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
                             .imageScale(.large)
                 }.tag(0)
                 sentBubblesView
+              
                     .tabItem { 
                         Image(systemName: "paperplane.fill")
                             .imageScale(.medium)
                 }.tag(1)
                 
-                Text("")
+                bubbleStorage
                     .onAppear {
                         self.uiTextBox?.isHidden = true
+//                        self.titleView.title = "보관함"
 //                        self.navigationBarTitle(Text("보관함"))
                 }
                     .onDisappear { self.uiTextBox?.isHidden = false }
-       
+                    
+                    
                     .tabItem {
                         Image(systemName: "archivebox")
-                        NavigationLink(destination: Text("보관함")) {
-                            Image(systemName: "archivebox")
-                                                        .navigationBarTitle(Text("보관함") , displayMode: .inline)
-                            
-                        }
+                       
                 }.tag(2)
                 
-            }.sheet(isPresented: $presentModally, onDismiss: { self.selection = 0 } ) {
-                                    Text("보관함")
-                            }
-                
+            } 
                 //요거 다시 조정
-                .navigationBarTitle(selection == 0 ? Text("받은 버블") : Text("보낸 버블") , displayMode: .inline)
+                .navigationBarTitle(Text("탭 타이틀") , displayMode: .inline)
                 
                 .navigationBarItems(trailing: Text("배경") )
             
@@ -95,4 +96,12 @@ extension BubbleView: UpdateBubbleViewState {
 protocol UpdateBubbleViewState {
     mutating func addBubToRecievedBubbles(bubble: Bubble)
     mutating func addBubToSentBubbles(bubble: Bubble)
+}
+
+struct titleView: View {
+    var title: String
+    
+    var body: some View {
+        Text(title)
+    }
 }
