@@ -46,3 +46,30 @@ struct Bubble: Hashable, Identifiable, Codable {
 
     
 }
+
+var bubble1 = Bubble()
+bubble1.id = 2
+bubble1.text = "two"
+bubble1.type = 1
+
+
+var bubble2 = Bubble()
+bubble2.id = 5
+bubble2.text = "five"
+bubble2.type = 2
+
+var myArray  = [bubble1,bubble2]
+let jsonencoder = JSONEncoder()
+jsonencoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+let tempData = try? jsonencoder.encode(myArray)
+//Create JSON
+var Finaldata: Any?
+if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+
+//var jsonString = String(data: tempData , encoding: .utf8)
+//print(jsonString)
+
+let jsonFile = filename.data(using: .utf8)!
+let decoder = JSONDecoder()
+if let decodedata = string { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+
