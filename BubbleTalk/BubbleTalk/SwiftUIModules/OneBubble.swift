@@ -68,7 +68,7 @@ struct OneBubble: View {
             bubProperty = .greenBubble
             
         case 3:
-            bubProperty = .yellowBubble
+            bubProperty = .blueBubble
         
         case 4:
             bubProperty = .redBubble

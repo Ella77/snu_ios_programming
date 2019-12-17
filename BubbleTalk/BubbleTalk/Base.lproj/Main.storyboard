@@ -115,7 +115,7 @@
                                                     <constraint firstAttribute="width" constant="49" id="5Ao-TZ-sIZ"/>
                                                     <constraint firstAttribute="height" constant="49" id="VRv-RT-109"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="bubbleselect_yellow-1"/>
+                                                <state key="normal" backgroundImage="bubbleselect_blue-1"/>
                                                 <connections>
                                                     <action selector="bubble3Choice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4m-u3-paL"/>
                                                 </connections>
@@ -204,11 +204,11 @@
     </scenes>
     <resources>
         <image name="bubblecolor" width="7" height="7"/>
+        <image name="bubbleselect_blue-1" width="49" height="49"/>
         <image name="bubbleselect_green-1" width="49" height="49"/>
         <image name="bubbleselect_purple-1" width="49" height="49"/>
         <image name="bubbleselect_red" width="49" height="49"/>
         <image name="bubbleselect_transparent" width="49" height="49"/>
-        <image name="bubbleselect_yellow-1" width="49" height="49"/>
         <image name="sendbutton" width="94" height="94"/>
     </resources>
 </document>
