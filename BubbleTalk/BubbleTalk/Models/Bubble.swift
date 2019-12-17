@@ -48,8 +48,7 @@ struct Bubble: Hashable, Identifiable, Codable {
     
 }
 
-<<<<<<< HEAD
-/* var bubble1 = Bubble()
+ var bubble1 = Bubble()
 bubble1.id = 2
 bubble1.text = "two"
 bubble1.type = 1
@@ -73,5 +72,5 @@ if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: dat
 
 let jsonFile = filename.data(using: .utf8)!
 let decoder = JSONDecoder()
-if let decodedata = string { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) } */
+if let decodedata = string { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) } 
 
