@@ -11,46 +11,46 @@ import Foundation
 
 struct BubbleBox{
      var bubbles = [Bubble]()
-    
+
      private let maxNumofBubbles: Int = 50
      init() {
         print("model initialize")
     }
-    
-    
-    
+
+
+
 //    private func show() -> [Bubble] {
 //        return bubbles
 //    }
-    
+
     mutating func add( a : Bubble ) {
         //load time and save with timestamp
         if(bubbles.count < maxNumofBubbles){
         _ = getTime()
         bubbles.append(a)
         }else { print("full capacity!") }
-        
+
     }
-    
+
     mutating func delete( a : Bubble) {
         let selectedBubble = bubbles.firstIndex(of: a)
         bubbles.remove(at: selectedBubble!)
-        
-        
-        
+
+
+
     }
-   
+
 //    mutating func indexes(of item : Bubble) -> [Int] {
 //            return bubbles.filter({ $0.element  == item }).map({ $0.offset })
 //        // search by element
 //        //usage : bubbles.indexes(of: Bubble~)
-    
+
 //     mutating func getindexes(of item : Bubble) -> Int {
 //    let index = bubbles.firstIndex(where: { $0.id == item.id })
 //        return index
     // search by bubble id
     // usage : bubbles.getindexes(of : Bubble~)
-    
+
 //    }
 
 
@@ -63,16 +63,16 @@ struct BubbleBox{
         return formatter.string(from: currentDateTime)
         //return present's time step when adding
     }
-    
+
     private func getCount()->Int{
         //get total number of bubbles in bubblebox
         return bubbles.count
     }
-    
+
 //    private func getOldestBubbles() -> Bubble{
 //        return bubbles[0]
 //    }
-    
+
 //    private func reachMaxBubbles() -> Bool {
 //     //alert and delete oldest bubble
 //        if (getCount() > maxNumofBubbles){
@@ -84,25 +84,84 @@ struct BubbleBox{
 //        else {
 //            return false
 //        }
-    
+
     mutating func exportToJson() {
-    
+
         let jsonEncoder = JSONEncoder()
         let tempData = try? jsonEncoder.encode(bubbles)
-        
+
         //Create JSON
-//        var Finaldata: Any?
-//        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+        var Finaldata: Any?
+        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
         print(String(data: tempData!, encoding: .utf8)!);
-        
-        
-        
-        
+
+        let file = "test.json" //this is the file. we will write to and read from it
+
+        let text = String(data: tempData!, encoding: .utf8)! //just a text
+        let desktop = URL(fileURLWithPath: "../BubbleTalk/JSONSample")
+        do {
+            let dir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: desktop, create: true)
+
+           // let fileURL = dir.appendingPathComponent(file)
+
+            //writing
+
+            try text.write(to: desktop, atomically: false, encoding: .utf8)
+            }
+            catch {/* error handling here */}
+
+
+//        do {
+//            let fileURL = try FileManager.default
+//                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//                .appendingPathComponent("example.json")
+//
+//            try JSONSerialization.data(withJSONObject: Finaldata)
+//                .write(to: fileURL)
+//        } catch {
+//            print(error)
+//        }
+
+
+
 
 
    }
-    
-    mutating func importToBox() {
+
+//    mutating func parse(jsonFile: String) -> [Bubble] {
+//            guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json"),
+//                let data = try? Data(contentsOf: url),
+//                let output = try? JSONDecoder().decode(self, from: data)
+//            else {
+//                return nil
+//            }
+//            print(output)
+//
+//            return output
+//        }
+//    }
+//
+//    //test.json
+//    let output = parse(jsonFile: "test")
+
+
+
+
+    //mutating func JsonDecode(){
+        //var jsonString = String(data: tempData , encoding: .utf8)
+        //print(jsonString)
+
+        //let jsonFile = filename.data(using: .utf8)! //filename or jsonString
+        //let decoder = JSONDecoder()
+        //do {
+        //    let bubbles = try decoder.decode([Bubble].self, from:jsonFile){
+        //     print(bubbles)
+        //      }
+        //    }
+
+    //}
+
+        func importToBox() {
         do {
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -117,7 +176,8 @@ struct BubbleBox{
     }
 
 }
-  
+
+
 
 
 
@@ -159,17 +219,5 @@ struct BubbleBox{
 //        }
 //
 //        var key: String
-//    }
-//}
-
-//let photoCollection: BubbleBox = [photo1, photo2]
-//let json = try JSONEncoder().encode(photoCollection)
-//print(String(data: json, encoding: .utf8)!)
-
-//mutating func jsondecode () {
-//    let jsonFile = filename.data(using: .utf8)!
-//    let decoder = JSONDecoder()
-//    do {
-//    let order = try decoder.decode(Bubble.self, from:jsonFile)
 //    }
 //}
