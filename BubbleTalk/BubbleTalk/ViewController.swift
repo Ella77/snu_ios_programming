@@ -130,11 +130,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let index = String(self.bubbleSample[i].last!)
                         let messageWithOutIndex = String(text.dropLast())
                         let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
-                        
+
 //                        self.bubbleBox.add(a: newBub)
 //                        self.bubbleBox.exportToJson();
-//                        
-//                        
+//
+//
 //                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
 //                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
                         self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
@@ -242,6 +242,9 @@ extension ViewController {
         
       
         textField.text = ""
+        self.bubbleChoices.forEach {
+            $0.isHidden = true
+        }
         return false //return 누르면 키보드 사라짐
     }
     

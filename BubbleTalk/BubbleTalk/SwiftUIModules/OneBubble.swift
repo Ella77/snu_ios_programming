@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct OneBubble: View {
+    @State var vvv = false
+    
     var bubbleBox: BubbleBox
     var first: Bool = true
     
@@ -76,100 +78,110 @@ struct OneBubble: View {
         
         
         Group {
-            if (!self.wasDragged) {
-                Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: 140 , height:140)
-                    .background(
-                        Text(self.bubText)
-                            .font(.body)
-                            .foregroundColor(.black)
-                )
-                    .frame(alignment: .center)
-                    .lineLimit(2)
-                    .position(self.currentPosition)
-                    
+            if(!self.vvv) {
+                if (!self.wasDragged) {
+                    Image(self.bubProperty.rawValue).resizable()
+                        .frame(width: 140 , height:140)
+                        .background(
+                            Text(self.bubText)
+                                .font(.body)
+                                .foregroundColor(.black)
+                    )
+                        .frame(alignment: .center)
+                        .lineLimit(2)
+                        .position(self.currentPosition)
+                        .onTapGesture(count: 2) {
+                            self.vvv = true
+                    }
                     .onTapGesture {
                         withAnimation { self.wasDragged.toggle() }
                         self.beingTouched = !self.beingTouched
+                        //                        self.vvv = true
                         
-                }
-                .onLongPressGesture(minimumDuration: 2) {
-                    self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random))
-                    self.bubbleBox.exportToJson()
-                    print("\(self.bubbleBox.bubbles) is in bubbleBox")
-                    self.savedAlert = true
-                    //                    Alert(title: Text("Hello"))
-                }
-                    
-                .onAppear(perform: {
-                    
-                    self.currentPosition = self.randomPosition
-
-                } )
-//                .alert(isPresented: $savedAlert) { Alert(title: Text("Hello")) }
-                
-                
-            } else if (self.beingTouched) {
-                Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: self.beingTouched ? 170 : 140 , height: self.beingTouched ? 170 : 140)
-                    .background(
-                        Text(self.bubText).font(.body)
-                            .foregroundColor(.black)
-                )
-                    .frame(alignment: .center)
-                    .lineLimit(2)
-                    .position(self.currentPosition)
-                    // beingTouched true일 때만 드래그 가능하도록 바꿔야
-                    .gesture(DragGesture()
-                        .onChanged { value in
-                            self.currentPosition.x = CGFloat(value.translation.width) + self.newPosition.x
-                            self.currentPosition.y = CGFloat(value.translation.height) + self.newPosition.y
                     }
-                    .onEnded { value in
-                        self.currentPosition = CGPoint(x: CGFloat(value.translation.width) + self.newPosition.x, y: CGFloat(value.translation.height) + self.newPosition.y)
                         
-                        self.newPosition = self.currentPosition
-                        self.beingTouched = !self.beingTouched
-                        }
-                )
+                    .onLongPressGesture(minimumDuration: 2) {
+                        self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random))
+                        self.bubbleBox.exportToJson()
+                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+                        self.savedAlert = true
+                        //                    Alert(title: Text("Hello"))
+                    }
+                        
+                    .onAppear(perform: {
+                        
+                        self.currentPosition = self.randomPosition
+                        
+                    } )
+                    //                .alert(isPresented: $savedAlert) { Alert(title: Text("Hello")) }
                     
+                    
+                } else if (self.beingTouched) {
+                    Image(self.bubProperty.rawValue).resizable()
+                        .frame(width: self.beingTouched ? 170 : 140 , height: self.beingTouched ? 170 : 140)
+                        .background(
+                            Text(self.bubText).font(.body)
+                                .foregroundColor(.black)
+                    )
+                        .frame(alignment: .center)
+                        .lineLimit(2)
+                        .position(self.currentPosition)
+                        // beingTouched true일 때만 드래그 가능하도록 바꿔야
+                        .gesture(DragGesture()
+                            .onChanged { value in
+                                self.currentPosition.x = CGFloat(value.translation.width) + self.newPosition.x
+                                self.currentPosition.y = CGFloat(value.translation.height) + self.newPosition.y
+                        }
+                        .onEnded { value in
+                            self.currentPosition = CGPoint(x: CGFloat(value.translation.width) + self.newPosition.x, y: CGFloat(value.translation.height) + self.newPosition.y)
+                            
+                            self.newPosition = self.currentPosition
+                            self.beingTouched = !self.beingTouched
+                            }
+                    )
+                        
+                        .onLongPressGesture {
+                            self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random) )
+                            self.bubbleBox.exportToJson()
+                            
+                            print("\(self.bubbleBox.bubbles) is in bubbleBox")
+                            self.savedAlert = true
+                    }
+                        
+                        .onTapGesture(count: 2) {
+                            self.vvv = true
+                        }
+                    .onTapGesture {
+                        self.beingTouched = !self.beingTouched
+                    }
+       
+                    .onAppear(perform: { self.newPosition = self.currentPosition } )
+                    
+                } else {
+                    Image(self.bubProperty.rawValue).resizable()
+                        .frame(width: 140 , height: 140)
+                        .background(
+                            Text(self.bubText).font(.body)
+                                .foregroundColor(.black)
+                    )
+                        .frame(alignment: .center)
+                        .lineLimit(2)
+                        .position(self.currentPosition)
+                        .onTapGesture(count: 2) {
+                            self.vvv = true
+                        }
+                        .onTapGesture {
+                            self.beingTouched = !self.beingTouched
+                    }
+                        
                     .onLongPressGesture {
                         self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random) )
                         self.bubbleBox.exportToJson()
-                        
                         print("\(self.bubbleBox.bubbles) is in bubbleBox")
                         self.savedAlert = true
-                }
-                .onTapGesture {
-                    self.beingTouched = !self.beingTouched
-                    
-                    
-                }
-                    
-                .onAppear(perform: { self.newPosition = self.currentPosition } )
-                
-            } else {
-                Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: 140 , height: 140)
-                    .background(
-                        Text(self.bubText).font(.body)
-                            .foregroundColor(.black)
-                )
-                    .frame(alignment: .center)
-                    .lineLimit(2)
-                    .position(self.currentPosition)
-                    
-                    .onTapGesture {
-                        self.beingTouched = !self.beingTouched
-                }
-                .onLongPressGesture {
-                    self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random) )
-                    self.bubbleBox.exportToJson()
-                    print("\(self.bubbleBox.bubbles) is in bubbleBox")
-                    self.savedAlert = true
+                    }
                 }
             }
-            
         }.alert(isPresented: $savedAlert) { Alert(title: Text("보관함에 저장되었습니다")) }
     }
 }

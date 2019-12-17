@@ -23,10 +23,10 @@ struct SentBubbles: View {
     }
     
     mutating func bubbleViewUpdate(bubble bub: Bubble) {
-//        // 최대 4개 띄울 수 있게 해놨어요
-//        if (bubbleKeys.count >= 4) {
-//            bubbleKeys.remove(at: 0)
-//        }
+        // 최대 10개 띄울 수 있게
+        if (bubbleKeys.count >= 10) {
+            bubbleKeys.remove(at: 0)
+        }
         
         bubbleView[bub] = OneBubble(bubText: bub.text, bubType: bub.type, bubbleBox: bubbleBox)
         bubbleKeys.append(bub)
@@ -35,14 +35,11 @@ struct SentBubbles: View {
     var body: some View {
         
         ZStack {
-            
                 ForEach(self.bubbleKeys) { key in
                     self.bubbleView[key]
-                  
                 }
-
         }
-            
+    
         .background(
             Image("background")
                 .aspectRatio(contentMode: .fit))

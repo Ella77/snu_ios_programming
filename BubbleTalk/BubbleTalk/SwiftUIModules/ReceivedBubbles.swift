@@ -26,10 +26,10 @@ struct ReceivedBubbles: View {
     }
     
     mutating func bubbleViewUpdate(bubble: Bubble) {
-        // 최대 4개 띄울 수 있게 
-//        if (bubbleKeys.count >= 8) {
-//            bubbleKeys.remove(at: 0)
-//        }
+//         최대 20개 띄울 수 있게
+        if (bubbleKeys.count >= 20) {
+            bubbleKeys.remove(at: 0)
+        }
         if let bubbleKey = recentlyAddedBubbleKey {
             bubbleView[bubbleKey]?.unmarkLastAdded()
         }
@@ -49,7 +49,6 @@ struct ReceivedBubbles: View {
                         .animation(self.bubbleView[key]!.lastAdded ? Animation.spring(response: 3, dampingFraction: 0.56, blendDuration: 1 ) : Animation.default)
                         .shadow(color: self.bubbleView[key]!.lastAdded ? .blue : .clear, radius: 1)
                     
-//                        .onAppear { print("받은 버블에서 버블키 : \(self.bubbleKeys)") }
                         
                 }
             
