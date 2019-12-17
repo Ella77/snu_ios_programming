@@ -85,7 +85,7 @@ struct BubbleBox{
 //            return false
 //        }
     
-    mutating func exportToJson(from object: Any) {
+    mutating func exportToJson() {
 //        let encoder = JSONEncoder()
 //        for includedBubble in bubbles {
 //            let jsonData = try? encoder.encode(includedBubble)
@@ -99,16 +99,32 @@ struct BubbleBox{
 //         let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
 //             print("JSON string = \n\(theJSONText)")
         
-        do {
-            let fileURL = try FileManager.default
-                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                .appendingPathComponent("bubblebox.json")
+//        do {
+//            let fileURL = try FileManager.default
+//                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//                .appendingPathComponent("bubblebox.json")
+//
+//            try JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
+//                .write(to: fileURL)
+//        } catch {
+//            print(error)
+//        }
+//
 
-            try JSONSerialization.data(withJSONObject: bubbles, options: .prettyPrinted)
-                .write(to: fileURL)
-        } catch {
-            print(error)
-        }
+        let bubble1 = Bubble(text: "two", type: 1, id: 2)
+
+        let bubble2 = Bubble(text: "five", type: 2, id: 5)
+
+        var myArray  = [bubble1,bubble2]
+    
+        let jsonEncoder = JSONEncoder()
+        let tempData = try? jsonEncoder.encode(bubbles)
+        //Create JSON
+        var Finaldata: Any?
+        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+        print(String(data: tempData!, encoding: .utf8)!);
+
+
    }
     
     mutating func importToBox() {
