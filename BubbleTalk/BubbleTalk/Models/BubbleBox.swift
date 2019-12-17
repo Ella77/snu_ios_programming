@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct BubbleBox{
+class BubbleBox{
     var bubbles = [Bubble]()
     
 
@@ -27,7 +27,7 @@ struct BubbleBox{
 //        return bubbles
 //    }
 
-    mutating func add( a : Bubble ) {
+    func add( a : Bubble ) {
         //load time and save with timestamp
         if(bubbles.count < maxNumofBubbles){
         _ = getTime()
@@ -36,7 +36,7 @@ struct BubbleBox{
 
     }
 
-    mutating func delete( a : Bubble) {
+   func delete( a : Bubble) {
         let selectedBubble = bubbles.firstIndex(of: a)
         bubbles.remove(at: selectedBubble!)
 
@@ -89,7 +89,7 @@ struct BubbleBox{
 //            return false
 //        }
 
-    mutating func exportToJson() {
+    func exportToJson() {
 
         let jsonEncoder = JSONEncoder()
         if let tempData = try? jsonEncoder.encode(bubbles) {
@@ -153,22 +153,22 @@ struct BubbleBox{
 
    }
 
-    mutating func parse() -> [Bubble]! {
+    func parse() -> [Bubble]! {
            let jsonFile = "test"
            guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json")
             else {
                 
-                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+                return [Bubble]()
         }
           guard let data = try? Data(contentsOf: url)
             else {
-                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+                return [Bubble]()
                 
         }
          
         guard let output = try? JSONDecoder().decode([Bubble].self, from: data)
             else {
-                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+                return [Bubble]()
         }
             //else {
              //  throws print("no file")

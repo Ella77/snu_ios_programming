@@ -9,12 +9,17 @@
 import SwiftUI
 
 struct OneBubble: View {
+    var bubbleBox: BubbleBox
+    var first: Bool = true
+    
     let screen = UIScreen.main.bounds
-
+    
     @State private var wasDragged: Bool = false
     @State private var currentPosition: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height )
     @State private var newPosition: CGPoint = .zero
     @State var beingTouched: Bool = false
+    @State var savedAlert: Bool = false
+    
     
     var bubText: String
     var bubProperty: BubProperty
@@ -27,34 +32,22 @@ struct OneBubble: View {
     enum BubProperty: String {
         //        case largeBlue = "blueLargeBubble"
         //        case smallPink = "pinkSmallBubble"
-         case greenBubble = "bubblegreen"
-               case yellowBubble = "bubbleyellow"
-               case blueBubble = "bubbleblue"
-               case purpleBubble = "bubblepurple"
-               case redBubble = "bubblered"
-               case noBubble = "bubblenone"
+        case greenBubble = "bubblegreen"
+        case yellowBubble = "bubbleyellow"
+        case blueBubble = "bubbleblue"
+        case purpleBubble = "bubblepurple"
+        case redBubble = "bubblered"
+        case noBubble = "bubblenone"
         
         func backBubble() -> String {
             return "newWhiteBubble"
         }
-        
-        //        func lineLimit() -> Int {
-        //            switch self {
-        //            case .largeBlue: return 3
-        //            case .smallPink: return 2
-        //            case .hearts : return 4
-        //            }
-        //        }
-        //        func bubWidth() -> CGFloat {
-        //            switch self {
-        //            case .largeBlue: return 100
-        //            case .smallPink: return 80
-        //            case .hearts : return 100
-        //            }
-        //        }
     }
     
-    init(bubText txt: String, bubType type: Int) {
+    init(bubText txt: String, bubType type: Int, bubbleBox: BubbleBox) {
+        self.bubbleBox = bubbleBox
+        
+        //        bubtype = type
         bubText = txt
         
         switch type {
@@ -69,7 +62,7 @@ struct OneBubble: View {
             
         case 3:
             bubProperty = .blueBubble
-        
+            
         case 4:
             bubProperty = .redBubble
         default:
@@ -81,8 +74,8 @@ struct OneBubble: View {
     
     var body: some View {
         
-        GeometryReader { screen in
-            
+        
+        Group {
             if (!self.wasDragged) {
                 Image(self.bubProperty.rawValue).resizable()
                     .frame(width: 140 , height:140)
@@ -99,9 +92,22 @@ struct OneBubble: View {
                         withAnimation { self.wasDragged.toggle() }
                         self.beingTouched = !self.beingTouched
                         
-                }                
+                }
+                .onLongPressGesture(minimumDuration: 2) {
+                    self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random))
+                    self.bubbleBox.exportToJson()
+                    print("\(self.bubbleBox.bubbles) is in bubbleBox")
+                    self.savedAlert = true
+                    //                    Alert(title: Text("Hello"))
+                }
                     
-                .onAppear(perform: { self.currentPosition = self.randomPosition } )
+                .onAppear(perform: {
+                    
+                    self.currentPosition = self.randomPosition
+
+                } )
+//                .alert(isPresented: $savedAlert) { Alert(title: Text("Hello")) }
+                
                 
             } else if (self.beingTouched) {
                 Image(self.bubProperty.rawValue).resizable()
@@ -115,21 +121,29 @@ struct OneBubble: View {
                     .position(self.currentPosition)
                     // beingTouched true일 때만 드래그 가능하도록 바꿔야
                     .gesture(DragGesture()
-                            .onChanged { value in
-                                self.currentPosition.x = CGFloat(value.translation.width) + self.newPosition.x
-                                self.currentPosition.y = CGFloat(value.translation.height) + self.newPosition.y
-                        }
-                        .onEnded { value in
-                            self.currentPosition = CGPoint(x: CGFloat(value.translation.width) + self.newPosition.x, y: CGFloat(value.translation.height) + self.newPosition.y)
-                            
-                            self.newPosition = self.currentPosition
-                            self.beingTouched = !self.beingTouched
-                            }
-                    )
-                    
-                    
-                    .onTapGesture {
+                        .onChanged { value in
+                            self.currentPosition.x = CGFloat(value.translation.width) + self.newPosition.x
+                            self.currentPosition.y = CGFloat(value.translation.height) + self.newPosition.y
+                    }
+                    .onEnded { value in
+                        self.currentPosition = CGPoint(x: CGFloat(value.translation.width) + self.newPosition.x, y: CGFloat(value.translation.height) + self.newPosition.y)
+                        
+                        self.newPosition = self.currentPosition
                         self.beingTouched = !self.beingTouched
+                        }
+                )
+                    
+                    .onLongPressGesture {
+                        self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random) )
+                        self.bubbleBox.exportToJson()
+                        
+                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+                        self.savedAlert = true
+                }
+                .onTapGesture {
+                    self.beingTouched = !self.beingTouched
+                    
+                    
                 }
                     
                 .onAppear(perform: { self.newPosition = self.currentPosition } )
@@ -148,21 +162,28 @@ struct OneBubble: View {
                     .onTapGesture {
                         self.beingTouched = !self.beingTouched
                 }
+                .onLongPressGesture {
+                    self.bubbleBox.add(a: Bubble(text: self.bubText, type: 0, id: 1000.arc4random) )
+                    self.bubbleBox.exportToJson()
+                    print("\(self.bubbleBox.bubbles) is in bubbleBox")
+                    self.savedAlert = true
+                }
             }
-        }
+            
+        }.alert(isPresented: $savedAlert) { Alert(title: Text("보관함에 저장되었습니다")) }
     }
 }
 
-struct BubbleDrawing_Previews: PreviewProvider {
-    static var previews: some View {
-        OneBubble(bubText: "2", bubType: 2)
-        
-    }
-}
+//struct BubbleDrawing_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OneBubble(bubText: "2", bubType: 2)
+//
+//    }
+//}
 
 extension OneBubble {
     mutating func unmarkLastAdded() {
         self.lastAdded = false
     }
-
+    
 }

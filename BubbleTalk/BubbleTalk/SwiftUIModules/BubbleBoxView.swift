@@ -9,21 +9,19 @@
 import SwiftUI
 
 struct BubbleBoxView: View {
-//    var bubbleBox: BubbleBox
-    
+    var bubbleBox: BubbleBox
+
+    // 탭 옮기는 것만으로 List 안의 for 문이 돌지 않는다.. binding 설정을 해줘야 할듯
     var body: some View {
-        List {
-        Text("보관함 버블1")
-            Text("보관함 버블2")
-            Text("보관함 버블3")
-            Text("보관함 버블4")
+        List(self.bubbleBox.bubbles) { bubble in
+               Text(bubble.text)
         }
         
     }
 }
 
-struct BubbleStorage_Previews: PreviewProvider {
-    static var previews: some View {
-        BubbleBoxView()
-    }
-}
+//struct BubbleStorage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BubbleBoxView()
+//    }
+//}

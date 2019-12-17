@@ -96,14 +96,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     private var receivedBubbleView: ReceivedBubbles {
-        return ReceivedBubbles(bubbleCollection: receivedTalk)
+        return ReceivedBubbles(bubbleCollection: receivedTalk, bubbleBox: bubbleBox)
     }
     private var sentBubbledView: SentBubbles {
-        return SentBubbles(bubbleCollection: sentTalk)
+        return SentBubbles(bubbleCollection: sentTalk, bubbleBox: bubbleBox)
     }
     
     private var bubbleView: BubbleView  {
-        return BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView, textBox: textBox)
+        return BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView, textBox: box, bubbleBox: bubbleBox )
     }
     
     lazy private var uiHost = UIHostingController(rootView: bubbleView)
@@ -130,11 +130,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let index = String(self.bubbleSample[i].last!)
                         let messageWithOutIndex = String(text.dropLast())
                         let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
-                        self.bubbleBox.add(a: newBub)
-                        self.bubbleBox.exportToJson();
                         
-                        
-                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+//                        self.bubbleBox.add(a: newBub)
+//                        self.bubbleBox.exportToJson();
+//                        
+//                        
+//                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
 //                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
                         self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
         //                self.uiHost.rootView = self.bubbleView

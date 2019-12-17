@@ -9,25 +9,30 @@
 import SwiftUI
 
 struct BubbleView: View {
+    var bubbleBox: BubbleBox
+    
     @State private var bubbleMode: Bool = true
     @State private var selection: Int = 0
     @State private var background: Bool = false
+    @State private var title = Text("")
     
-    private var title: titleView = titleView(title: "")
     
     
     // 약간 억지로 viewcontroller의 textbox 안보이게 하기 위해 설정
-    var uiTextBox: UIView?
-    
+    var uiBox: UIView?
     
     var receivedBubblesView: ReceivedBubbles
     private var sentBubblesView: SentBubbles
-    private var bubbleStorage: BubbleBoxView = BubbleBoxView()
     
-    init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles, textBox: UIView) {
+    private var bubbleStorage: BubbleBoxView 
+    
+    init(receivedBubbleView: ReceivedBubbles, sentBubblesView: SentBubbles, textBox: UIView, bubbleBox: BubbleBox) {
         self.receivedBubblesView = receivedBubbleView
         self.sentBubblesView = sentBubblesView
-        self.uiTextBox = textBox
+        self.uiBox = textBox
+        
+        self.bubbleBox = bubbleBox
+        self.bubbleStorage = BubbleBoxView(bubbleBox: bubbleBox)
         
     }
     
@@ -35,13 +40,17 @@ struct BubbleView: View {
         NavigationView {
             TabView(selection: $selection) {
                 receivedBubblesView
-                    
+                    .onAppear {
+                        self.title = Text("받은 버블")
+                }
                     .tabItem {
                         Image(selection == 0 ? "receive_blue-1" : "receive")
                            
                 }.tag(0)
                 sentBubblesView
-              
+                    .onAppear {
+                            self.title = Text("보낸 버블")
+                    }
                     .tabItem { 
                         Image(selection == 1 ? "mymessage_blue" : "mymessage")
                             
@@ -49,13 +58,11 @@ struct BubbleView: View {
                 
                 bubbleStorage
                     .onAppear {
-                        self.uiTextBox?.isHidden = true
-//                        self.titleView.title = "보관함"
-//                        self.navigationBarTitle(Text("보관함"))
+                        self.uiBox?.isHidden = true
+                        self.title = Text("보관함")
                 }
-                    .onDisappear { self.uiTextBox?.isHidden = false }
-                    
-                    
+                    .onDisappear { self.uiBox?.isHidden = false }
+             
                     .tabItem {
                         Image(selection == 2 ? "inbox_blue" : "inbox")
                        
@@ -63,7 +70,8 @@ struct BubbleView: View {
                 
             } 
                 //요거 다시 조정
-                .navigationBarTitle(Text("탭 타이틀") , displayMode: .inline)
+                .navigationBarTitle(self.title, displayMode: .inline
+            )
                 
                 .navigationBarItems(trailing: selection == 2 ? Text("") : Text("배경") )
             
@@ -98,10 +106,4 @@ protocol UpdateBubbleViewState {
     mutating func addBubToSentBubbles(bubble: Bubble)
 }
 
-struct titleView: View {
-    var title: String
-    
-    var body: some View {
-        Text(title)
-    }
-}
+
