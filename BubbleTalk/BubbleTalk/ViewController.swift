@@ -150,7 +150,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //
         
         self.textField.delegate = self
-        textField.returnKeyType = .send
+        //textField.returnKeyType = .send
         
         //        self.hideKeyboard() //화면터치시 키보드 내려옴
         
