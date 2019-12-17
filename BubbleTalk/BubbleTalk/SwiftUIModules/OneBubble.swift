@@ -32,6 +32,7 @@ struct OneBubble: View {
                case blueBubble = "bubbleblue"
                case purpleBubble = "bubblepurple"
                case redBubble = "bubblered"
+               case noBubble = "bubblenone"
         
         func backBubble() -> String {
             return "newWhiteBubble"
@@ -58,7 +59,7 @@ struct OneBubble: View {
         
         switch type {
         case 0:
-            bubProperty = .purpleBubble
+            bubProperty = .noBubble
             
         case 1:
             bubProperty = .purpleBubble
@@ -67,12 +68,13 @@ struct OneBubble: View {
             bubProperty = .greenBubble
             
         case 3:
-            bubProperty = .yellowBubble
+            bubProperty = .blueBubble
         
         case 4:
             bubProperty = .redBubble
         default:
-            bubProperty = .redBubble
+            bubProperty = .blueBubble
+            
         }
         
     }
@@ -83,7 +85,7 @@ struct OneBubble: View {
             
             if (!self.wasDragged) {
                 Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: 170 , height:170)
+                    .frame(width: 140 , height:140)
                     .background(
                         Text(self.bubText)
                             .font(.body)
@@ -103,7 +105,7 @@ struct OneBubble: View {
                 
             } else if (self.beingTouched) {
                 Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: self.beingTouched ? 200 : 170 , height: self.beingTouched ? 200 : 170)
+                    .frame(width: self.beingTouched ? 170 : 140 , height: self.beingTouched ? 170 : 140)
                     .background(
                         Text(self.bubText).font(.body)
                             .foregroundColor(.black)
@@ -134,7 +136,7 @@ struct OneBubble: View {
                 
             } else {
                 Image(self.bubProperty.rawValue).resizable()
-                    .frame(width: 170 , height: 170)
+                    .frame(width: 140 , height: 140)
                     .background(
                         Text(self.bubText).font(.body)
                             .foregroundColor(.black)

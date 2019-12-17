@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bubble3Choice(_ sender: UIButton) {
          bubbleIndex = 3
         
-        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_yellow"), for: UIControl.State.normal)
+        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_blue"), for: UIControl.State.normal)
     }
     @IBAction func bubble4Choice(_ sender: UIButton) {
         bubbleIndex = 4
@@ -153,7 +153,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //
         
         self.textField.delegate = self
-        textField.returnKeyType = .send
+        //textField.returnKeyType = .send
         
         //        self.hideKeyboard() //화면터치시 키보드 내려옴
         
