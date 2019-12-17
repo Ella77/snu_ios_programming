@@ -61,12 +61,15 @@ struct OneBubble: View {
             bubProperty = .purpleBubble
             
         case 1:
-            bubProperty = .greenBubble
+            bubProperty = .purpleBubble
             
         case 2:
-            bubProperty = .yellowBubble
+            bubProperty = .greenBubble
             
         case 3:
+            bubProperty = .yellowBubble
+        
+        case 4:
             bubProperty = .redBubble
         default:
             bubProperty = .redBubble
@@ -82,11 +85,12 @@ struct OneBubble: View {
                 Image(self.bubProperty.rawValue).resizable()
                     .frame(width: 170 , height:170)
                     .background(
-                        Text(self.bubText).font(.system(size: 60))
+                        Text(self.bubText)
+                            .font(.body)
                             .foregroundColor(.black)
                 )
                     .frame(alignment: .center)
-                    .lineLimit(1)
+                    .lineLimit(2)
                     .position(self.currentPosition)
                     
                     .onTapGesture {
@@ -101,11 +105,11 @@ struct OneBubble: View {
                 Image(self.bubProperty.rawValue).resizable()
                     .frame(width: self.beingTouched ? 200 : 170 , height: self.beingTouched ? 200 : 170)
                     .background(
-                        Text(self.bubText).font(.system(size: 60))
+                        Text(self.bubText).font(.body)
                             .foregroundColor(.black)
                 )
                     .frame(alignment: .center)
-                    .lineLimit(1)
+                    .lineLimit(2)
                     .position(self.currentPosition)
                     // beingTouched true일 때만 드래그 가능하도록 바꿔야
                     .gesture(DragGesture()
@@ -132,11 +136,11 @@ struct OneBubble: View {
                 Image(self.bubProperty.rawValue).resizable()
                     .frame(width: 170 , height: 170)
                     .background(
-                        Text(self.bubText).font(.system(size: 60))
+                        Text(self.bubText).font(.body)
                             .foregroundColor(.black)
                 )
                     .frame(alignment: .center)
-                    .lineLimit(1)
+                    .lineLimit(2)
                     .position(self.currentPosition)
                     
                     .onTapGesture {
