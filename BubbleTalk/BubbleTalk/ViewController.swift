@@ -103,7 +103,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     private var bubbleView: BubbleView  {
-        return BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView)
+        return BubbleView(receivedBubbleView: receivedBubbleView, sentBubblesView: sentBubbledView, textBox: textBox)
     }
     
     lazy private var uiHost = UIHostingController(rootView: bubbleView)
