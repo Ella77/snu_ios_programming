@@ -93,6 +93,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private var sentTalk = BubbleManager()
     private var bubbleBox = BubbleBox()
     
+    
+    
     private var receivedBubbleView: ReceivedBubbles {
         return ReceivedBubbles(bubbleCollection: receivedTalk)
     }
@@ -129,8 +131,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         let messageWithOutIndex = String(text.dropLast())
                         let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
                         self.bubbleBox.add(a: newBub)
-                        
                         self.bubbleBox.exportToJson();
+                        
+                        
                         print("\(self.bubbleBox.bubbles) is in bubbleBox")
 //                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
                         self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)

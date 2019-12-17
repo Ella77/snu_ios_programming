@@ -10,10 +10,14 @@ import Foundation
 
 
 struct BubbleBox{
-     var bubbles = [Bubble]()
+    var bubbles = [Bubble]()
+    
 
-     private let maxNumofBubbles: Int = 50
-     init() {
+    private let maxNumofBubbles: Int = 50
+    init() {
+        bubbles.append(Bubble(text: "", type: 0, id: 0))
+        self.bubbles = parse()
+        
         print("model initialize")
     }
 
@@ -88,27 +92,48 @@ struct BubbleBox{
     mutating func exportToJson() {
 
         let jsonEncoder = JSONEncoder()
-        let tempData = try? jsonEncoder.encode(bubbles)
+        if let tempData = try? jsonEncoder.encode(bubbles) {
+//            let path = "/BubbleTalk/JSONSample/test.json"
+//            let pathAsURL = URL(fileURLWithPath: path)
+            
+            let pathAsURL = Bundle.main.url(forResource: "test", withExtension: "json")!
+            
+            do{
+                try tempData.write(to: pathAsURL)
+            }
+            catch{
+                print("error \(error).")
+            }
+            print(pathAsURL)
+        }
+        
+//        do {let fileURL = try FileManager.default.url(for: .applicationDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("test.json")
+//            try JSONSerialization.data(withJSONObject: tempData).write(to: fileURL)}
+//        catch {
+//            print(error)
+//        }
 
         //Create JSON
-        var Finaldata: Any?
-        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
-        print(String(data: tempData!, encoding: .utf8)!);
-
-        let file = "test.json" //this is the file. we will write to and read from it
-
-        let text = String(data: tempData!, encoding: .utf8)! //just a text
-        let desktop = URL(fileURLWithPath: "../BubbleTalk/JSONSample")
-        do {
-            let dir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: desktop, create: true)
-
-           // let fileURL = dir.appendingPathComponent(file)
-
-            //writing
-
-            try text.write(to: desktop, atomically: false, encoding: .utf8)
-            }
-            catch {/* error handling here */}
+//        var Finaldata: Any?
+//        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+//        print(String(data: tempData!, encoding: .utf8)!);
+//
+//        let file = "test.json" //this is the file. we will write to and read from it
+//
+//        let text = String(data: tempData!, encoding: .utf8)! //just a text
+        
+        
+//        let desktop = URL(fileURLWithPath: "../BubbleTalk/JSONSample")
+//        do {
+//            let dir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: desktop, create: true)
+//
+//           // let fileURL = dir.appendingPathComponent(file)
+//
+//            //writing
+//
+//            try text.write(to: desktop, atomically: false, encoding: .utf8)
+//            }
+//            catch {/* error handling here */}
 
 
 //        do {
@@ -128,21 +153,36 @@ struct BubbleBox{
 
    }
 
-//    mutating func parse(jsonFile: String) -> [Bubble] {
-//            guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json"),
-//                let data = try? Data(contentsOf: url),
-//                let output = try? JSONDecoder().decode(self, from: data)
-//            else {
-//                return nil
-//            }
-//            print(output)
-//
-//            return output
-//        }
-//    }
-//
-//    //test.json
-//    let output = parse(jsonFile: "test")
+    mutating func parse() -> [Bubble]! {
+           let jsonFile = "test"
+           guard let url = Bundle.main.url(forResource: jsonFile, withExtension: "json")
+            else {
+                
+                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+        }
+          guard let data = try? Data(contentsOf: url)
+            else {
+                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+                
+        }
+         
+        guard let output = try? JSONDecoder().decode([Bubble].self, from: data)
+            else {
+                return [Bubble(text: "save bubble!", type: 0, id: 0)]
+        }
+            //else {
+             //  throws print("no file")
+        //newbubblebox = BubbleBox(bubbles:output)
+        //newbubblebox.append()
+            
+        print(output, "here")
+            //output type : bubble array(bubbles)
+        return output
+        }
+    }
+
+    //test.json
+    
 
 
 
@@ -161,21 +201,9 @@ struct BubbleBox{
 
     //}
 
-        func importToBox() {
-        do {
-            let fileURL = try FileManager.default
-                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                .appendingPathComponent("bubblebox.json")
+        
 
-            let data = try Data(contentsOf: fileURL)
-//            let foo = try JSONDecoder().decode(Foo.self, from: data)
-//            print(foo)
-        } catch {
-            print(error)
-        }
-    }
 
-}
 
 
 

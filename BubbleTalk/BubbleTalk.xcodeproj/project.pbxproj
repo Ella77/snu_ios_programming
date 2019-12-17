@@ -12,7 +12,7 @@
 		38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */; };
 		389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */; };
 		389CEE582387A343003ED291 /* SentBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE572387A343003ED291 /* SentBubbles.swift */; };
-		38B5A37C238279430030BD76 /* textData.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* textData.json */; };
+		38B5A37C238279430030BD76 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 38B5A37B238279430030BD76 /* test.json */; };
 		38B77EA423A8A8770096FD44 /* BubbleBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B77EA323A8A8770096FD44 /* BubbleBoxView.swift */; };
 		38D875B923817F6C00D8D0AA /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875B823817F6C00D8D0AA /* Bubble.swift */; };
 		38D875BD238180A700D8D0AA /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D875BC238180A700D8D0AA /* BubbleView.swift */; };
@@ -32,7 +32,7 @@
 		38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedBubbles.swift; sourceTree = "<group>"; };
 		389CEE572387A343003ED291 /* SentBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentBubbles.swift; sourceTree = "<group>"; };
-		38B5A37B238279430030BD76 /* textData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = textData.json; sourceTree = "<group>"; };
+		38B5A37B238279430030BD76 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		38B77EA323A8A8770096FD44 /* BubbleBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleBoxView.swift; sourceTree = "<group>"; };
 		38D875B823817F6C00D8D0AA /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		38D875BC238180A700D8D0AA /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		38CF348D238278B9001206ED /* JSONSample */ = {
 			isa = PBXGroup;
 			children = (
-				38B5A37B238279430030BD76 /* textData.json */,
+				38B5A37B238279430030BD76 /* test.json */,
 			);
 			path = JSONSample;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B5A37C238279430030BD76 /* textData.json in Resources */,
+				38B5A37C238279430030BD76 /* test.json in Resources */,
 				38FF0925237C236900E2CF31 /* LaunchScreen.storyboard in Resources */,
 				38FF0922237C236900E2CF31 /* Assets.xcassets in Resources */,
 				38FF0920237C236700E2CF31 /* Main.storyboard in Resources */,
