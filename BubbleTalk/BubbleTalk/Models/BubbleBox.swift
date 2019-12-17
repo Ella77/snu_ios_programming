@@ -91,10 +91,36 @@ struct BubbleBox{
         let tempData = try? jsonEncoder.encode(bubbles)
         
         //Create JSON
-//        var Finaldata: Any?
-//        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
+        var Finaldata: Any?
+        if let data = tempData { Finaldata = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) }
         print(String(data: tempData!, encoding: .utf8)!);
         
+        let file = "test.json" //this is the file. we will write to and read from it
+
+        let text = String(data: tempData!, encoding: .utf8)! //just a text
+        let desktop = URL(fileURLWithPath: "../BubbleTalk/JSONSample")
+        do {
+            let dir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: desktop, create: true)
+
+           // let fileURL = dir.appendingPathComponent(file)
+
+            //writing
+            
+            try text.write(to: desktop, atomically: false, encoding: .utf8)
+            }
+            catch {/* error handling here */}
+
+        
+//        do {
+//            let fileURL = try FileManager.default
+//                .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//                .appendingPathComponent("example.json")
+//
+//            try JSONSerialization.data(withJSONObject: Finaldata)
+//                .write(to: fileURL)
+//        } catch {
+//            print(error)
+//        }
         
         
         
@@ -102,7 +128,7 @@ struct BubbleBox{
 
    }
     
-    mutating func importToBox() {
+        func importToBox() {
         do {
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -117,6 +143,7 @@ struct BubbleBox{
     }
 
 }
+
   
 
 
@@ -161,5 +188,4 @@ struct BubbleBox{
 //        var key: String
 //    }
 //}
-
 
