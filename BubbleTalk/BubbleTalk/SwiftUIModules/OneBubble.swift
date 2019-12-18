@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct OneBubble: View {
-    @State var vvv = false
+    @ObservedObject var bubble: ObservableBubble
+    
+   
+    
     
     var bubbleBox: BubbleBox
     var first: Bool = true
@@ -46,13 +49,18 @@ struct OneBubble: View {
         }
     }
     
-    init(bubText txt: String, bubType type: Int, bubbleBox: BubbleBox) {
+//    init(bubText txt: String, bubType type: Int, bubbleBox: BubbleBox) {
+    init(bubble: Bubble, bubbleBox: BubbleBox) {
+        self.bubble = ObservableBubble(bubble: bubble)
+       
+        
         self.bubbleBox = bubbleBox
         
         //        bubtype = type
-        bubText = txt
+        bubText = bubble.text
+        let bubbleType = bubble.type
         
-        switch type {
+        switch bubbleType {
         case 0:
             bubProperty = .noBubble
             
@@ -78,7 +86,7 @@ struct OneBubble: View {
         
         
         Group {
-            if(!self.vvv) {
+            if(self.bubble.bubble.type != -1) {
                 if (!self.wasDragged) {
                     Image(self.bubProperty.rawValue).resizable()
                         .frame(width: 140 , height:140)
@@ -91,7 +99,7 @@ struct OneBubble: View {
                         .lineLimit(2)
                         .position(self.currentPosition)
                         .onTapGesture(count: 2) {
-                            self.vvv = true
+                            self.bubble.bubble.type = -1
                     }
                     .onTapGesture {
                         withAnimation { self.wasDragged.toggle() }
@@ -149,7 +157,7 @@ struct OneBubble: View {
                     }
                         
                         .onTapGesture(count: 2) {
-                            self.vvv = true
+                            self.bubble.bubble.type = -1
                         }
                     .onTapGesture {
                         self.beingTouched = !self.beingTouched
@@ -168,7 +176,7 @@ struct OneBubble: View {
                         .lineLimit(2)
                         .position(self.currentPosition)
                         .onTapGesture(count: 2) {
-                            self.vvv = true
+                            self.bubble.bubble.type = -1
                         }
                         .onTapGesture {
                             self.beingTouched = !self.beingTouched

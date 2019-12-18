@@ -16,7 +16,8 @@ struct SentBubbles: View {
     
     init(bubbleCollection: BubbleManager, bubbleBox: BubbleBox) {
         for bubble in bubbleCollection.bubbles {
-            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.type, bubbleBox: bubbleBox)
+            bubbleView[bubble] = OneBubble(bubble: bubble, bubbleBox: bubbleBox)
+            
         }
         bubbleKeys = bubbleView.keys.map { $0 }
         self.bubbleBox = bubbleBox
@@ -28,7 +29,7 @@ struct SentBubbles: View {
             bubbleKeys.remove(at: 0)
         }
         
-        bubbleView[bub] = OneBubble(bubText: bub.text, bubType: bub.type, bubbleBox: bubbleBox)
+        bubbleView[bub] = OneBubble(bubble: bub, bubbleBox: bubbleBox)
         bubbleKeys.append(bub)
     }
     

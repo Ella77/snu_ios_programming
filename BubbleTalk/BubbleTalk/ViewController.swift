@@ -121,29 +121,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//                var i = 0
-//                // todo 1. 블투로 받아오기테스트 2. 타이머없애기
-//                // 2초 마다 하나씩 뜨도록 타이머 설정
-//                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-//                    if (i < self.bubbleSample.count) {
-//                        let text = self.bubbleSample[i]
-//                        let index = String(self.bubbleSample[i].last!)
-//                        let messageWithOutIndex = String(text.dropLast())
-//                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
+                var i = 0
+                // todo 1. 블투로 받아오기테스트 2. 타이머없애기
+                // 2초 마다 하나씩 뜨도록 타이머 설정
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+                    if (i < self.bubbleSample.count) {
+                        let text = self.bubbleSample[i]
+                        let index = String(self.bubbleSample[i].last!)
+                        let messageWithOutIndex = String(text.dropLast())
+                        let newBub : Bubble = self.receivedTalk.makeNewBubble(txt: messageWithOutIndex, type: index)
+
+//                        self.bubbleBox.add(a: newBub)
+//                        self.bubbleBox.exportToJson();
 //
-////                        self.bubbleBox.add(a: newBub)
-////                        self.bubbleBox.exportToJson();
-////
-////
-////                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
-////                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
-//                        self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
-//        //                self.uiHost.rootView = self.bubbleView
-//                        i += 1
-//                    } else {
-//                        timer.invalidate()
-//                    }
-//                }
+//
+//                        print("\(self.bubbleBox.bubbles) is in bubbleBox")
+//                        self.bubbleBox.exportToJson(from: self.bubbleBox.bubbles)
+                        self.uiHost.rootView.addBubToRecievedBubbles(bubble: newBub)
+        //                self.uiHost.rootView = self.bubbleView
+                        i += 1
+                    } else {
+                        timer.invalidate()
+                    }
+                }
     }
     
     override func viewDidLoad() {

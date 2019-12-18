@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63BCAD2382AB57009372E9 /* BubbleManager.swift */; };
+		382F548123A9A11A00459BBE /* ObservableBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382F548023A9A11A00459BBE /* ObservableBubble.swift */; };
 		38392257238E3E09000A9B0E /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38392256238E3E09000A9B0E /* BluetoothCentral.swift */; };
 		38392259238E3E46000A9B0E /* BluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */; };
 		389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		0A63BCAD2382AB57009372E9 /* BubbleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleManager.swift; sourceTree = "<group>"; };
+		382F548023A9A11A00459BBE /* ObservableBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableBubble.swift; sourceTree = "<group>"; };
 		38392256238E3E09000A9B0E /* BluetoothCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		38392258238E3E46000A9B0E /* BluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothPeripheral.swift; sourceTree = "<group>"; };
 		389CEE552387A2E0003ED291 /* ReceivedBubbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedBubbles.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				38D875B823817F6C00D8D0AA /* Bubble.swift */,
 				0A63BCAD2382AB57009372E9 /* BubbleManager.swift */,
 				F5C27B1C23953E8B000EF2CC /* BubbleBox.swift */,
+				382F548023A9A11A00459BBE /* ObservableBubble.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				38FF091D237C236700E2CF31 /* ViewController.swift in Sources */,
 				38FF0919237C236700E2CF31 /* AppDelegate.swift in Sources */,
 				38FF091B237C236700E2CF31 /* SceneDelegate.swift in Sources */,
+				382F548123A9A11A00459BBE /* ObservableBubble.swift in Sources */,
 				389CEE562387A2E0003ED291 /* ReceivedBubbles.swift in Sources */,
 				38392257238E3E09000A9B0E /* BluetoothCentral.swift in Sources */,
 				0A63BCAE2382AB57009372E9 /* BubbleManager.swift in Sources */,
@@ -361,13 +365,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KV6S75QRV;
+				DEVELOPMENT_TEAM = M974BXPS92;
 				INFOPLIST_FILE = BubbleTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fefefefefe.BubbleTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeum2.BubbleTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -379,13 +383,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9KV6S75QRV;
+				DEVELOPMENT_TEAM = M974BXPS92;
 				INFOPLIST_FILE = BubbleTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fefefefefe.BubbleTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jskeum2.BubbleTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

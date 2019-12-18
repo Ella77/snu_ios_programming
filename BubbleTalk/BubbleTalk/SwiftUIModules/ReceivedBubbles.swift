@@ -18,7 +18,9 @@ struct ReceivedBubbles: View {
     
     init(bubbleCollection: BubbleManager, bubbleBox: BubbleBox) {
         for bubble in bubbleCollection.bubbles {
-            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.type, bubbleBox: bubbleBox)
+//            bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.type, bubbleBox: bubbleBox)
+//        }
+             bubbleView[bubble] = OneBubble(bubble: bubble, bubbleBox: bubbleBox)
         }
         bubbleKeys = bubbleView.keys.map { $0 }
     
@@ -34,7 +36,8 @@ struct ReceivedBubbles: View {
             bubbleView[bubbleKey]?.unmarkLastAdded()
         }
         
-        bubbleView[bubble] = OneBubble(bubText: bubble.text, bubType: bubble.type, bubbleBox: bubbleBox)
+        bubbleView[bubble] = OneBubble(bubble: bubble, bubbleBox: bubbleBox)
+//        bubbleView[bubble] = OneBubble(bubble: bubble bubText: bubble.text, bubType: bubble.type, bubbleBox: bubbleBox)
         bubbleKeys.append(bubble)
         
         recentlyAddedBubbleKey = bubble

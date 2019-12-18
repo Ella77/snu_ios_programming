@@ -7,8 +7,9 @@
 //
 
 import Foundation
+
 // View test하기 위해 임시로 만들었습니다. 모델 만드신 걸로 바꿔주세요!. id 값은 있어야합니다
-struct Bubble: Hashable, Identifiable, Codable {
+struct Bubble: Hashable, Identifiable, Codable{
     var id: Int
     var text: String
     var type: Int
