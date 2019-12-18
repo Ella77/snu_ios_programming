@@ -80,6 +80,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func bubble0Choice(_ sender: UIButton) {
          bubbleIndex = 0
         print("bubble)Choice")
+        
+        self.spoid.setBackgroundImage(UIImage(named: "bubbleselect_transparent"), for: UIControl.State.normal)
     }
     
     
