@@ -7,6 +7,6 @@ by 금진섭, 강수진, 한수현, 유은이, 김도윤, 김수림
 
 
 ### <시연 영상>
-
+https://www.youtube.com/watch?v=BnmQZP6sG4Q
 
 ### <앱스토어 다운> 
